@@ -26,7 +26,7 @@
 
 
 ## 設計書
-
+ER図は<a href="https://drive.google.com/file/d/1VGwONfvTX67OHMCXwzgn7P04MffKQSsT/view?usp=sharing">こちら</a>から。
 
 ## チャレンジ要素一覧 
 チャレンジ要素一覧は<a href="https://docs.google.com/spreadsheets/d/110fEyaEPXngDYNROUz8QJfpwK9CyLewzbO5j75crsLA/edit#gid=0">こちら</a>から。
