@@ -30,6 +30,7 @@ ER図は<a href="https://drive.google.com/file/d/1VGwONfvTX67OHMCXwzgn7P04MffKQS
 <br>UIFlows(会員側)は<a href="https://drive.google.com/file/d/1bKuY4FmWkTtqOrCAEthZF6OYC0LZeU8q/view?usp=sharing">こちら</a>から。
 <br>UIFlows(管理者側)は<a href="https://drive.google.com/file/d/1cbsSwcPxbFwGDljfPyJHfa_d0nFv1sWE/view?usp=sharing">こちら</a>から。
 <br>テーブル定義書は<a href="https://docs.google.com/spreadsheets/d/1jvXXFXfxdVHmPeCUnZYfvtepeUsEaLROKlTa93asea8/edit?usp=sharing">こちら</a>から。
+<br>アプリケーション詳細設計は<a href="https://docs.google.com/spreadsheets/d/1p6xaJb8_doVWKGGm5xIXUgqCqywbm2Gb4lAcT_yEqpc/edit?usp=sharing">こちら</a>から。
 
 ## チャレンジ要素一覧 
 チャレンジ要素一覧は<a href="https://docs.google.com/spreadsheets/d/110fEyaEPXngDYNROUz8QJfpwK9CyLewzbO5j75crsLA/edit#gid=0">こちら</a>から。
