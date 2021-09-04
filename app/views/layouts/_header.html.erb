@@ -1,0 +1,21 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <%= link_to "market&analysis",root_path %>
+        <div class="navbar mt-4 nav-left" id="navbarToggleExternalContent">
+          <% if user_signed_in? %>
+            <%= link_to 'My Page',my_page_users_path %>
+            <%= link_to 'Order',purchases_path %>
+            <%= link_to 'Logout',destroy_user_session_path,method: :delete %>
+          <% elsif admin_signed_in? %>
+            <%= link_to 'Member',admin_users_path %>
+            <%= link_to 'Genre',admin_genres_path %>
+            <%= link_to 'Logout',destroy_admin_session_path,method: :delete %>
+          <% else %>
+            <%= link_to 'Signup',new_user_registration_path %>
+            <%= link_to 'Login',new_user_session_path %>
+          <% end %>
+        </div>
+    </div>
+  </nav>
+</header>
