@@ -22,12 +22,10 @@ Rails.application.routes.draw do
   end
 
 
-  root to: "homes#top"
-
-
 
   scope module: :public do
-
+     
+    root to:'homes#top'
 
     resource :users, only: [:edit, :update] do
      get '/my_page' => 'users#show'
