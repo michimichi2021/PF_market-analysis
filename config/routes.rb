@@ -2,9 +2,7 @@ Rails.application.routes.draw do
 
 
   devise_for :admins,controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+  sessions:      'admins/sessions'
  }
 
 
@@ -18,7 +16,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
-
   end
 
 
