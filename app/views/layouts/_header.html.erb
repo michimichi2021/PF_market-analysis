@@ -7,6 +7,7 @@
             <%= link_to 'My Page',my_page_users_path %>
             <%= link_to 'Order',purchases_path %>
             <%= link_to 'Logout',destroy_user_session_path,method: :delete %>
+            <%= link_to "", new_item_path, class:"far fa-plus-square", :style => "color: black;" %>
           <% elsif admin_signed_in? %>
             <%= link_to 'Member',admin_users_path %>
             <%= link_to 'Genre',admin_genres_path %>
