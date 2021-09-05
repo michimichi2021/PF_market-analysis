@@ -1,13 +1,43 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
-  
+
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :姓 %><br />
+    <%= f.text_field :last_name, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :名  %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :姓フリガナ　%><br />
+    <%= f.text_field :last_name_kana, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :名フリガナ %><br />
+    <%= f.text_field :first_name_kana, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :郵便番号 %><br />
+    <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :電話番号 %><br />
+    <%= f.text_field :telephone_number, autofocus: true %>
+  </div>
+  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
