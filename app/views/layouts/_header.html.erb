@@ -4,9 +4,10 @@
         <%= link_to "market&analysis",root_path %>
         <div class="navbar mt-4 nav-left" id="navbarToggleExternalContent">
           <% if user_signed_in? %>
-            <%= link_to 'My Page',my_page_users_path %>
+            <%= link_to 'My Page',user_path(id: current_user) %>
             <%= link_to 'Order',purchases_path %>
             <%= link_to 'Logout',destroy_user_session_path,method: :delete %>
+            <%= link_to "", new_item_path, class:"far fa-plus-square", :style => "color: black;" %>
           <% elsif admin_signed_in? %>
             <%= link_to 'Member',admin_users_path %>
             <%= link_to 'Genre',admin_genres_path %>
@@ -19,3 +20,4 @@
     </div>
   </nav>
 </header>
+    
