@@ -1,0 +1,35 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <h2>会員情報詳細</h2>
+   
+      <div>
+        <p>姓&nbsp;&nbsp;<%= @user.last_name %></p>
+      </div>
+    
+      <div>
+        <p>名&nbsp;&nbsp; <%= @user.first_name %></p>
+      </div>
+    
+      <div>
+        <p>姓フリガナ&nbsp;&nbsp;<%= @user.last_name_kana %></p>
+      </div>
+    
+      <div>
+        <p>名フリガナ&nbsp;&nbsp;<%= @user.first_name_kana %></p>
+      </div>
+      
+      <div>
+        <p>郵便番号&nbsp;&nbsp;<%= @user.postal_code %></p>
+      </div>
+      
+      <div>
+        <p>住所&nbsp;&nbsp;<%= @user.address %></p>
+      </div>
+      
+      <div>
+        <p>電話番号&nbsp;&nbsp;<%= @user.telephone_number %></p>
+      </div>
+    
+    <%= link_to'edit',edit_admin_user_path,class: 'btn btn-danger' %> 
+  </div>
+</div>

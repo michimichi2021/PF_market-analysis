@@ -1,7 +1,6 @@
-<div class='container'>
+<div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-５'>
-    <h2>User info</h2>
+    <h2>会員情報編集画面</h2>
     <%= form_with model:@user, local:true do |f| %>
       <div class="field">
         <%= f.label :姓 %><br />
@@ -37,29 +36,29 @@
         <%= f.label :電話番号 %><br />
         <%= f.text_field :telephone_number, autofocus: true %>
       </div>
-      
      
-      <div class='col-md-５'>
+    
       <div class="field">
         <%= f.label :ニックネーム %><br />
         <%= f.text_field :nickname, autofocus: true, id:"inputName", placeholder:"ニックネーム"%>
       </div>
-      
+        
       <div class="field">
         <%= f.label :プロフィール画像 %><br />
         <%= f.file_field :image %>
       </div>
-      
+        
       <div class="field">
         <%= f.label :紹介文%><br />
         <%= f.text_field :introduction, autofocus: true %>
       </div>
-      
+        
       <div class="form-group">
         <%= f.submit class: 'btn btn-secondary' %>
       </div>
-      </div>
+    
     <% end %>
-    </div>
+  
+    <%= link_to'退会する',users_unsubscribe_path %>  
   </div>
 </div>
