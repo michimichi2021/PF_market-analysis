@@ -3,7 +3,13 @@
     <div class='col-md-3'>
       <h2>User info</h2>
       <table class='table'>
-       
+        <tr>
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image.variant(resize:'300x300') %>
+          <% else %>
+            <%= image_tag 'no_image.jpeg' %>
+          <% end %>
+        </tr>
         <tr>
       	  <th>name</th>
       	  <th><%= current_user.nickname %></th>
