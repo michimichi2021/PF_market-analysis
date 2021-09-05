@@ -24,11 +24,10 @@ Rails.application.routes.draw do
      
     root to:'homes#top'
 
-    resource :users, only: [:edit, :update] do
-     get '/my_page' => 'users#show'
-     get '/unsubscribe' => 'users#unsubscribe'
-     get '/withdraw' => 'users#withdraw'
-    end
+    resources :users, only: [:edit, :update, :show] 
+    
+    get 'users/unsubscribe' => 'users#unsubscribe'
+    get 'users/withdraw' => 'users#withdraw'
 
     resources :items, only:[:show, :new, :create, :edit, :update] 
 
