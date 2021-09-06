@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :edit, :update, :show] 
   end
 
 
@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   scope module: :public do
      
     root to:'homes#top'
-
-    resources :users, only: [:edit, :update, :show] 
     
     get 'users/unsubscribe' => 'users#unsubscribe'
-    get 'users/withdraw' => 'users#withdraw'
+    
+    patch 'users/withdraw' => 'users#withdraw'
+
+    resources :users, only: [:edit, :update, :show] 
 
     resources :items, only:[:show, :new, :create, :edit, :update] 
 
