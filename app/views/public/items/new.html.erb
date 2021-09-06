@@ -2,8 +2,8 @@
   <h2>商品の新規登録画面</h2>
   <%= form_with model:@item,method: :post,local: true do |f| %>
     <div class="field">
-        <%= f.label :プロフィール画像 %><br />
-        <%= f.file_field :image %>
+      <%= f.label :商品画像%><br />
+      <%= f.file_field :image %>
     </div>
   
     <div class="field">
@@ -18,7 +18,8 @@
     
     <div class="field">
       <%= f.label :商品ジャンル　%><br />
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+      <%= f.text_field :genre_ids, class: "form-control", id:'genre_ids',\
+       placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
     </div>
   
     <div class="field">
@@ -28,22 +29,22 @@
     
     <div class="field">
       <%= f.label :配送料の負担　%><br />
-      <%= f.text_field :shipping_fee, autofocus: true %>
+      <%= f.select :shipping_fee, [["出品者", "出品者"], ["購入者", "購入者"]], include_blank: "選択して下さい" %>
     </div>
   
     <div class="field">
       <%= f.label :配送方法 %><br />
-      <%= f.text_field :shipping_method, autofocus: true %>
+      <%= f.select :shipping_method, [["らくらくマケアナ便", "らくらくマケアナ便"], ["普通郵便（定形,定形外)", "普通郵便（定形,定形外)"], ["未定", "未定"]], include_blank: "選択して下さい" %>
     </div>
     
     <div class="field">
       <%= f.label :発送元の地域 %><br />
-      <%= f.text_field :shipping_area, autofocus: true %>
+      <%= f.select :shipping_area, [["北海道", "北海道"], ["東北地方", "東北地方"],["関東地方", "関東地方"], ["中部地方", "中部地方"],["近畿地方", "近畿地方"], ["中国地方", "中国地方"], ["四国地方", "四国地方"], ["九州地方", "九州地方"], ["沖縄県", "沖縄県"]], include_blank: "選択して下さい" %>
     </div>
     
     <div class="field">
       <%= f.label :発送までの日数 %><br />
-      <%= f.text_field :preparation_day, autofocus: true %>
+      <%= f.select :preparation_day, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], include_blank: "選択して下さい" %>
     </div>
     
     <div class="actions">

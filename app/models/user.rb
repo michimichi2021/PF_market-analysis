@@ -10,4 +10,6 @@ class User < ApplicationRecord
     super && (self.is_deleted == false)
   end
   
+  has_many :items,dependent: :destroy
+  
 end
