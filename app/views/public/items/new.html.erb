@@ -1,0 +1,53 @@
+<main>
+  <h2>商品の新規登録画面</h2>
+  <%= form_with model:@item,method: :post,local: true do |f| %>
+    <div class="field">
+        <%= f.label :プロフィール画像 %><br />
+        <%= f.file_field :image %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :商品名 %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :商品金額　%><br />
+      ¥<%= f.text_field :price, autofocus: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :商品ジャンル　%><br />
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :商品説明  %><br />
+      <%= f.text_field :introduction, autofocus: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :配送料の負担　%><br />
+      <%= f.text_field :shipping_fee, autofocus: true %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :配送方法 %><br />
+      <%= f.text_field :shipping_method, autofocus: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :発送元の地域 %><br />
+      <%= f.text_field :shipping_area, autofocus: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :発送までの日数 %><br />
+      <%= f.text_field :preparation_day, autofocus: true %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "新規登録" %>
+    </div>
+  <% end %>
+</main>

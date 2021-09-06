@@ -1,0 +1,7 @@
+<main>  
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image.variant(resize:'100x100') %>
+  <% else %>
+    <%= image_tag 'no_image.jpeg' %>
+  <% end %>
+</main>
