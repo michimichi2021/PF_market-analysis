@@ -29,6 +29,15 @@
       <div>
         <p>電話番号&nbsp;&nbsp;<%= @user.telephone_number %></p>
       </div>
+      
+      <div>
+      <% if @user.is_deleted == true%>
+        <p>会員状況&nbsp;&nbsp;退会</p>
+      <% else %>
+        <p>会員状況&nbsp;&nbsp;有効</p>   
+    　<% end %>
+    　</div>
+      
     
     <%= link_to'edit',edit_admin_user_path,class: 'btn btn-danger' %> 
   </div>
