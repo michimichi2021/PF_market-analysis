@@ -37,6 +37,8 @@ class Public::ItemsController < ApplicationController
     end
   end
   
+ 
+  
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :price, :shipping_fee, :shipping_method, :shipping_area, :preparation_day)
   end

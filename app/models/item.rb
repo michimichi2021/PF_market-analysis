@@ -20,6 +20,10 @@ class Item < ApplicationRecord
     end
   end
   
+  def self.search(word)
+   @items = Item.where("name LIKE?","%#{word}%")
+  end
+  
  
   has_one_attached :image
   
