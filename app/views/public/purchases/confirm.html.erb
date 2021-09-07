@@ -1,0 +1,44 @@
+<main>
+  <h2>注文情報確認</h2>  
+  <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>商品画像</th>
+            <th>商品名</th>
+            <th>商品金額</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td> <% if @item.image.attached? %>
+                      <%= image_tag @item.image.variant(resize:'300x300') %>
+                    <% else %>
+                     <%= image_tag 'no_image.jpg' %>
+                    <% end %></td>
+              <td><%= @item.name %></td>
+              <td><%= @item.price %></td>
+            </tr>  
+        </tbody>
+  </table>
+  
+  <p>お支払い方法&nbsp;&nbsp;<%= @purchase.payment_method %></p>
+  <p>お届け先&nbsp;&nbsp;<%= @shipping_postcode %>&nbsp;<%= @shipping_address %>&nbsp;<%= @shipping_name %></p>
+  
+   <%= form_with model: @purchase, url: purchases_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :price, value: @item.price %>
+        <% if params[:shipping_address] == "0" %>
+          <%= f.hidden_field :postal_code, value: current_user.postal_code %>
+          <%= f.hidden_field :address, value: current_user.address %>
+          <%= f.hidden_field :name, value: current_user.last_name+""+current_user.first_name %>
+
+        <% else params[:shipping_address] == "1" %>
+          <%= f.hidden_field :postal_code, value: @purchase.postal_code %>
+          <%= f.hidden_field :address, value: @purchase.address %>
+          <%= f.hidden_field :name, value: @purchase.name %>
+        <% end %>
+          <%= f.submit '注文を確定する', class: "btn btn-outline-success" %>
+   <% end %>
+  
+  
+</main>

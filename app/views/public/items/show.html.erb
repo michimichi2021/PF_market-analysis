@@ -7,45 +7,81 @@
        <%= image_tag 'no_image.jpg' %>
       <% end %>
     </div>
-  
+
     <div>
       <p>商品名&nbsp;&nbsp;<%= @item.name %></p>
     </div>
-    
+
+
     <div>
       <p>商品金額&nbsp;&nbsp;¥<%= @item.price %></p>
     </div>
-    
+
     <div>
       <p>商品のジャンル&nbsp;&nbsp;
       <% @item_genres.each do |genre| %>
       <%= genre.name %>
       <% end %></p>
     </div>
-  
+
     <div>
       <p>商品の説明&nbsp;&nbsp;<%= @item.introduction %></p>
     </div>
-    
+
     <div class="field">
       <p>配送料の負担&nbsp;&nbsp;<%= @item.shipping_fee %></p>
     </div>
-  
+
     <div class="field">
-      <p>配送方法&nbsp;&nbsp;<%= @item.shipping_method %></p>  
+      <p>配送方法&nbsp;&nbsp;<%= @item.shipping_method %></p>
     </div>
-    
+
     <div class="field">
-      <p>発送元の地域&nbsp;&nbsp;<%= @item.shipping_area %></p>  
+      <p>発送元の地域&nbsp;&nbsp;<%= @item.shipping_area %></p>
     </div>
-    
+
     <div class="field">
-      <p>発送までの日数&nbsp;&nbsp;<%= @item.preparation_day %>日で発送</p>  
+      <p>発送までの日数&nbsp;&nbsp;<%= @item.preparation_day %>日で発送</p>
     </div>
-    
+
+    <div class="field">
+      <p>出品者&nbsp;&nbsp;<%= link_to @item.user.nickname,user_path(@item.user) %></p>
+    </div>
+
     <div>
       <% if user_signed_in? && @item.user_id == current_user.id %>
        <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
+      <% else %>
+        <%= form_with model: @purchase,url: purchase_path,method: :post,local:true do |f| %>
+           <%= f.hidden_field :item_id, value: @item.id %>
+           <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
+        <% end %>
       <% end %>
     </div>
+    
+    <div>
+    <p>コメント件数：<%= @item.comments.count %></p>
+    <% @item.comments.each do |comment| %>
+      <p><% if @user.image.attached? %>
+            <%= image_tag @user.image.variant(resize:'300x300') %>
+          <% else %>
+            <%= image_tag 'no_image.jpeg' %>
+          <% end %></p>
+      <%= comment.user.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+      <% if comment.user == current_user %>
+      <div>
+        <%= link_to "削除", item_comment_path(comment.item, comment), method: :delete %>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+    <div>
+    <%= form_with(model:[@item, @comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+    </div>
+
+
 </main>

@@ -12,29 +12,34 @@
         </tr>
         <tr>
       	  <th>name</th>
-      	  <th><%= current_user.nickname %></th>
+      	  <th><%= @user.nickname %></th>
         </tr>
         <tr>
       	  <th>introduction</th>
-      	  <th><%= current_user.introduction %></th>
+      	  <th><%= @user.introduction %></th>
         </tr>
       </table>
-
+　　　
+　　　
       <div class='row'>
+      　<% if @user.id == current_user.id %> 
         <%= link_to '', edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+        <% end %>
       </div>
       
       <div class="row">
+        <% if @user.id == current_user.id %>
         <h4>いいねした商品一覧</h4>
         <table class='table table-hover table-inverse'>
         <thead>
           <tr>
-            <th>image</th>
-            <th>Category</th>
-            <th>Explain</th>
+            <th>画像</th>
+            <th>商品名</th>
+            <th>金額</th>
           </tr>
         </thead>
         <tbody>
+          
             <tr>
               <td></td>
               <td></td>
@@ -42,26 +47,36 @@
             </tr>  
         </tbody>
         </table>
+        <% end %>
       </div>
       
     </div>
+   
     
     <div class='col-md-8 offset-md-1'>
     <h2>出品した商品一覧</h2>
     <table class='table table-hover table-inverse'>
       <thead>
         <tr>
-          <th>image</th>
-          <th>Category</th>
-          <th>Explain</th>
+          <th>画像</th>
+          <th>商品名</th>
+          <th>金額</th>
         </tr>
       </thead>
       <tbody>
+        <% @items.each do |item| %>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>  
+            <td> <% if item.image.attached? %>
+                  <%= image_tag item.image.variant(resize:'300x300') %>
+                 <% else %>
+                  <%= image_tag 'no_image.jpg' %>
+                 <% end %></td>
+            <td>
+              <%= item.name %>
+            </td>
+            <td><%= item.price %></td>
+          </tr> 
+        <% end %>
       </tbody>
     </table>
     </div>
