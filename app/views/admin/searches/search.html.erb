@@ -1,10 +1,5 @@
-<main>
-  <div class='row col-8 mx-auto'>
-    <%= form_tag(admin_searches_search_path,method: :get) do %>
-      <%= text_field(@search_content, :search_word)%>
-      <%= submit_tag "検索" %>
-    <% end %>
-      <table class='table table-hover table-inverse'>
+ <div class='row col-8 mx-auto'>
+ <table class='table table-hover table-inverse'>
         <thead class='bg-light'>
           <tr>
             <th>会員ID</th>
@@ -27,6 +22,5 @@
           </tr>
           <% end %>
         </tbody>
-      </table>
-    </div>
-</main>
+</table>
+</div>

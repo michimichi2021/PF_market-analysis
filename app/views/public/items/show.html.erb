@@ -1,0 +1,51 @@
+<main>
+    <h2>商品の詳細ページ</h2>
+    <div>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image.variant(resize:'300x300') %>
+      <% else %>
+       <%= image_tag 'no_image.jpg' %>
+      <% end %>
+    </div>
+  
+    <div>
+      <p>商品名&nbsp;&nbsp;<%= @item.name %></p>
+    </div>
+    
+    <div>
+      <p>商品金額&nbsp;&nbsp;¥<%= @item.price %></p>
+    </div>
+    
+    <div>
+      <p>商品のジャンル&nbsp;&nbsp;
+      <% @item_genres.each do |genre| %>
+      <%= genre.name %>
+      <% end %></p>
+    </div>
+  
+    <div>
+      <p>商品の説明&nbsp;&nbsp;<%= @item.introduction %></p>
+    </div>
+    
+    <div class="field">
+      <p>配送料の負担&nbsp;&nbsp;<%= @item.shipping_fee %></p>
+    </div>
+  
+    <div class="field">
+      <p>配送方法&nbsp;&nbsp;<%= @item.shipping_method %></p>  
+    </div>
+    
+    <div class="field">
+      <p>発送元の地域&nbsp;&nbsp;<%= @item.shipping_area %></p>  
+    </div>
+    
+    <div class="field">
+      <p>発送までの日数&nbsp;&nbsp;<%= @item.preparation_day %>日で発送</p>  
+    </div>
+    
+    <div>
+      <% if user_signed_in? && @item.user_id == current_user.id %>
+       <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
+      <% end %>
+    </div>
+</main>

@@ -1,0 +1,5 @@
+<main>
+  <% @genre_list.each do |genre|%>
+      <%=link_to genre.name,searches_search_tag_path(genre_id: genre.id) %>
+   <%="(#{genre.items.count})" %><% end %>
+</main>

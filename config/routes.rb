@@ -15,27 +15,36 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :edit, :update, :show] 
+    resources :users, only: [:index, :edit, :update, :show]
+    get "searches/search"=>"searches#search"
   end
 
 
 
   scope module: :public do
-     
+
     root to:'homes#top'
-    
+
     get 'users/unsubscribe' => 'users#unsubscribe'
-    
+
     patch 'users/withdraw' => 'users#withdraw'
 
-    resources :users, only: [:edit, :update, :show] 
+    resources :users, only: [:edit, :update, :show]
 
-    resources :items, only:[:show, :new, :create, :edit, :update] 
-
+    resources :items, only:[:show, :new, :create, :edit, :update]
+    
+    
     resources :purchases, only:[:new, :create, :index, :show] do
      get '/confirm' => 'purchases#confirm'
-     get '/complete' => 'purchases#complete'  
+     get '/complete' => 'purchases#complete'
     end
+    
+    get "searches/tag_lists"=>"searches#tag_lists"
+
+    get "searches/search_tag"=>"searches#search_tag"
+
+    get "searches/search"=>"searches#search"
+
   end
 
 

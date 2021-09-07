@@ -1,0 +1,20 @@
+<div class="container">
+<h5>タグが<%=@genre.name%>の投稿一覧</h5>
+
+<!--タグリスト-->
+
+<% @items.each do |item| %>
+    <h6 class="card-title">
+      <%=link_to item_path(item.id) do %>
+      <span>
+    	    <% if item.image.attached? %>
+              <%= image_tag item.image.variant(resize:'300x300') %>
+          <% else %>
+             <%= image_tag 'no_image.jpg' %>
+          <% end %></span>
+      <%= item.name.truncate(25) %><br/>
+      <% end %>
+      <%= item.price %>
+      
+    </h6>
+<% end %>

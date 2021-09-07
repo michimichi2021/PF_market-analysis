@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_045604) do
+ActiveRecord::Schema.define(version: 2021_09_06_131210) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,30 @@ ActiveRecord::Schema.define(version: 2021_09_06_045604) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
+    t.string "shipping_fee", null: false
+    t.string "shipping_method", null: false
+    t.string "shipping_area", null: false
+    t.integer "preparation_day", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_tags_on_genre_id"
+    t.index ["item_id"], name: "index_tags_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|

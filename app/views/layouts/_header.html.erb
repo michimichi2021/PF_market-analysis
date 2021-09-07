@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <%= link_to "market&analysis",root_path %>
+        <%= link_to 'genre',searches_tag_lists_path %>
         <div class="navbar mt-4 nav-left" id="navbarToggleExternalContent">
           <% if user_signed_in? %>
             <%= link_to 'My Page',user_path(id: current_user) %>
@@ -15,6 +16,10 @@
           <% else %>
             <%= link_to 'Signup',new_user_registration_path %>
             <%= link_to 'Login',new_user_session_path %>
+          <% end %>
+          <%= form_tag(searches_search_path,method: :get) do %>
+            <%= text_field(@search_content, :search_word)%>
+            <%= submit_tag "検索" %>
           <% end %>
         </div>
     </div>
