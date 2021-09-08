@@ -65,14 +65,20 @@
       </thead>
       <tbody>
         <% @items.each do |item| %>
-          <tr>
-            <td> <% if item.image.attached? %>
-                  <%= image_tag item.image.variant(resize:'300x300') %>
-                 <% else %>
-                  <%= image_tag 'no_image.jpg' %>
-                 <% end %></td>
+        <tr>
+          <td>
+            <%= link_to item_path(item) do %>   
+              <% if item.image.attached? %>
+                <%= image_tag item.image.variant(resize:'300x300') %>
+              <% else %>
+                <%= image_tag 'no_image.jpg' %>
+              <% end %>
+            <% end %>
+          </td>
             <td>
+              <%= link_to item_path(item) do %>
               <%= item.name %>
+              <% end %>
             </td>
             <td><%= item.price %></td>
           </tr> 
@@ -82,3 +88,4 @@
     </div>
   </div>
 </div>
+
