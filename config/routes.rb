@@ -31,14 +31,17 @@ Rails.application.routes.draw do
 
     resources :users, only: [:edit, :update, :show]
 
-    resources :items, only:[:show, :new, :create, :edit, :update]
-    
-    
-    resources :purchases, only:[:new, :create, :index, :show] do
-     get '/confirm' => 'purchases#confirm'
-     get '/complete' => 'purchases#complete'
+    resources :items, only:[:show, :new, :create, :edit, :update] do
+      resources :comments, only: [:create, :destroy]
     end
+      
+    resources :purchases, only:[:create, :index, :show, :new] 
     
+   
+    post 'purchases/confirm' => 'purchases#confirm'
+    get 'purchases/complete' => 'purchases#complete'
+    
+
     get "searches/tag_lists"=>"searches#tag_lists"
 
     get "searches/search_tag"=>"searches#search_tag"

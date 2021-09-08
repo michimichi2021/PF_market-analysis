@@ -16,9 +16,11 @@ class Public::ItemsController < ApplicationController
   end
   
   def show
-    @user=current_user
     @item = Item.find(params[:id]) 
     @item_genres = @item.genres 
+    @purchase=Purchase.new
+    @comment=Comment.new
+    @user=@item.user
   end
   
   def edit

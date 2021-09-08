@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_131210) do
+ActiveRecord::Schema.define(version: 2021_09_08_102631) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2021_09_06_131210) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "item_id", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -64,6 +74,20 @@ ActiveRecord::Schema.define(version: 2021_09_06_131210) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "item_id", null: false
+    t.index ["item_id"], name: "index_purchases_on_item_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -91,8 +115,8 @@ ActiveRecord::Schema.define(version: 2021_09_06_131210) do
     t.string "address", null: false
     t.string "telephone_number", null: false
     t.boolean "is_deleted", default: false, null: false
-    t.string "nickname"
-    t.string "introduction"
+    t.string "name"
+    t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

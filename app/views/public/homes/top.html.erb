@@ -10,7 +10,7 @@
           <% else %>
              <%= image_tag 'no_image.jpg' %>
           <% end %></span>
-        	<p class="txt"><%= item.name %></p>
+        	<p class="txet"><%= item.name %></p>
         	<p><%= item.genres.map(&:name).join(', ') %></p>
           <p>¥<%= item.price %></p>
           <p><%=link_to"詳しくはこちら",item_path(item),class: "btn btn-success" %></p>

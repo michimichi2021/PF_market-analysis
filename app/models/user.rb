@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  
+  has_many :purchases,dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :items, dependent: :destroy
   
   def self.search(word)
    @users = User.where("last_name LIKE?","%#{word}%")
