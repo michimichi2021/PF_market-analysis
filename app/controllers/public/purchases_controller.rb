@@ -26,12 +26,18 @@ class Public::PurchasesController < ApplicationController
   
   def create
    @purchase=Purchase.new(purchase_params)
-  end
+   @purchase.user_id = current_user.id
+   @item=Item.find(@purchase.item_id)
+    if @purchase.save
   
-  def complete
+    redirect_to purchases_path
+    else
+    render 'new'  
+    end
   end
   
   def index
+      @purchases = current_user.purchases
   end
   
   def show
@@ -40,7 +46,7 @@ class Public::PurchasesController < ApplicationController
   private
   
   def purchase_params
-     params.require(:purchase).permit(:user_id, :postal_code, :address, :name, :price, :payment_method, :item_id)
+     params.require(:purchase).permit(:user_id, :postal_code, :address, :name, :payment_method, :item_id)
   end
   
 end
