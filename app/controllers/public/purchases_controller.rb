@@ -8,8 +8,9 @@ class Public::PurchasesController < ApplicationController
   def confirm
     @purchase = Purchase.new(purchase_params)
     @purchase.user_id = current_user.id
-    @item=current_user.purchase.item
-    @purchase.item_id=@item.id
+    @item=Item.find(@purchase.item_id)
+    # @item=current_user.purchase.item
+    # @purchase.item_id=@item.id
     
     if params[:shipping_address]=="0" 
           @shipping_postcode=current_user.postal_code

@@ -32,6 +32,7 @@
           <%= f.text_field :name %>
         </div>
       </div>
+      <%= f.hidden_field :item_id, value: @item.id %>
       <%= f.submit "確認画面に進む", class: "btn btn-sm btn-success mt-3" %>
       </div>
       <% end %>

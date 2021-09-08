@@ -45,14 +45,14 @@
     </div>
 
     <div class="field">
-      
+       <p>出品者&nbsp;&nbsp;<%= link_to @user.name,user_path(@user) %></p>
     </div>
 
     <div>
       <% if user_signed_in? && @item.user_id == current_user.id %>
        <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
       <% else %>
-        <%= form_with model: @purchase,url: purchase_path,method: :post,local:true do |f| %>
+        <%= form_with model: @purchase,url: new_purchase_path,method: :get,local:true do |f| %>
            <%= f.hidden_field :item_id, value: @item.id %>
            <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
         <% end %>
@@ -67,7 +67,7 @@
           <% else %>
             <%= image_tag 'no_image.jpeg' %>
           <% end %></p>
-      
+      <%= comment.user.name %>
       <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
       <% if comment.user == current_user %>
       <div>

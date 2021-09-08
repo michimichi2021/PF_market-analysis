@@ -20,6 +20,7 @@ class Public::ItemsController < ApplicationController
     @item_genres = @item.genres 
     @purchase=Purchase.new
     @comment=Comment.new
+    @user=@item.user
   end
   
   def edit

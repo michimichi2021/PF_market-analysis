@@ -35,11 +35,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
       
-    resources :purchases, only:[:create, :index, :show] do
-      member do  
-      post 'new' 
-      end
-    end
+    resources :purchases, only:[:create, :index, :show, :new] 
+    
    
     post 'purchases/confirm' => 'purchases#confirm'
     get 'purchases/complete' => 'purchases#complete'
