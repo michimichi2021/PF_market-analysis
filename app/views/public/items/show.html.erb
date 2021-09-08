@@ -45,7 +45,7 @@
     </div>
 
     <div class="field">
-      <p>出品者&nbsp;&nbsp;<%= link_to @item.user.nickname,user_path(@item.user) %></p>
+      
     </div>
 
     <div>
@@ -62,12 +62,12 @@
     <div>
     <p>コメント件数：<%= @item.comments.count %></p>
     <% @item.comments.each do |comment| %>
-      <p><% if @user.image.attached? %>
-            <%= image_tag @user.image.variant(resize:'300x300') %>
+      <p><% if comment.user.image.attached? %>
+            <%= image_tag comment.user.image.variant(resize:'300x300') %>
           <% else %>
             <%= image_tag 'no_image.jpeg' %>
           <% end %></p>
-      <%= comment.user.name %>
+      
       <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
       <% if comment.user == current_user %>
       <div>

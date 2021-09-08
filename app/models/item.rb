@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   has_many :tags,dependent: :destroy
   has_many :genres,through: :tags
   has_many :comments, dependent: :destroy
+  has_many :purchases,dependent: :destroy
   
   def save_genre(save_genres)
     current_genres = self.genres.pluck(:name) unless self.genres.nil?

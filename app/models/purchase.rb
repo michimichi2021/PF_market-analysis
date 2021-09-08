@@ -5,5 +5,6 @@ class Purchase < ApplicationRecord
   コンビニ払い: 1}
   
   belongs_to :user
+  belongs_to :item
   
 end
