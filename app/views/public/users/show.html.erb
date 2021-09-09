@@ -24,8 +24,11 @@
       <div class='row'>
       　<% if @user.id == current_user.id %> 
         <%= link_to '', edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+        <%= link_to "", new_item_path, class:"far fa-plus-square", :style => "color: black;" %>
         <% end %>
       </div>
+      
+      
       
       <div class="row">
         <% if @user.id == current_user.id %>
@@ -67,13 +70,17 @@
         <% @items.each do |item| %>
         <tr>
           <td>
-            <%= link_to item_path(item) do %>   
-              <% if item.image.attached? %>
-                <%= image_tag item.image.variant(resize:'300x300') %>
-              <% else %>
-                <%= image_tag 'no_image.jpg' %>
+            <% if user_signed_in? && @item.purchase.blank? %>
+              <%= link_to item_path(item) do %>   
+                <% if item.image.attached? %>
+                  <%= image_tag item.image.variant(resize:'300x300') %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg' %>
+                <% end %>
               <% end %>
-            <% end %>
+            <% else %>
+             <h2 class="sold-out">Sold Out!</h2>
+       　　　　 <% end %>
           </td>
             <td>
               <%= link_to item_path(item) do %>

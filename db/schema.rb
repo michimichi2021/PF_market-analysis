@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_152414) do
+ActiveRecord::Schema.define(version: 2021_09_07_163536) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_152414) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
@@ -72,19 +73,18 @@ ActiveRecord::Schema.define(version: 2021_09_08_152414) do
     t.integer "preparation_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "purchases", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "item_id", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "name", null: false
     t.integer "payment_method", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "item_id", null: false
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 2021_09_08_152414) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "profile"
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
@@ -114,8 +114,8 @@ ActiveRecord::Schema.define(version: 2021_09_08_152414) do
     t.string "address", null: false
     t.string "telephone_number", null: false
     t.boolean "is_deleted", default: false, null: false
-    t.string "name"
-    t.text "profile"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,10 +1,14 @@
 <main>
     <h2>商品の詳細ページ</h2>
     <div>
-      <% if @item.image.attached? %>
-        <%= image_tag @item.image.variant(resize:'300x300') %>
+      <% if user_signed_in? && @item.purchase.blank? %>
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image.variant(resize:'300x300') %>
+        <% else %>
+         <%= image_tag 'no_image.jpg' %>
+        <% end %>
       <% else %>
-       <%= image_tag 'no_image.jpg' %>
+        <h2 class="sold-out">Sold Out!</h2>
       <% end %>
     </div>
 
@@ -23,6 +27,7 @@
       <%= genre.name %>
       <% end %></p>
     </div>
+
 
     <div>
       <p>商品の説明&nbsp;&nbsp;<%= @item.introduction %></p>
@@ -49,16 +54,19 @@
     </div>
 
     <div>
-      <% if user_signed_in? && @item.user_id == current_user.id %>
-       <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
-      <% else %>
-        <%= form_with model: @purchase,url: new_purchase_path,method: :get,local:true do |f| %>
-           <%= f.hidden_field :item_id, value: @item.id %>
-           <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
+      <% if user_signed_in? && @item.purchase.blank? %>
+        <% if current_user == @item.user%>
+         <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
+        <% else %>
+
+          <%= form_with model: @purchase,url: new_purchase_path,method: :get,local:true do |f| %>
+             <%= f.hidden_field :item_id, value: @item.id %>
+             <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
+          <% end %>
         <% end %>
       <% end %>
     </div>
-    
+
     <div>
     <p>コメント件数：<%= @item.comments.count %></p>
     <% @item.comments.each do |comment| %>
@@ -82,6 +90,6 @@
       <%= f.submit "送信する" %>
     <% end %>
     </div>
-    
+
 
 </main>
