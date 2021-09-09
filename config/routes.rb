@@ -29,10 +29,12 @@ Rails.application.routes.draw do
 
     patch 'users/withdraw' => 'users#withdraw'
 
-    resources :users, only: [:edit, :update, :show]
+    resources :users, only: [:edit, :update, :show] do
+    end
 
     resources :items, only:[:show, :new, :create, :edit, :update] do
       resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
       
     resources :purchases, only:[:create, :index, :show, :new] 

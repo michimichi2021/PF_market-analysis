@@ -2,22 +2,27 @@
   <div class="container">
     <div class="row">
     <% @items.each do |item| %>
-        <ul>
-          <li>
-      	    <span>
-      	    <% if item.image.attached? %>
-                <%= image_tag item.image.variant(resize:'300x300') %>
-            <% else %>
-               <%= image_tag 'no_image.jpg' %>
-            <% end %></span>
-          	<p class="txet"><%= item.name %></p>
-          	<p><%= item.genres.map(&:name).join(', ') %></p>
-            <p>¥<%= item.price %></p>
-            
-            <p><%=link_to"詳しくはこちら",item_path(item),class: "btn btn-success" %></p>
-         
-          </li>
-        </ul>   
+    <ul>
+      <li>
+        <%= link_to item_path(item) do %>   
+        <% if user_signed_in? && item.purchase.blank? %>
+    	    <span>
+    	    <% if item.image.attached? %>
+              <%= image_tag item.image.variant(resize:'300x300') %>
+          <% else %>
+             <%= image_tag 'no_image.jpg' %>
+          <% end %>
+          </span>
+        <% else %>
+          <h2 class="sold-out">Sold Out!</h2>
+        <% end %>
+      	<p class="txet"><%= item.name %></p>
+      	<% end %>
+      	<p><%= item.genres.map(&:name).join(', ') %></p>
+        <p>¥<%= item.price %></p>
+        <p><%=link_to"詳しくはこちら",item_path(item),class: "btn btn-success" %></p>
+      </li>
+    </ul>   
     <% end %>
     </div>
   </div>

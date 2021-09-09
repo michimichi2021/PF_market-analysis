@@ -1,28 +1,50 @@
-<header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-        <%= link_to "market&analysis",root_path %>
-        <%= link_to 'genre',searches_tag_lists_path %>
-        <div class="navbar mt-4 nav-left" id="navbarToggleExternalContent">
-          <% if user_signed_in? %>
-            <%= link_to 'My Page',user_path(id: current_user) %>
-            <%= link_to 'Order',purchases_path %>
-            <%= link_to 'Logout',destroy_user_session_path,method: :delete %>
-            <%= link_to "", new_item_path, class:"far fa-plus-square", :style => "color: black;" %>
-          <% elsif admin_signed_in? %>
-            <%= link_to 'Member',admin_users_path %>
-            <%= link_to 'Genre',admin_genres_path %>
-            <%= link_to 'Logout',destroy_admin_session_path,method: :delete %>
-          <% else %>
-            <%= link_to 'Signup',new_user_registration_path %>
-            <%= link_to 'Login',new_user_session_path %>
-          <% end %>
-          <%= form_tag(searches_search_path,method: :get) do %>
-            <%= text_field(@search_content, :search_word)%>
-            <%= submit_tag "検索" %>
-          <% end %>
-        </div>
+<div class="container shadow-sm">
+<header>
+  <div class="row">
+    <div class="col-2">
+      <%= link_to image_tag("パンプキン (1).png", size: "80x80"), root_path, class: "image mt-2" %>
     </div>
-  </nav>
+    <div class="col-4">
+        <%= form_tag(searches_search_path,method: :get) do %>
+        <%= text_field(@search_content, :search_word) %>
+        <input type="submit" value="&#xf002" class="fas header-search btn btn-sm btn-danger mt-3">
+        <% end %>
+    </div>
+    <div class="col-6">
+    <div class="navbar nav-left ml-auto" id="navbarToggleExternalContent">
+          <div class="col-2">
+          <%= link_to 'カテゴリ一覧',searches_tag_lists_path,class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+        <% if user_signed_in? %>
+          <div class="col-2">
+          <%= link_to 'マイページ',user_path(id: current_user),class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+          <div class="col-2">
+          <%= link_to '購入履歴',purchases_path,class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+          <div class="col-2">
+          <%= link_to 'ログアウト',destroy_user_session_path,method: :delete,class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+        <% elsif admin_signed_in? %>
+          <div class="col-2">
+          <%= link_to '会員一覧',admin_users_path,class: "btn btn-sm btn-danger mt-3" %>  
+          </div>
+          <div class="col-2">
+          <%= link_to 'カテゴリ編集',admin_genres_path,class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+          <div class="col-2">
+          <%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+        <% else %>
+          <div class="col-2">
+          <%= link_to '新規登録',new_user_registration_path,class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+          <div class="col-2">
+          <%= link_to 'ログイン',new_user_session_path,class: "btn btn-sm btn-danger mt-3" %>
+          </div>
+        <% end %>
+    </div>
+    </div>
+  </div>
 </header>
-    
+</div>

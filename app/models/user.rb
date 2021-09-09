@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :purchases,dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :items, dependent: :destroy
-  
+  has_many :favorites, dependent: :destroy
+ 
   def self.search(word)
    @users = User.where("last_name LIKE?","%#{word}%")
   end
