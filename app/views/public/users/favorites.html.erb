@@ -1,0 +1,33 @@
+<h2>いいね一覧</h2>
+<table class='table table-hover table-inverse'>
+<thead>
+  <tr>
+    <th>画像</th>
+    <th>商品名</th>
+    <th>金額</th>
+    <th>いいね数</th>
+  </tr>
+</thead>
+<tbody>
+  <% @favorite_items.each do |item|%>
+  <tr>
+    <td>
+    <% if user_signed_in? && item.purchase.blank? %>
+      <%= link_to item_path(item.id) do %>   
+        <% if item.image.attached? %>
+          <%= image_tag item.image.variant(resize:'300x300') %>
+        <% else %>
+          <%= image_tag 'no_image.jpg' %>
+        <% end %>
+      <% end %>
+    <% else %>
+     <h2 class="sold-out">Sold Out!</h2>
+　　<% end %>
+    </td>
+    <td><%= item.name %></td>
+    <td><%= item.price %></td>
+    <td><%= item.favorites.count %></td>
+  </tr>  
+  <% end %>
+</tbody>
+</table>
