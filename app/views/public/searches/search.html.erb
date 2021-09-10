@@ -1,7 +1,6 @@
 <% @items.each do |item| %>
   <h6 class="card-title">
-    <%=link_to item_path(item) do %>
-      <% if user_signed_in? && item.purchase.blank? %>
+      <% if item.purchase.blank? %>
         <span>
         <% if item.image.attached? %>
         <%= image_tag item.image.variant(resize:'300x300') %>
@@ -13,8 +12,10 @@
         <h2 class="sold-out">Sold Out!</h2>
       <% end %>
       <p><%= item.name %></p><br/>
-    <% end %>
     <p><%= item.genres.map(&:name).join(', ') %></p>
     <%= item.price %>
+    <% if user_signed_in? %>
+    <p><%=link_to"詳しくはこちら",item_path(item),class: "btn btn-success" %></p>
+    <% end %>
   </h6>
 <% end %>

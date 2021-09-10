@@ -45,7 +45,7 @@
         <% @items.each do |item| %>
         <tr>
           <td>
-            <% if user_signed_in? && @item.purchase.blank? %>
+            <% if user_signed_in? && item.purchase.blank? %>
               <%= link_to item_path(item) do %>   
                 <% if item.image.attached? %>
                   <%= image_tag item.image.variant(resize:'300x300') %>
