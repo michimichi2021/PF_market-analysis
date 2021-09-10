@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update, :show] do
       member do
         get :favorites
+        get :datas
       end
     end
 
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
       
-    resources :purchases, only:[:create, :index, :show, :new] 
+    resources :purchases, only:[:create, :index, :new] 
     
    
     post 'purchases/confirm' => 'purchases#confirm'

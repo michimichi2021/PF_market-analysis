@@ -16,7 +16,6 @@ class Public::PurchasesController < ApplicationController
           @shipping_postcode=current_user.postal_code
           @shipping_address= current_user.address
           @shipping_name= current_user.last_name+""+current_user.first_name
-    
     else  params[:shipping_address]=="1" 
           @shipping_postcode= @purchase.postal_code
           @shipping_address= @purchase.address
@@ -29,7 +28,7 @@ class Public::PurchasesController < ApplicationController
    @purchase.user_id = current_user.id
    @item=Item.find(@purchase.item_id)
     if @purchase.save
-  
+       @item.update(is_active: false)
     redirect_to purchases_path
     else
     render 'new'  
@@ -37,16 +36,15 @@ class Public::PurchasesController < ApplicationController
   end
   
   def index
-      @purchases = current_user.purchases
+    @purchases = current_user.purchases
   end
   
-  def show
-  end
+ 
   
   private
   
   def purchase_params
-     params.require(:purchase).permit(:user_id, :postal_code, :address, :name, :payment_method, :item_id)
+     params.require(:purchase).permit(:user_id, :postal_code, :address, :name, :payment_method, :item_id, :is_active)
   end
   
 end
