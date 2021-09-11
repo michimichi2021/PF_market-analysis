@@ -32,3 +32,43 @@
         <% end %>
       </tbody>
     </table>
+    
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>売り上げた個数</th>
+        <th>売上合計金額</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @items.count %>個</td>
+        <td>¥<%= @sum %></td>
+      </tr>
+    </tbody>
+  </table>
+    
+         
+    
+  <label class="text-user">日別の合計金額</label>
+  <div class="graph">
+    <div class="graph">
+          <%= column_chart @items_price_day,id: "column-chart", width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
+    </div>
+  </div>
+  
+  <label class="text-user">週別の合計金額</label>
+  <div class="graph">
+    <div class="graph">
+          <%= column_chart @items_price_week,id: "column-chart", width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
+    </div>
+  </div>
+  
+  <label class="text-user">月別の合計金額</label>
+  <div class="graph">
+    <div class="graph">
+          <%= column_chart @items_price_month,id: "column-chart", width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
+    </div>
+  </div>
+  
+  

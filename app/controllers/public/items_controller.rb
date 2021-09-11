@@ -39,6 +39,13 @@ class Public::ItemsController < ApplicationController
     end
   end
   
+  def destroy
+    @item=Item.find(params[:id])
+    @user=@item.user
+    @item.destroy
+    redirect_to user_path(@user)
+  end
+  
  
   
   def item_params
