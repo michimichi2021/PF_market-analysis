@@ -3,13 +3,13 @@
       <% if item.purchase.blank? %>
         <span>
         <% if item.image.attached? %>
-        <%= image_tag item.image.variant(resize:'300x300') %>
+         <%= image_tag item.image,class: "item_icon" %>
         <% else %>
-        <%= image_tag 'no_image.jpg' %>
+         <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
         <% end %>
         </span>
       <% else %>
-        <h2 class="sold-out">Sold Out!</h2>
+        <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
       <% end %>
       <p><%= item.name %></p><br/>
     <p><%= item.genres.map(&:name).join(', ') %></p>

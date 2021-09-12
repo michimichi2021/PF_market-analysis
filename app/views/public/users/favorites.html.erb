@@ -15,13 +15,13 @@
     <% if user_signed_in? && item.purchase.blank? %>
       <%= link_to item_path(item.id) do %>   
         <% if item.image.attached? %>
-          <%= image_tag item.image.variant(resize:'300x300') %>
+          <%= image_tag item.image,class: "item_icon"   %>
         <% else %>
-          <%= image_tag 'no_image.jpg' %>
+         <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
         <% end %>
       <% end %>
     <% else %>
-     <h2 class="sold-out">Sold Out!</h2>
+     <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
 　　<% end %>
     </td>
     <td><%= item.name %></td>
