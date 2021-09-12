@@ -13,13 +13,13 @@
             <% if user_signed_in? && item.purchase.blank? %>
               <%= link_to item_path(item) do %>   
                 <% if item.image.attached? %>
-                  <%= image_tag item.image.variant(resize:'300x300') %>
+                 <%= image_tag @item.image,class: "item_icon" %>
                 <% else %>
-                  <%= image_tag 'no_image.jpg' %>
+                 <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
                 <% end %>
               <% end %>
             <% else %>
-             <h2 class="sold-out">Sold Out!</h2>
+            <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
        　　　　 <% end %>
           </td>
             <td>
@@ -49,26 +49,36 @@
   </table>
     
          
+  <div class="row"> 
+  
+    <div class="col-3">
+      <label class="text-user">日別の売り上げ合計金額</label>
+      <div class="graph">
+        <div class="graph">
+              <%= column_chart @items_price_day,width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-3">
+    <label class="text-user">週別の売り上げ合計金額</label>
+      <div class="graph">
+        <div class="graph">
+              <%= column_chart @items_price_week,width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
+        </div>
+      </div>
+    </div>
     
-  <label class="text-user">日別の合計金額</label>
-  <div class="graph">
+    <div class="col-3">
+    <label class="text-user">月別の売り上げ合計金額</label>
     <div class="graph">
-          <%= column_chart @items_price_day,id: "column-chart", width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
+      <div class="graph">
+            <%= column_chart @items_price_month,width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
+      </div>
     </div>
-  </div>
-  
-  <label class="text-user">週別の合計金額</label>
-  <div class="graph">
-    <div class="graph">
-          <%= column_chart @items_price_week,id: "column-chart", width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
     </div>
-  </div>
-  
-  <label class="text-user">月別の合計金額</label>
-  <div class="graph">
-    <div class="graph">
-          <%= column_chart @items_price_month,id: "column-chart", width: "200px", height: "200px" ,colors: ['#FF4F02'] %>
-    </div>
-  </div>
-  
+    
+   <%= pie_chart  @item_purchase_genre_count %>
+    
+  </div> 
   

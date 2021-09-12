@@ -28,6 +28,10 @@ li {
   list-style: none;
 }
 
+body{
+ font-family:'游ゴシック体';
+ 
+}
 
 
 #search-word{
@@ -36,4 +40,45 @@ li {
 
 .sold-out{
  color:red;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width:260px;
+}
+
+.item_name{
+ text-align:center;
+}
+
+.item_price{
+ text-align:center;
+}
+
+.profile_icon{
+ border-radius:300px;
+ border:1px solid #d3d3d3;
+ padding:10px; 
+ background-color:#fff;
+}
+
+.wrap{
+  width: 800px;                /* 横幅を200pxに指定 */
+  height: 400px;               /* 横幅を200pxに指定 */
+  border: 1px solid #000;      /* わかりやすくボーダーを引く */
+  overflow-y: scroll;          /* 縦方向にスクロール可能にする */
+  padding-left:10px;
+ 
+}
+
+.item_icon {
+ margin-top:10px;
+ width:260px;
+ height:260px;
+ object-fit:cover;
+ border: 1px solid #000;  
 }

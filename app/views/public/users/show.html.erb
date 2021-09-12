@@ -1,11 +1,11 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3'>
-      <h2>User info</h2>
-      <table class='table'>
+    <div class='col-md-3 text-center'>
+      <h2>Profile</h2>
+      <table class='table text-center'>
         <tr>
           <% if @user.image.attached? %>
-            <%= image_tag @user.image.variant(resize:'300x300') %>
+            <%= image_tag @user.image.variant(resize:'250x250'),class: "profile_icon" %>
           <% else %>
             <%= image_tag 'no_image.jpeg' %>
           <% end %>
@@ -23,50 +23,39 @@
 　　　
       <div class='row'>
       　<% if @user.id == current_user.id %> 
-        <%= link_to '', edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-        <%= link_to "", new_item_path, class:"far fa-plus-square", :style => "color: black;" %>
+        <%= link_to 'プロフィールを編集する', edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+        <%= link_to image_tag("SELL.png", size: "200x200"),new_item_path, class: "text-center image mt-2" %>
         <% end %>
       </div>
       
     </div>
    
     
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-7 offset-md-1 text-center'>
     <h2>出品した商品一覧</h2>
-    <table class='table table-hover table-inverse'>
-      <thead>
-        <tr>
-          <th>画像</th>
-          <th>商品名</th>
-          <th>金額</th>
-        </tr>
-      </thead>
-      <tbody>
+      <div class="wrap">
         <% @items.each do |item| %>
-        <tr>
-          <td>
+        <%= link_to item_path(item) do %>
+          <div class="item">
             <% if user_signed_in? && item.purchase.blank? %>
               <%= link_to item_path(item) do %>   
                 <% if item.image.attached? %>
-                  <%= image_tag item.image.variant(resize:'300x300') %>
+                  <%= image_tag item.image,class: "item_icon"   %>
                 <% else %>
-                  <%= image_tag 'no_image.jpg' %>
+                  <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
                 <% end %>
               <% end %>
             <% else %>
-             <h2 class="sold-out">Sold Out!</h2>
-       　　　　 <% end %>
-          </td>
-            <td>
-              <%= link_to item_path(item) do %>
-              <%= item.name %>
-              <% end %>
-            </td>
-            <td><%= item.price %></td>
-          </tr> 
+            <%= link_to item_path(item) do %> 
+            <h2><%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %></h2>
+            <% end %>
+       　　　 <% end %>
+            <p class="item_price">¥<%= item.price %></p>
+          </div>
+          <% end %>
         <% end %>
-      </tbody>
-    </table>
+        <%= paginate @items %>
+      </div>
     </div>
   </div>
 </div>

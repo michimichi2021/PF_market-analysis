@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
      @user=User.find(params[:id])
-     @items=@user.items
+     @items = @user.items.page(params[:page]).reverse_order
   end
 
   def edit
@@ -37,11 +37,13 @@ class Public::UsersController < ApplicationController
   end
 
   def datas
-    @items=Item.where(user_id: current_user, is_active: false)
+    @items=current_user.items.purchased
     @sum=@items.sum(:price)
+    
     @items_price_day = @items.group_by_day(:created_at).sum(:price)
     @items_price_week = @items.group_by_week(:created_at, week_start: :monday).sum(:price)
     @items_price_month = @items.group_by_month(:created_at).sum(:price)
+    @item_purchase_genre_count= current_user.items.joins(:genres).where(is_active: false).group('genres.name').size
   end
 
   private

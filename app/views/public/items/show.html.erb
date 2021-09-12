@@ -3,29 +3,17 @@
     <div>
       <% if user_signed_in? && @item.purchase.blank? %>
         <% if @item.image.attached? %>
-          <%= image_tag @item.image.variant(resize:'300x300') %>
+        <%= image_tag @item.image,class: "item_icon" %>
         <% else %>
-         <%= image_tag 'no_image.jpg' %>
+        <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
         <% end %>
       <% else %>
-        <h2 class="sold-out">Sold Out!</h2>
+        <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
       <% end %>
     </div>
     
-    <div>
-        <% if @item.favorited_by?(current_user) %>
-        <p>
-          <%= link_to item_favorites_path(@item), method: :delete do %>
-            ♥<%= @item.favorites.count %> いいね
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to item_favorites_path(@item), method: :post do %>
-            ♡<%= @item.favorites.count %> いいね
-          <% end %>
-        </p>
-        <% end %>
+    <div id="favorites_buttons_<%= @item.id %>">
+      <%= render 'public/favorites/favorite', item: @item %>
     </div>
 
     <div>
@@ -85,27 +73,18 @@
     </div>
 
     <div>
-    <p>コメント件数：<%= @item.comments.count %></p>
-    <% @item.comments.each do |comment| %>
-      <p><% if comment.user.image.attached? %>
-            <%= image_tag comment.user.image.variant(resize:'200x200') %>
-          <% else %>
-            <%= image_tag 'no_image.jpeg' %>
-          <% end %></p>
-      <%= comment.user.name %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-      <% if comment.user == current_user %>
-      <div>
-        <%= link_to "削除", item_comment_path(comment.item, comment), method: :delete %>
-      </div>
-      <% end %>
-    <% end %>
+    <div id="count_<%= @item.id %>" >
+      <%= render 'public/comments/comment.count', item: @item %>
     </div>
+    <div id="comment_create">
+      <%= render partial: 'public/comments/comment.index', locals: { comments: @comments } %>
+    </div>
+    </div>
+    
     <div>
-    <%= form_with(model:[@item, @comment], local: true) do |f| %>
-      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
+    <div id="comment_form">
+      <%= render partial: 'public/comments/comment.form', locals: { comment: @comment, item: @item } %>
+      </div>
     </div>
 
 
