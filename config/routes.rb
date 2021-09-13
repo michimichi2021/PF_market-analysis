@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :admins,controllers: {
   sessions:      'admins/sessions'
  }
@@ -22,6 +21,10 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+    
+    get   '/inquiries'         => 'inquiries#index'     # 入力画面
+    post  'inquiries/confirm' => 'inquiries#confirm'   # 確認画面
+    post  'inquiries/thanks'  => 'inquiries#thanks'    # 送信完了画面
 
     root to:'homes#top'
 
