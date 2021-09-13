@@ -45,6 +45,16 @@ class Public::UsersController < ApplicationController
     @items_price_month = @items.group_by_month(:created_at).sum(:price)
     @item_purchase_genre_count= current_user.items.joins(:genres).where(is_active: false).group('genres.name').size
   end
+  
+  def follows
+    @user=User.find(params[:id])
+    @users = @user.following_user
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.follower_user
+  end
 
   private
 
