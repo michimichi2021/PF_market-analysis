@@ -35,23 +35,23 @@
     <h2>出品した商品一覧</h2>
       <div class="wrap">
         <% @items.each do |item| %>
-        <%= link_to item_path(item) do %>
-          <div class="item">
-            <% if user_signed_in? && item.purchase.blank? %>
-              <%= link_to item_path(item) do %>   
-                <% if item.image.attached? %>
-                  <%= image_tag item.image,class: "item_icon"   %>
-                <% else %>
-                  <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+          <%= link_to item_path(item) do %>
+            <div class="item">
+              <% if user_signed_in? && item.purchase.blank? %>
+                  <%= link_to item_path(item) do %>   
+                    <% if item.image.attached? %>
+                      <%= image_tag item.image,class: "item_icon" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+                    <% end %>
+                  <% end %>
+              <% else %>
+                <%= link_to item_path(item) do %> 
+                <h2><%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %></h2>
                 <% end %>
-              <% end %>
-            <% else %>
-            <%= link_to item_path(item) do %> 
-            <h2><%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %></h2>
-            <% end %>
-       　　　 <% end %>
-            <p class="item_price">¥<%= item.price %></p>
-          </div>
+         　　 　<% end %>
+         　　   <p class="item_price">¥<%= item.price %></p>　　
+            </div>
           <% end %>
         <% end %>
         <%= paginate @items %>
