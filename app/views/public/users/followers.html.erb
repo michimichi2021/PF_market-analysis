@@ -1,0 +1,25 @@
+<h2>Follower Users</h2>
+<% if @users.exists? %>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td>フォロー数: <%= user.following_user.count %></td>
+        <td>フォロワー数: <%= user.follower_user.count %> </td>
+        <td><%= link_to "出品者詳細ページへ",user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
