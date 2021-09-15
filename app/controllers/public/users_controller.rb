@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
      @user=User.find(params[:id])
-     @items = @user.items.page(params[:page]).reverse_order
+     @items = @user.items.page(params[:page]).per(9).reverse_order
   end
 
   def edit

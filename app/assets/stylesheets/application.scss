@@ -18,38 +18,19 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
+ // 全体
+ 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-li {
-  list-style: none;
-}
-
 body{
  font-family:'游ゴシック体';
- 
 }
 
-
-#search-word{
- width:300px;
-}
-
-.sold-out{
- color:red;
-}
-
-.wrap {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.item {
-  width:260px;
-}
+// 商品に関すること
 
 .item_name{
  text-align:center;
@@ -59,22 +40,6 @@ body{
  text-align:center;
 }
 
-.profile_icon{
- border-radius:300px;
- border:1px solid #d3d3d3;
- padding:10px; 
- background-color:#fff;
-}
-
-.wrap{
-  width: 800px;                /* 横幅を200pxに指定 */
-  height: 400px;               /* 横幅を200pxに指定 */
-  border: 1px solid #000;      /* わかりやすくボーダーを引く */
-  overflow-y: scroll;          /* 縦方向にスクロール可能にする */
-  padding-left:10px;
- 
-}
-
 .item_icon {
  margin-top:10px;
  width:260px;
@@ -82,3 +47,82 @@ body{
  object-fit:cover;
  border: 1px solid #000;  
 }
+
+
+// トップページの新着商品
+.new_item_slide{
+ margin-top:50px;
+}
+
+.slick-dots {
+  li {
+    font-size: 20px !important;
+    button:before {
+      content: "★" !important;
+      font-size: 14px !important;
+      color: rgb(60, 60, 60) !important;
+    }
+  }
+}
+
+
+.new_item{
+ display:flex;
+ margin-left:40px;
+}
+
+.new_item_photo{
+  height: 250px;
+  width : 250px;
+  background-size: contain;
+  border: 1px solid #000;
+  object-fit: cover;
+}
+
+// トップページの商品一覧
+.item_index{
+ margin-top:50px;
+}
+
+.item_index_wrap{
+ display:flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+
+// 会員の詳細ページ
+.profile_icon{
+ border-radius:300px;
+ border:1px solid #d3d3d3;
+ padding:10px; 
+ background-color:#fff;
+}
+
+.user_item_wrap{
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;               
+  height: 400px;               
+  padding-left:10px;
+}
+
+.user_item {
+  width:260px;
+}
+
+
+// 
+
+
+
+
+
+#search-word{
+ width:300px;
+}
+
+
+
+
+

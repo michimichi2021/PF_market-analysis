@@ -1,15 +1,17 @@
 <% @items.each do |item| %>
   <h6 class="card-title">
-      <% if item.purchase.blank? %>
-        <span>
-        <% if item.image.attached? %>
-         <%= image_tag item.image,class: "item_icon" %>
+      <%= link_to item_path(item) do %> 
+        <% if item.purchase.blank? %>
+          <span>
+          <% if item.image.attached? %>
+           <%= image_tag item.image,class: "item_icon" %>
+          <% else %>
+           <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+          <% end %>
+          </span>
         <% else %>
-         <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+          <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
         <% end %>
-        </span>
-      <% else %>
-        <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
       <% end %>
       <p><%= item.name %></p><br/>
     <p><%= item.genres.map(&:name).join(', ') %></p>

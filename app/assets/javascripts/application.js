@@ -21,3 +21,14 @@
 
 //= require chartkick
 //= require Chart.bundle
+
+
+$(function() {
+   $('.new_item').slick({
+      dots: true, 
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+    });
+});
