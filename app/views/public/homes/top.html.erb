@@ -1,29 +1,53 @@
 <main>
   <div class="container">
     <div class="row">
-    <% @items.each do |item| %>
-    <ul>
-      <li>
-        <% if item.purchase.blank? %>
-    	    <span>
-    	    <% if item.image.attached? %>
-            <%= image_tag item.image,class: "item_icon"   %>
-          <% else %>
-            <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+      <div class="new_item_slide">  
+      <h2 class='text-center bg-danger'>新着商品</h2>
+        <div class="new_item">
+          <% @items_new.each do |item| %>
+             <% if item.purchase.blank? %>
+              <%= link_to item_path(item) do %> 
+          	    <% if item.image.attached? %>
+                  <%= image_tag item.image,class: "item_icon"   %>
+                <% else %>
+                  <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+                <% end %>
+                 <p>¥<%= item.price %></p>
+              <% end %>
+            <% else %>
+              <%= link_to item_path(item) do %> 
+              <%= image_tag 'SELL (1).png' ,class: "item_icon" %>
+              <p>¥<%= item.price %></p>
+              <% end %>
+            <% end %>
+          <% item.created_at.since(7.day) %>    
           <% end %>
-          </span>
-        <% else %>
-          <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
+        </div>
+      </div>
+      
+      <div class='item_index'>
+      <h2 class='text-center bg-danger'>商品一覧</h2>  
+      <div class='item_index_wrap'>
+        <% @items.each do |item| %>
+          <%= link_to item_path(item) do %> 
+          <div>
+            <% if item.purchase.blank? %>
+          	    <% if item.image.attached? %>
+                  <%= image_tag item.image,class: "item_icon"   %>
+                <% else %>
+                  <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+                <% end %>
+            <% else %>
+              <%= image_tag 'SELL (1).png' ,class: "item_icon" %>
+            <% end %>
+          	<p class="text"><%= item.name %></p>
+          	<p><%= item.genres.map(&:name).join(', ') %></p>
+            <p>¥<%= item.price %></p>
+          </div>
+          <% end %>
         <% end %>
-      	<p class="txet"><%= item.name %></p>
-      	<p><%= item.genres.map(&:name).join(', ') %></p>
-        <p>¥<%= item.price %></p>
-        <% if user_signed_in? %>
-        <p><%=link_to"詳しくはこちら",item_path(item),class: "btn btn-success" %></p>
-        <% end %>
-      </li>
-    </ul>   
-    <% end %>
+      </div>
+      </div>
     </div>
   </div>
 </main>

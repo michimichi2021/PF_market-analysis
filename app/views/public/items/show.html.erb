@@ -12,9 +12,11 @@
       <% end %>
     </div>
     
+    <% if user_signed_in? %>
     <div id="favorites_buttons_<%= @item.id %>">
       <%= render 'public/favorites/favorite', item: @item %>
     </div>
+    <% end %>
 
     <div>
       <p>商品名&nbsp;&nbsp;<%= @item.name %></p>
@@ -63,7 +65,6 @@
          <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
          <%=link_to '商品を削除する',item_path(@item),method: :delete,data: { confirm: '本当に消しますか？' },class: 'btn btn-danger' %>
         <% else %>
-
           <%= form_with model: @purchase,url: new_purchase_path,method: :get,local:true do |f| %>
              <%= f.hidden_field :item_id, value: @item.id %>
              <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
@@ -73,6 +74,7 @@
     </div>
 
     <div>
+    <% if user_signed_in? %>
     <div id="count_<%= @item.id %>" >
       <%= render 'public/comments/comment.count', item: @item %>
     </div>
@@ -84,7 +86,8 @@
     <div>
     <div id="comment_form">
       <%= render partial: 'public/comments/comment.form', locals: { comment: @comment, item: @item } %>
-      </div>
+    </div>
+    <% end %>
     </div>
 
 

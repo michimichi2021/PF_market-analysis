@@ -48,10 +48,10 @@
     
     <div class='col-md-7 offset-md-1 text-center'>
     <h2>出品した商品一覧</h2>
-      <div class="wrap">
+      <div class="user_item_wrap">
         <% @items.each do |item| %>
           <%= link_to item_path(item) do %>
-            <div class="item">
+            <div class="user_item">
               <% if user_signed_in? && item.purchase.blank? %>
                   <%= link_to item_path(item) do %>   
                     <% if item.image.attached? %>
@@ -60,12 +60,13 @@
                       <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
                     <% end %>
                   <% end %>
+                  <p class="item_price">¥<%= item.price %></p>
               <% else %>
                 <%= link_to item_path(item) do %> 
-                <h2><%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %></h2>
+                <h2><%= image_tag 'SELL (1).png' ,class: "item_icon" %></h2>
                 <% end %>
+                <p class="item_price">¥<%= item.price %></p>
          　　 　<% end %>
-         　　   <p class="item_price">¥<%= item.price %></p>　　
             </div>
           <% end %>
         <% end %>
