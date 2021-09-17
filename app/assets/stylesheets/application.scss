@@ -114,6 +114,7 @@ padding: 5px 10px;
 }
 
 // トップページの商品一覧
+
 .item_index{
  margin-top:50px;
 }
@@ -184,6 +185,7 @@ padding: 5px 10px;
 }
 
 // いいね一覧
+
 .favorite_index{
  margin-top:50px;
 }
@@ -195,11 +197,13 @@ padding: 5px 10px;
 }
 
 // 購入履歴一覧
+
 .purchase_index{
  padding-top:50px;
 }
 
 // 商品の詳細ページ
+
 .like-btn {
  width: 25px;
  height: 30px;
@@ -266,8 +270,6 @@ padding: 5px 10px;
   border-radius: 50%;
 }
 
-
-
 .comment_comment{
   display: inline-block;
   position: relative; 
@@ -306,6 +308,7 @@ padding: 5px 10px;
 }
 
 // 商品情報編集画面
+
 .item-edit{
  margin-top:30px;
 }
@@ -315,12 +318,31 @@ padding: 5px 10px;
 }
 
 // 会員情報編集画面
+
 .user-edit{
  margin-top:30px;
 }
 
-// 
+// 退会確認画面
 
+.unsubscribe_title{
+ margin-top:100px;
+}
+
+.unsubscribe_btn{
+ margin-top:20px;
+}
+
+// 会員情報新規登録
+.signup{
+ margin-top:50px;
+}
+
+.customer_signup_title{
+ margin-top: 50px;
+}
+
+// 
 
 #search-word{
  width:300px;

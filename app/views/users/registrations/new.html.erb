@@ -1,68 +1,69 @@
-<h2>Sign up</h2>
-
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+<div class='container'>
+  <div class='row'> 
+  
+  <div class='mt-5'>
+    <span class='fs-3 offset-md-1'>新規会員登録</span>
+  </div>
+  
+  <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :姓 %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :名  %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :姓フリガナ　%><br />
-    <%= f.text_field :last_name_kana, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :名フリガナ %><br />
-    <%= f.text_field :first_name_kana, autofocus: true %>
+  
+  <div class='form-inline'>
+  <%= f.label :名前, class:'offset-1 col-1 mt-3' %>
+  （姓）<%= f.text_field :last_name, class:'col-3', autofocus: true, placeholder:'山田' %>
+  （名）<%= f.text_field :first_name, class:'col-3', autofocus: true, placeholder:'太郎' %>
   </div>
   
-  <div class="field">
-    <%= f.label :郵便番号 %><br />
-    <%= f.text_field :postal_code, autofocus: true %>
+  <div class='form-inline'>
+   <%= f.label :フリガナ, class:'offset-1 col-1 mt-3' %>
+  （セイ）<%= f.text_field :last_name_kana, class:'col-3', autofocus: true, placeholder:'ヤマダ' %>
+  （メイ）<%= f.text_field :first_name_kana, class:'col-3', autofocus: true, placeholder:'タロウ'%>
   </div>
   
-  <div class="field">
-    <%= f.label :住所 %><br />
-    <%= f.text_field :address, autofocus: true %>
+  <div class='row mt-3'>
+    <%= f.label :メールアドレス, class:'offset-1 col-2' %>
+    <%= f.email_field :email, class:'col-3', autofocus: true, placeholder:'sample.example.com', autocomplete: 'email' %>
   </div>
   
-  <div class="field">
-    <%= f.label :電話番号 %><br />
-    <%= f.text_field :telephone_number, autofocus: true %>
+  <div class='row mt-3'>
+    <%= f.label :郵便番号, class:'offset-1 col-2' %>
+    <%= f.text_field :postal_code, class:'col-2', autofocus: true, placeholder:'0000000' %>
   </div>
   
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class='row mt-3'>
+    <%= f.label :住所, class:'offset-1 col-2' %>
+    <%= f.text_field :address, class:'col-6', autofocus: true, placeholder:'東京都渋谷区代々木神園町0-0' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class='row mt-3'>
+    <%= f.label :電話番号, class:'offset-1 col-2' %>
+    <%= f.telephone_field :telephone_number, class:'col-2', autofocus: true, placeholder:'00000000000' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class='row mt-3'>
+  <%= f.label :パスワード（6文字以上）,class: 'offset-1 col-2' %>
+  <%= f.password_field :password, autocomplete: 'new-password',class:'col-2' %>
   </div>
   
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class='row mt-3'>
+    <%= f.label :パスワード（確認用）, class:'offset-1 col-2' %>
+    <%= f.password_field :password_confirmation, class:'col-2', autocomplete: 'new-password' %>
+  </div>
+  
+  <div class='actions'>
+  <%= f.submit '新規登録',class: 'tn btn-primary offset-3 mt-4' %>
+  </div>
+  
+  <% end %>
+  
+  <div class='mt-5'>
+  <span class='fs-3 offset-md-1'>既に登録済の方</span>
+  </div>
+  
+  <div class='offset-1 mt-3 mb-4'>
+  <%= link_to 'こちら', new_user_session_path, class: 'signin-link' %>　からログインしてください.
   </div>
 
-  
-<% end %>
+  </div>
+</div>
 
-
-<%= render "users/shared/links" %>
