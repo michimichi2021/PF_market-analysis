@@ -45,18 +45,11 @@ padding: 5px 10px;
  align-items:center;
 }
 
-
-
-.file-select{
-    padding: 10px 40px;
-    color: #ffffff;
-    background-color: #384878;
-    cursor: pointer;
+.field{
+ margin:10px;
 }
 
-.file-select_none{
- margin: 10px 0 0 0;    
-}
+
 
 // 商品に関すること
 
@@ -75,23 +68,6 @@ padding: 5px 10px;
  object-fit:cover;
  border: 1px solid #000;  
 }
-
-// いいねボタン
-.like-btn {
- width: 25px;
- height: 30px;
- font-size: 25px;
- color: #808080; 
- margin-left: 20px;
- }
-
-.unlike-btn {
- width: 25px;
- height: 30px;
- font-size: 25px;
- color: #e54747;
- margin-left: 20px;
- }
 
 // トップページの新着商品
 .new_item_slide{
@@ -203,12 +179,20 @@ padding: 5px 10px;
   padding: 5px 10px;/*文字周りの余白*/
 }
 
+.follow_btn{
+ margin-right:40px;
+}
 
 // いいね一覧
 .favorite_index{
  margin-top:50px;
 }
 
+.favorite_photo{
+ width:100px;
+ height:100px;
+ border: 1px solid #000;  
+}
 
 // 購入履歴一覧
 .purchase_index{
@@ -216,6 +200,22 @@ padding: 5px 10px;
 }
 
 // 商品の詳細ページ
+.like-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 20px;
+ color: #808080; 
+ margin-left: 20px;
+ }
+
+.unlike-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 20px;
+ color: #e54747;
+ margin-left: 20px;
+ }
+
 .item_show{
  margin-top:50px;
 }
@@ -303,6 +303,20 @@ padding: 5px 10px;
 .comment_form_text{
  width:300px;
  height:150px;
+}
+
+// 商品情報編集画面
+.item-edit{
+ margin-top:30px;
+}
+
+.item_genre_edit{
+ width:300px;
+}
+
+// 会員情報編集画面
+.user-edit{
+ margin-top:30px;
 }
 
 // 

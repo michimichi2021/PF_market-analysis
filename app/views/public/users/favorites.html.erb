@@ -1,35 +1,41 @@
-<div class='favorite_index'>
-<h2 class='text-center'>いいね一覧</h2>
-  <table class='table table-hover table-inverse'>
-    <thead>
-      <tr>
-        <th>画像</th>
-        <th>商品名</th>
-        <th>金額</th>
-        <th>いいね数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @favorite_items.each do |item|%>
-      <tr>
-        <td>
-        <% if user_signed_in? && item.purchase.blank? %>
-          <%= link_to item_path(item.id) do %>   
-            <% if item.image.attached? %>
-              <%= image_tag item.image,class: "item_icon"   %>
-            <% else %>
-              <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+<div class='container favorite_index'>
+  <div class='row'>
+  <h2 class='text-center'>いいね一覧</h2>
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>商品画像</th>
+          <th>商品名</th>
+          <th>金額</th>
+          <th>いいね数</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favorite_items.each do |item|%>
+        <tr>
+          <td>
+          <% if user_signed_in? && item.purchase.blank? %>
+            <%= link_to item_path(item.id) do %>   
+              <% if item.image.attached? %>
+                <%= image_tag item.image,class: 'favorite_photo' %>
+              <% else %>
+                <%= image_tag 'no_image.jpeg',class: 'favorite_photo' %>
+              <% end %>
             <% end %>
-          <% end %>
-        <% else %>
-         <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
-    　　<% end %>
-        </td>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= item.favorites.count %></td>
-      </tr>  
-      <% end %>
-    </tbody>
-  </table>
+          <% else %>
+            <%= link_to item_path(item.id) do %> 
+              <%= image_tag 'SELL (1).png' ,class: 'favorite_photo' %>
+            <% end %>
+      　　<% end %>
+          </td>
+          <td><%= item.name %></td>
+          <td><%= item.price %></td>
+          <td><i class="fas fa-heart unlike-btn"></i><%= item.favorites.count %></td>
+          <td class='text-center'><%= link_to '商品詳細ページへ',item_path(item),class:'btn btn-success' %></td>
+        </tr>  
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
