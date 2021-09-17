@@ -1,11 +1,10 @@
 <main> 
-   <h2>商品情報画面</h2>
+   <h2>商品情報編集画面</h2>
     <%= form_with model:@item,method: :patch,local: true do |f| %>
     <div class="field">
       <%= f.label :商品画像%><br />
       <p>JPEGまたはPNG形式を選択してアップロードしてください</p></br>
       <%= f.file_field :image %>
-
     </div>
   
     <div class="field">

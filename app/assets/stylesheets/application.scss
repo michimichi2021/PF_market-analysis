@@ -14,7 +14,7 @@
  *= require_self
  */
  
- @import "bootstrap";
+ @import 'bootstrap';
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
@@ -28,6 +28,34 @@
 
 body{
  font-family:'游ゴシック体';
+}
+
+.table, td, th {
+border: 1px #C0C0C0 solid;
+}
+
+
+td, th {
+padding: 5px 10px;
+}
+
+.table{
+ border-collapse:collapse;
+ border-spacing:0;
+ align-items:center;
+}
+
+
+
+.file-select{
+    padding: 10px 40px;
+    color: #ffffff;
+    background-color: #384878;
+    cursor: pointer;
+}
+
+.file-select_none{
+ margin: 10px 0 0 0;    
 }
 
 // 商品に関すること
@@ -48,6 +76,22 @@ body{
  border: 1px solid #000;  
 }
 
+// いいねボタン
+.like-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #808080; 
+ margin-left: 20px;
+ }
+
+.unlike-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #e54747;
+ margin-left: 20px;
+ }
 
 // トップページの新着商品
 .new_item_slide{
@@ -65,10 +109,8 @@ body{
   }
 }
 
-
 .new_item{
  display:flex;
- margin-left:40px;
 }
 
 .new_item_photo{
@@ -77,6 +119,22 @@ body{
   background-size: contain;
   border: 1px solid #000;
   object-fit: cover;
+}
+
+.new_item_icon{
+  position: relative;
+}
+
+.new_item_price{
+  position: absolute;
+  bottom: 0;/*画像の左上に配置*/
+  left: 0;
+  margin: 0; /*余計な隙間を除く*/
+  color: white;/*文字を白に*/
+  background: skyblue;/*背景色*/
+  font-size: 15px;
+  line-height: 1;/*行高は1に*/
+  padding: 5px 10px;/*文字周りの余白*/
 }
 
 // トップページの商品一覧
@@ -90,8 +148,29 @@ body{
  justify-content: center;
 }
 
+.index_item_icon{
+  position: relative;
+  padding-top:10px;
+  padding-right:10px;
+}
+
+.index_item_price{
+  position: absolute;
+  bottom: 0;/*画像の左上に配置*/
+  left: 0;
+  margin: 0; /*余計な隙間を除く*/
+  color: white;/*文字を白に*/
+  background: skyblue;/*背景色*/
+  font-size: 15px;
+  line-height: 1;/*行高は1に*/
+  padding: 5px 10px;/*文字周りの余白*/
+}
 
 // 会員の詳細ページ
+.user_show{
+ margin-top:50px; 
+}
+
 .profile_icon{
  border-radius:300px;
  border:1px solid #d3d3d3;
@@ -108,14 +187,125 @@ body{
 }
 
 .user_item {
-  width:260px;
+ position: relative;
+ width:260px;
+}
+
+.user_item_price{
+  position: absolute;
+  bottom: 25px;/*画像の左上に配置*/
+  left: 0;
+  margin: 0; /*余計な隙間を除く*/
+  color: white;/*文字を白に*/
+  background: skyblue;/*背景色*/
+  font-size: 15px;
+  line-height: 1;/*行高は1に*/
+  padding: 5px 10px;/*文字周りの余白*/
 }
 
 
+// いいね一覧
+.favorite_index{
+ margin-top:50px;
+}
+
+
+// 購入履歴一覧
+.purchase_index{
+ padding-top:50px;
+}
+
+// 商品の詳細ページ
+.item_show{
+ margin-top:50px;
+}
+
+.item_explain{
+ margin-top:8px;
+}
+
+.item_button{
+ margin-top:10px;
+}
+
+.comment_title{
+ margin-top:50px;
+}
+
+.comment_area{
+ text-align: center;
+}
+
+.comment_icon{
+ display:flex;
+}
+
+.comment_photo{
+ width:80px;
+ height:80px;
+ object-fit:cover;
+ border-radius:50px;
+}
+
+.comment_icon {
+  width: 100%;
+  margin: 1.5em 0;
+  overflow: hidden;
+}
+
+.comment_icon .comment_img {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
+}
+
+.comment_icon .comment_img comment_photo{
+  width: 100%;
+  height: auto;
+  border: solid 3px #d7ebfe;
+  border-radius: 50%;
+}
+
+
+
+.comment_comment{
+  display: inline-block;
+  position: relative; 
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+}
+
+.comment_comment:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #d7ebfe;
+}
+
+.comment_comment p {
+  margin: 0;
+  padding: 0;
+}
+
+.comment_line{
+ border-top:1px solid black;
+}
+
+#comment_form{
+ margin-top:20px;
+}
+
+.comment_form_text{
+ width:300px;
+ height:150px;
+}
+
 // 
-
-
-
 
 
 #search-word{

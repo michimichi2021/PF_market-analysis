@@ -1,4 +1,4 @@
 <%= form_with(model:[item, comment],url:item_comments_path(item),method: :post,remote: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: 'comment_form_text' %>
   <%= f.submit "送信する" %>
 <% end %>

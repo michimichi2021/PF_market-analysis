@@ -2,35 +2,34 @@
   <div class="container">
     <div class="row">
       <div class="new_item_slide">  
-      <h2 class='text-center bg-danger'>新着商品</h2>
+      <h2 class='text-center'>新着商品</h2>
         <div class="new_item">
           <% @items_new.each do |item| %>
-             <% if item.purchase.blank? %>
-              <%= link_to item_path(item) do %> 
-          	    <% if item.image.attached? %>
-                  <%= image_tag item.image,class: "item_icon"   %>
+             <div class='new_item_icon'>
+              <%= link_to item_path(item) do %>   
+                <% if item.purchase.blank? %>
+            	    <% if item.image.attached? %>
+                    <%= image_tag item.image,class: "item_icon"   %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+                  <% end %>
                 <% else %>
-                  <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+                <%= image_tag 'SELL (1).png' ,class: "item_icon" %>
                 <% end %>
-                 <p>¥<%= item.price %></p>
               <% end %>
-            <% else %>
-              <%= link_to item_path(item) do %> 
-              <%= image_tag 'SELL (1).png' ,class: "item_icon" %>
-              <p>¥<%= item.price %></p>
-              <% end %>
-            <% end %>
+              <p class='new_item_price'>¥<%= item.price %></p>
+             </div>
           <% item.created_at.since(7.day) %>    
           <% end %>
         </div>
       </div>
       
       <div class='item_index'>
-      <h2 class='text-center bg-danger'>商品一覧</h2>  
+      <h2 class='text-center'>商品一覧</h2>  
       <div class='item_index_wrap'>
         <% @items.each do |item| %>
           <%= link_to item_path(item) do %> 
-          <div>
+          <div class='index_item_icon'>
             <% if item.purchase.blank? %>
           	    <% if item.image.attached? %>
                   <%= image_tag item.image,class: "item_icon"   %>
@@ -40,9 +39,7 @@
             <% else %>
               <%= image_tag 'SELL (1).png' ,class: "item_icon" %>
             <% end %>
-          	<p class="text"><%= item.name %></p>
-          	<p><%= item.genres.map(&:name).join(', ') %></p>
-            <p>¥<%= item.price %></p>
+            <p class='index_item_price'>¥<%= item.price %></p>
           </div>
           <% end %>
         <% end %>
