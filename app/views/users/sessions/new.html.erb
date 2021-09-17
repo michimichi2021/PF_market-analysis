@@ -1,27 +1,37 @@
-<h2>Log in</h2>
-
-
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class='container'>
+  <div class='row'>
+  <div class='mt-5'>
+    <span class='fs-3 offset-md-1'>ログイン</span>
+  </div>  
+  
+  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <div class='row mt-3'>
+      <%= f.label :メールアドレス, class:'offset-1 col-2' %>
+      <%= f.email_field :email, class:'col-3', autofocus: true, placeholder:'sample.example.com', autocomplete: 'email' %>
+    </div>
+    
+    <div class='row mt-3'>
+    <%= f.label :パスワード（6文字以上）,class: 'offset-1 col-2' %>
+    <%= f.password_field :password, autocomplete: 'new-password',class:'col-2' %>
+    </div>
+    
+    <div class='row mt-3'>
+      <%= f.label :パスワード（確認用）, class:'offset-1 col-2' %>
+      <%= f.password_field :password_confirmation, class:'col-2', autocomplete: 'new-password' %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit 'ログインする',class: 'tn btn-primary offset-3 mt-4' %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  
+  <div class='mt-5'>
+  <span class='fs-3 offset-md-1'>会員登録がお済みでない方</span>
   </div>
-<% end %>
+  
+  <div class='offset-1 mt-3 mb-4'>
+  <%= link_to 'こちら', new_user_registration_path, class: 'signin-link' %>　から会員登録してください.
+  </div>
 
-<%= render "users/shared/links" %>
+  </div>
+</div>
