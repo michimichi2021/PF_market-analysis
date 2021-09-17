@@ -5,15 +5,15 @@
     <div class='col-3'>
       <% if user_signed_in? && @item.purchase.blank? %>
         <% if @item.image.attached? %>
-          <%= image_tag @item.image,class: "item_icon" %>
+          <%= image_tag @item.image,class: 'item_icon' %>
         <% else %>
-          <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+          <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
         <% end %>
       <% else %>
-        <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
+        <%= image_tag 'SELL (1).png' ,class: 'item_icon soldout' %>
       <% end %>
       <% if user_signed_in? %>
-        <div id="favorites_buttons_<%= @item.id %>">
+        <div id='favorites_buttons_<%= @item.id %>'>
           <%= render 'public/favorites/favorite', item: @item %>
         </div>
       <% end %>
@@ -61,9 +61,9 @@
         </tbody>
       </table>
   
-      <div class="field">
+      <div class='field'>
         <% if current_user != @item.user%>
-         <p><%= link_to "出品者詳細ページ",user_path(@user) %></p>
+         <p><%= link_to '出品者詳細ページ',user_path(@user) %></p>
         <% end %>
       </div>
   
@@ -85,17 +85,17 @@
     <div class='comment_area'>
       <% if user_signed_in? %>
       <h2 class='comment_title'>コメント一覧</h2>
-      <div id="count_<%= @item.id %>" >
+      <div id='count_<%= @item.id %>' >
         <%= render 'public/comments/comment.count', item: @item %>
       </div>
       
       <div class='comment_line'>
-        <div id="comment_create">
+        <div id='comment_create'>
           <%= render partial: 'public/comments/comment.index', locals: { comments: @comments } %>
         </div>
       </div>
       
-      <div id="comment_form">
+      <div id='comment_form'>
         <%= render partial: 'public/comments/comment.form', locals: { comment: @comment, item: @item } %>
       </div>
     

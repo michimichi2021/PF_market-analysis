@@ -4,56 +4,55 @@
       <h2>Profile</h2>
       <div class='text-center'>
         <% if @user.image.attached? %>
-          <%= image_tag @user.image.variant(resize:'250x250'),class: "profile_icon" %>
+          <%= image_tag @user.image.variant(resize:'250x250'),class: 'profile_icon' %>
         <% else %>
           <%= image_tag 'no_image.jpeg' %>
         <% end %>
         <p>name:&nbsp;&nbsp;<%= @user.name %></p>
         <p>introduction:&nbsp;&nbsp;<%= @user.profile %></p>
       </div>
-      
-      
-        
-      
-     
+   
       <div class='follow_link'>
-      <div>フォロー中:<%= link_to follows_user_path(@user) do %><%= @user.following_user.count %><% end %></div>
+      <div class='text-center'>フォロー中:<%= link_to follows_user_path(@user) do %><%= @user.following_user.count %><% end %></div>
       <div>フォロワー:<%= link_to followers_user_path(@user) do %><%= @user.follower_user.count %> <% end %></div>
+        <div class='follow_btn'>
+        <% if current_user != @user %>
+        　<% if current_user.following?(@user) %>
+          　<%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+        　  <%= link_to 'フォローする', user_relationships_path(@user.id), method: :post, class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+        </div>
       </div>
      
-      <% if current_user != @user %>
-      　<% if current_user.following?(@user) %>
-        　<%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-default" %>
-        <% else %>
-      　  <%= link_to 'フォローする', user_relationships_path(@user.id), method: :post, class: "btn btn-primary"%>
-        <% end %>
-      <% end %>
+      
       <div class='row'>
         <% if @user.id == current_user.id %> 
-          <%= link_to 'プロフィールを編集する', edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-          <%= link_to image_tag("SELL.png", size: "200x200"),new_item_path, class: "text-center image mt-2" %>
+          <%= link_to 'プロフィールを編集する', edit_user_path(@user),class: 'btn btn-outline-secondary btn-block fas fa-user-cog' %>
+          <%= link_to image_tag('SELL.png', size: '200x200'),new_item_path, class: 'text-center image mt-2' %>
         <% end %>
       </div>
     </div>
   
     <div class='col-md-7 offset-md-1 text-center'>
     <h2>出品した商品一覧</h2>
-      <div class="user_item_wrap">
+      <div class='user_item_wrap'>
         <% @items.each do |item| %>
-          <div class="user_item">
+          <div class='user_item'>
             <% if item.purchase.blank? %>
               <% if item.image.attached? %>
                 <%= link_to item_path(item) do %>
-                <%= image_tag item.image,class: "item_icon" %>
+                <%= image_tag item.image,class: 'item_icon' %>
                 <% end %>
               <% else %>
                 <%= link_to item_path(item) do %>
-                <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+                <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to item_path(item) do %>
-              <%= image_tag 'SELL (1).png' ,class: "item_icon" %>
+              <%= image_tag 'SELL (1).png' ,class: 'item_icon' %>
               <% end %>
             <% end %>
             <!--<p class='user_item_price'>¥%= item.price %></p>-->
