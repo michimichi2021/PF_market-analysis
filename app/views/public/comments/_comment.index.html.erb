@@ -1,14 +1,24 @@
 <% @item.comments.each do |comment| %>
-  <p><% if comment.user.image.attached? %>
-        <%= image_tag comment.user.image.variant(resize:'200x200') %>
-      <% else %>
-        <%= image_tag 'no_image.jpeg' %>
-      <% end %></p>
-  <%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% if comment.user == current_user %>
-  <div>
-    <%= link_to "削除", item_comment_path(comment.item, comment),method: :delete, remote: true %>
+<div class='comment_icon'>
+  <div class='comment_img'>
+    <% if comment.user.image.attached? %>
+      <%= image_tag comment.user.image.variant(resize:'200x200'),class: 'comment_photo' %>
+    <% else %>
+      <%= image_tag 'no_image.jpeg',class: 'comment_photo' %>
+    <% end %>
+    <p><%= comment.user.name %></p>
   </div>
-  <% end %>
+  <div class='comment_text'>
+    <div class='comment_comment'>
+    <p><%= comment.created_at.strftime('%Y/%m/%d') %> <%= comment.comment %></p>
+    </div>
+    <div>
+      <% if comment.user == current_user %>
+      <div>
+        <%= link_to "削除", item_comment_path(comment.item, comment),method: :delete, remote: true %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <% end %>

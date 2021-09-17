@@ -1,94 +1,109 @@
-<main>
-    <h2>商品の詳細ページ</h2>
-    <div>
+<div class='container'>
+  <h2 class='item_show text-center'>商品の詳細ページ</h2>
+  <div class='row'>
+    <div class='col-3'></div>
+    <div class='col-3'>
       <% if user_signed_in? && @item.purchase.blank? %>
         <% if @item.image.attached? %>
-        <%= image_tag @item.image,class: "item_icon" %>
+          <%= image_tag @item.image,class: "item_icon" %>
         <% else %>
-        <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+          <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
         <% end %>
       <% else %>
         <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
       <% end %>
-    </div>
-    
-    <% if user_signed_in? %>
-    <div id="favorites_buttons_<%= @item.id %>">
-      <%= render 'public/favorites/favorite', item: @item %>
-    </div>
-    <% end %>
-
-    <div>
-      <p>商品名&nbsp;&nbsp;<%= @item.name %></p>
-    </div>
-
-
-    <div>
-      <p>商品金額&nbsp;&nbsp;¥<%= @item.price %></p>
-    </div>
-
-    <div>
-      <p>商品のジャンル&nbsp;&nbsp;
-      <% @item_genres.each do |genre| %>
-      <%= genre.name %>
-      <% end %></p>
-    </div>
-
-
-    <div>
-      <p>商品の説明&nbsp;&nbsp;<%= @item.introduction %></p>
-    </div>
-
-    <div class="field">
-      <p>配送料の負担&nbsp;&nbsp;<%= @item.shipping_fee %></p>
-    </div>
-
-    <div class="field">
-      <p>配送方法&nbsp;&nbsp;<%= @item.shipping_method %></p>
-    </div>
-
-    <div class="field">
-      <p>発送元の地域&nbsp;&nbsp;<%= @item.shipping_area %></p>
-    </div>
-
-    <div class="field">
-      <p>発送までの日数&nbsp;&nbsp;<%= @item.preparation_day %>日で発送</p>
-    </div>
-
-    <div class="field">
-       <p><%= link_to "出品者詳細ページ",user_path(@user) %></p>
-    </div>
-
-    <div>
-      <% if user_signed_in? && @item.purchase.blank? %>
-        <% if current_user == @item.user%>
-         <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
-         <%=link_to '商品を削除する',item_path(@item),method: :delete,data: { confirm: '本当に消しますか？' },class: 'btn btn-danger' %>
-        <% else %>
-          <%= form_with model: @purchase,url: new_purchase_path,method: :get,local:true do |f| %>
-             <%= f.hidden_field :item_id, value: @item.id %>
-             <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
-          <% end %>
-        <% end %>
+      <% if user_signed_in? %>
+        <div id="favorites_buttons_<%= @item.id %>">
+          <%= render 'public/favorites/favorite', item: @item %>
+        </div>
       <% end %>
     </div>
-
-    <div>
-    <% if user_signed_in? %>
-    <div id="count_<%= @item.id %>" >
-      <%= render 'public/comments/comment.count', item: @item %>
+    
+    <div class='col-6 item_explain'>
+      <table>
+        <tbody>
+          <tr>
+            <td style='background-color:#EEEEEE;'>商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+          
+          <tr>
+            <td style='background-color:#EEEEEE;'>商品金額</td>
+            <td>¥<%= @item.price %></td>
+          </tr>
+          
+          <tr>
+            <td style='background-color:#EEEEEE;'>商品のジャンル</td>
+            <td><% @item_genres.each do |genre| %>
+                <%= genre.name %>
+                <% end %></td>
+          </tr>
+          <tr>
+            <td style='background-color:#EEEEEE;'>配送料の負担</td>
+            <td><%= @item.shipping_fee %></td>
+          </tr>
+          <tr>
+            <td style='background-color:#EEEEEE;'>配送方法</td>
+            <td><%= @item.shipping_method %></td>
+          </tr>
+          <tr>
+            <td style='background-color:#EEEEEE;'>発送元の地域</td>
+            <td><%= @item.shipping_area %></td>
+          </tr>
+          <tr>
+            <td style='background-color:#EEEEEE;'>発送までの日数</td>
+            <td><%= @item.preparation_day %>日で発送</td>
+          </tr>
+          <tr>
+            <td style='background-color:#EEEEEE;'>商品の説明文</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="field">
+        <% if current_user != @item.user%>
+         <p><%= link_to "出品者詳細ページ",user_path(@user) %></p>
+        <% end %>
+      </div>
+  
+      <div class='item_button'>
+        <% if user_signed_in? && @item.purchase.blank? %>
+          <% if current_user == @item.user%>
+           <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success' %>
+           <%=link_to '商品を削除する',item_path(@item),method: :delete,data: { confirm: '本当に消しますか？' },class: 'btn btn-danger' %>
+          <% else %>
+            <%= form_with model: @purchase,url: new_purchase_path,method: :get,local:true do |f| %>
+               <%= f.hidden_field :item_id, value: @item.id %>
+               <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <div id="comment_create">
-      <%= render partial: 'public/comments/comment.index', locals: { comments: @comments } %>
+  
+    <div class='comment_area'>
+      <% if user_signed_in? %>
+      <h2 class='comment_title'>コメント一覧</h2>
+      <div id="count_<%= @item.id %>" >
+        <%= render 'public/comments/comment.count', item: @item %>
+      </div>
+      
+      <div class='comment_line'>
+        <div id="comment_create">
+          <%= render partial: 'public/comments/comment.index', locals: { comments: @comments } %>
+        </div>
+      </div>
+      
+      <div id="comment_form">
+        <%= render partial: 'public/comments/comment.form', locals: { comment: @comment, item: @item } %>
+      </div>
+    
+      <% end %>
     </div>
+      
     </div>
     
-    <div>
-    <div id="comment_form">
-      <%= render partial: 'public/comments/comment.form', locals: { comment: @comment, item: @item } %>
-    </div>
-    <% end %>
-    </div>
+  </div>
+</div>
 
-
-</main>
