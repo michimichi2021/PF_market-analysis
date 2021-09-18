@@ -1,25 +1,40 @@
-<h2>Follower Users</h2>
-<% if @users.exists? %>
-<table>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class='container follower_page text-center'>
+  <div class='row'>
+  <h2>Follower Users</h2>
+  <% if @users.exists? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td>フォロー数: <%= user.following_user.count %></td>
-        <td>フォロワー数: <%= user.follower_user.count %> </td>
-        <td><%= link_to "出品者詳細ページへ",user_path(user) %></td>
+        <th>ユーザー</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <div class='follower_user_icon'>
+            <%= link_to user_path(user) do %>  
+              <% if user.image.attached? %>
+                <%= image_tag user.image.variant(resize:'100x100') %>
+              <% else %>
+                <%= image_tag 'no_image.jpeg' %>
+              <% end %>
+            <% end %>
+            <p><%= user.name %></p>
+            </div>
+          </td>
+          <td>フォロー数:<%= link_to follows_user_path(user) do %><%= user.following_user.count %><% end %></td>
+          <td>フォロワー数:<%= link_to followers_user_path(user) do %><%= user.follower_user.count %><% end %></td>
+          <td><%= link_to "出品者詳細ページへ",user_path(user),class:'btn btn-primary' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+  </div>
+</div>

@@ -1,54 +1,74 @@
-<main>
-  <h2>商品の新規登録画面</h2>
-  <%= form_with model:@item,method: :post,local: true do |f| %>
-    <div class="field">
-      <%= f.label :商品画像%><br />
-      <%= f.file_field :image %>
-    </div>
+<div class='container'>
+  <div class='row'> 
   
-    <div class="field">
-      <%= f.label :商品名 %><br />
-      <%= f.text_field :name, autofocus: true %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :商品金額　%><br />
+  <div class='mt-5'>
+    <span class='fs-3 offset-md-1'>商品の新規登録画面</span>
+  </div>
+  
+  <%= form_with model:@item,method: :post,local: true do |f| %>
+
+  <div class='row mt-3'>
+    <%= f.label :商品画像, class:'offset-1 col-2' %>
+    <%= f.file_field :image, class:'col-3' %><br/>
+    <p class='col-5'>(JPEGまたはPNG形式を選択してアップロードしてください)</p>
+  </div>
+  
+  <div class='row mt-3'>
+    <%= f.label :商品名, class:'offset-1 col-2' %>
+    <%= f.text_field :name, autofocus: true, class:'col-2' %>
+  </div>
+  
+  <div class='row mt-3'>
+    <%= f.label :商品金額,class:'offset-1 col-2'%>
+    <div class='col-2'>
       ¥<%= f.text_field :price, autofocus: true %>
     </div>
-    
-    <div class="field">
-      <%= f.label :商品ジャンル　%><br />
-      <%= f.text_field :genre_ids, class: "form-control", id:'genre_ids',\
-       placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
-    </div>
+  </div>
   
-    <div class="field">
-      <%= f.label :商品説明  %><br />
-      <%= f.text_field :introduction, autofocus: true %>
+  <div class='row mt-3'>
+    <%= f.label :タグ,class:'offset-1 col-2' %>
+    <%= f.text_field :genre_ids,value: @genre_list, placeholder: 'タグをつける複数つけるには , で区切ってください',class:'col-4' %>
+  </div>
+
+  <div class='row mt-3'>
+    <%= f.label:配送料の負担, class:'offset-1 col-2' %>
+    <div class='col-2'>
+    <%= f.select :shipping_fee, [['出品者', '出品者'], ['購入者', '購入者']], include_blank: '選択して下さい' %>
     </div>
-    
-    <div class="field">
-      <%= f.label :配送料の負担　%><br />
-      <%= f.select :shipping_fee, [["出品者", "出品者"], ["購入者", "購入者"]], include_blank: "選択して下さい" %>
-    </div>
+  </div>
   
-    <div class="field">
-      <%= f.label :配送方法 %><br />
-      <%= f.select :shipping_method, [["らくらくマケアナ便", "らくらくマケアナ便"], ["普通郵便（定形,定形外)", "普通郵便（定形,定形外)"], ["未定", "未定"]], include_blank: "選択して下さい" %>
+  <div class='row mt-3'>
+    <%= f.label :配送方法,class:'offset-1 col-2' %>
+    <div class='col-2'>
+    <%= f.select :shipping_method, [['らくらくマケアナ便', 'らくらくマケアナ便'], ['普通郵便（定形,定形外)', '普通郵便（定形,定形外)'], ['未定', '未定']], include_blank: '選択して下さい' %>
+    </div> 
+  </div>
+  
+  <div class='row mt-3'>
+    <%= f.label :発送元の地域,class:'offset-1 col-2' %>
+    <div class='col-2'>
+    <%= f.select :shipping_area, [['北海道', '北海道'], ['東北地方', '東北地方'],['関東地方', '関東地方'], ['中部地方', '中部地方'],['近畿地方', '近畿地方'], ['中国地方', '中国地方'], ['四国地方', '四国地方'], ['九州地方', '九州地方'], ['沖縄県', '沖縄県']], include_blank: '選択して下さい',class:'col-2' %>
+    </div> 
+  </div>
+  
+  <div class='row mt-3'>
+    <%= f.label :発送までの日数,class:'offset-1 col-2' %>
+    <div class='col-4'>
+      <%= f.select :preparation_day, [['1', '1'], ['2', '2'], ['3', '3'],['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']], include_blank: '選択して下さい' %>日で発送
     </div>
-    
-    <div class="field">
-      <%= f.label :発送元の地域 %><br />
-      <%= f.select :shipping_area, [["北海道", "北海道"], ["東北地方", "東北地方"],["関東地方", "関東地方"], ["中部地方", "中部地方"],["近畿地方", "近畿地方"], ["中国地方", "中国地方"], ["四国地方", "四国地方"], ["九州地方", "九州地方"], ["沖縄県", "沖縄県"]], include_blank: "選択して下さい" %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :発送までの日数 %><br />
-      <%= f.select :preparation_day, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], include_blank: "選択して下さい" %>
-    </div>
-    
-    <div class="actions">
-      <%= f.submit "新規登録" %>
-    </div>
+  </div>
+  
+  <div class='row mt-3'>
+    <%= f.label :商品説明,class:'offset-1 col-2'  %>
+    <%= f.text_field :introduction, autofocus: true,class:'col-6' %>
+  </div>
+
+  <div class='actions'>
+    <%= f.submit '商品情報を変更する',class: 'tn btn-primary offset-3 mt-4' %>
+  </div>
+  
   <% end %>
-</main>
+  
+  
+  </div>
+</div>
