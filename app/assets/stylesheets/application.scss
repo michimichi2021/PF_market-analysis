@@ -70,6 +70,7 @@ padding: 5px 10px;
 }
 
 // トップページの新着商品
+
 .new_item_slide{
  margin-top:50px;
 }
@@ -307,16 +308,6 @@ padding: 5px 10px;
  height:150px;
 }
 
-// 商品情報編集画面
-
-.item-edit{
- margin-top:30px;
-}
-
-.item_genre_edit{
- width:300px;
-}
-
 // 退会確認画面
 
 .unsubscribe_title{
@@ -346,6 +337,35 @@ padding: 5px 10px;
 
 .follower_user_icon{
  padding-top:20px;
+}
+
+//注文入力画面
+
+.address{
+ margin-top:20px;
+}
+
+// 注文情報確認画面
+
+.purchase_icon{
+ width:150px;
+ height:150px;
+}
+
+.purchase_item_name{
+  line-height: 150px;
+  font-size:20px;
+}
+
+.purchase_item_price{
+  line-height: 150px;
+  font-size:20px;
+}
+
+// 注文完了画面
+
+.letter_icon{
+ font-size:15em;
 }
 
 // 

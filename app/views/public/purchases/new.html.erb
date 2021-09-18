@@ -1,51 +1,58 @@
-<%= form_with model: @purchase, url:purchases_confirm_path, method: :post, local: true do |f| %>
-    <div class="payment">
-      <h4>支払い方法</h4>
-      <%= f.radio_button :payment_method, :クレジットカード, checked: true %>
-      <%= f.label :payment_method, "クレジットカード", value: :クレジットカード %>
-      <%= f.radio_button :payment_method, :コンビニ払い %>
-      <%= f.label :payment_method, "コンビニ払い", value: :コンビニ払い %>
-    </div>
-    <div class="address">
-      <h4>お届け先</h4>
-      <div class="origin_address">
-        <%= radio_button_tag :shipping_address, 0, checked: true %>
-        <%= f.label :address, "ご自身の住所", value: 0 %>
-        <div class="origin_address_detail">
-          <p class="lh-1 mb-0">〒<%= current_user.postal_code %>　<%= current_user.address %></p>
-          <p class="lh-1 mt-2"><%= current_user.last_name %><%= current_user.first_name %></p>
+<div class='container'>
+  <div class='row'> 
+    <h2 class='text-center mt-5'>注文情報入力画面</h2>
+    <div class='col-3'></div>
+    <div class='col-4 mt-4'>
+      <%= form_with model: @purchase, url:purchases_confirm_path, method: :post, local: true do |f| %>
+        <h5>支払い方法</h5>
+        <div class='payment'>  
+          <%= f.radio_button :payment_method, :クレジットカード, checked: true %>
+          <%= f.label :payment_method, 'クレジットカード', value: :クレジットカード %>
+          <%= f.radio_button :payment_method, :コンビニ払い %>
+          <%= f.label :payment_method, 'コンビニ払い', value: :コンビニ払い %>
         </div>
-      </div>
-      <div class="new_address">
-        <%= radio_button_tag :shipping_address, 1 %>
-        <%= f.label :new_address, "新しいお届け先", value: 1 %>
-        <div class="order_form">
-          <%= f.label :new_address, "郵便番号(ハイフンなし)" %>
-          <%= f.text_field :postal_code %>
+        <div class='address'>
+          <h5>お届け先</h5>
+          <div class='origin_address'>
+            <%= radio_button_tag :shipping_address, 0, checked: true %>
+            <%= f.label :address, 'ご自身の住所', value: 0 %>
+            <div class='origin_address_detail mt-2'>
+              <p class='lh-1 mb-0'>〒<%= current_user.postal_code %>&nbsp;&nbsp;<%= current_user.address %>&nbsp;&nbsp;<%= current_user.last_name %><%= current_user.first_name %></p>
+            </div>
+          </div>
+          <div class='new_address mt-3'>
+            <%= radio_button_tag :shipping_address, 1 %>
+            <%= f.label :new_address, '新しいお届け先', value: 1 %>
+            <div class='order_form mt-2'>
+              <%= f.label :new_address, '郵便番号(ハイフンなし)' %>
+              <%= f.text_field :postal_code,autofocus: true, placeholder:'0000000' %>
+            </div>
+            <div class='order_form mt-2 row'>
+              <%= f.label :new_address, '住所',class:'col-2' %>
+              <%= f.text_field :address,autofocus: true,placeholder:'東京都渋谷区代々木神園町0-0',class: 'col-7' %>
+            </div>
+            <div class='order_form mt-2 row'>
+              <%= f.label :new_address, '宛名',class:'col-2' %>
+              <%= f.text_field :name,class: 'col-7',placeholder:'山田太郎' %>
+            </div>
+          </div>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.submit '確認画面に進む', class: 'btn btn-sm btn-success mt-4' %>
         </div>
-        <div class="order_form">
-          <%= f.label :new_address, "住所" %>
-          <%= f.text_field :address %>
-        </div>
-        <div class="order_form">
-          <%= f.label :new_address, "宛名" %>
-          <%= f.text_field :name %>
-        </div>
-      </div>
-      <%= f.hidden_field :item_id, value: @item.id %>
-      <%= f.submit "確認画面に進む", class: "btn btn-sm btn-success mt-3" %>
-      </div>
-      <% end %>
-
-
-    <div>
-      <% if @item.image.attached? %>
-        <%= image_tag @item.image,class: "item_icon" %>
-      <% else %>
-      <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
       <% end %>
     </div>
-
-    <div>
-      <p>商品名&nbsp;&nbsp;<%= @item.name %></p>
+  
+    <div class='col-5 mt-4'>
+      <div>
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image,class: 'item_icon' %>
+        <% else %>
+          <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
+        <% end %>
+      </div>
+      <div>
+        <p>商品名&nbsp;&nbsp;<%= @item.name %></p>
+      </div>
     </div>
+  </div>
+</div>
