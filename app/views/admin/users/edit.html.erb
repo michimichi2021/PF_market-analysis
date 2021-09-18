@@ -1,59 +1,51 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <h2>会員情報編集画面</h2>
-    <%= form_with model:@user,url: admin_user_path(@user),method: :patch,local:true do |f| %>
-      <div class="field">
-        <%= f.label :姓 %><br />
-        <%= f.text_field :last_name, autofocus: true %>
-      </div>
+<div class='container'>
+  <div class='row'> 
+  
+  <div class='mt-5'>
+    <span class='fs-3 offset-md-1'>会員情報編集画面</span>
+  </div>
+
+  <%= form_with model:@user,url: admin_user_path(@user),method: :patch,local:true do |f| %>
+  
+    <div class='form-inline'>
+    <%= f.label :名前, class:'offset-1 col-1 mt-3' %>
+    （姓）<%= f.text_field :last_name, class:'col-3', autofocus: true, placeholder:'山田' %>
+    （名）<%= f.text_field :first_name, class:'col-3', autofocus: true, placeholder:'太郎' %>
+    </div>
     
-      <div class="field">
-        <%= f.label :名  %><br />
-        <%= f.text_field :first_name, autofocus: true %>
-      </div>
+    <div class='form-inline'>
+     <%= f.label :フリガナ, class:'offset-1 col-1 mt-3' %>
+    （セイ）<%= f.text_field :last_name_kana, class:'col-3', autofocus: true, placeholder:'ヤマダ' %>
+    （メイ）<%= f.text_field :first_name_kana, class:'col-3', autofocus: true, placeholder:'タロウ'%>
+    </div>
     
-      <div class="field">
-        <%= f.label :姓フリガナ　%><br />
-        <%= f.text_field :last_name_kana, autofocus: true %>
-      </div>
+    <div class='row mt-3'>
+      <%= f.label :郵便番号, class:'offset-1 col-2' %>
+      <%= f.text_field :postal_code, class:'col-2', autofocus: true, placeholder:'0000000' %>
+    </div>
     
-      <div class="field">
-        <%= f.label :名フリガナ %><br />
-        <%= f.text_field :first_name_kana, autofocus: true %>
-      </div>
-      
-      <div class="field">
-        <%= f.label :郵便番号 %><br />
-        <%= f.text_field :postal_code, autofocus: true %>
-      </div>
-      
-      <div class="field">
-        <%= f.label :住所 %><br />
-        <%= f.text_field :address, autofocus: true %>
-      </div>
-      
-      <div class="field">
-        <%= f.label :電話番号 %><br />
-        <%= f.text_field :telephone_number, autofocus: true %>
-      </div>
-     
-     
-      <div class="form-group">
-        <%= f.label :有効 %>
-        <%= f.radio_button :is_deleted, false, class: 'btn btn-secondary' %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :退会 %>
-        <%= f.radio_button :is_deleted, true, class: 'btn btn-secondary' %>
-      </div>
-     
-      <div class="form-group">
-        <%= f.submit class: 'btn btn-secondary' %>
-      </div>
-      
+    <div class='row mt-3'>
+      <%= f.label :住所, class:'offset-1 col-2' %>
+      <%= f.text_field :address, class:'col-6', autofocus: true, placeholder:'東京都渋谷区代々木神園町0-0' %>
+    </div>
+  
+    <div class='row mt-3'>
+      <%= f.label :電話番号, class:'offset-1 col-2' %>
+      <%= f.telephone_field :telephone_number, class:'col-2', autofocus: true, placeholder:'00000000000' %>
+    </div>
     
-    <% end %>
+    <div class='form-group offset-1 col-2 mt-5'>
+      <%= f.label :有効 %>
+      <%= f.radio_button :is_deleted, false, class: 'btn btn-secondary' %>
+      <%= f.label :退会 %>
+      <%= f.radio_button :is_deleted, true, class: 'btn btn-secondary' %>
+    </div>
+    
+    <div class='form-group offset-1 col-2 mt-5'>
+      <%= f.submit '会員情報を変更する',class: 'btn btn-success' %>
+    </div>
+    
+  <% end %>
 
   </div>
 </div>

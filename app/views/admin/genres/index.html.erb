@@ -1,17 +1,12 @@
-<main>
-   <div class='row col-8 mx-auto'>
-     <%= form_with model:@genre,url: admin_genres_path,method: :post, local:true do |f| %>
-      
-      <div class="field">
-        <%= f.label :ジャンル名%><br />
+  <div class='container'>
+    <div class='row col-8 mx-auto'>
+      <%= form_with model:@genre,url: admin_genres_path,method: :post, local:true do |f| %>
+      <div class="field mt-5">
+        <%= f.label :ジャンル名%>
         <%= f.text_field :name, autofocus: true %>
-      </div>
-        
-      <div class="form-group">
         <%= f.submit '新規登録',class: 'btn btn-secondary' %>
       </div>
-    
-    <% end %>
+      <% end %>
       <table class='table table-hover table-inverse'>
         <thead class='bg-light'>
           <tr>
@@ -25,10 +20,11 @@
           <tr>
             <td><%= genre.name %></td>
             <td><%= link_to '編集する',edit_admin_genre_path(genre),class: 'btn btn-success' %></td>
-            <td><%= link_to '削除する',admin_genre_path(genre),method: :delete,class: 'btn btn-danger' %></td>
+            <td><%= link_to '削除する',admin_genre_path(genre),method: :delete,class: 'btn btn-success' %></td>
           </tr>
           <% end %>
+          <%= paginate @genres %>
         </tbody>
       </table>
     </div>
-</main>
+  </div>

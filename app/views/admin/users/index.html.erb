@@ -1,32 +1,35 @@
-<main>
-  <div class='row col-8 mx-auto'>
-    <%= form_tag(admin_searches_search_path,method: :get) do %>
-      <%= text_field(@search_content, :search_word)%>
-      <%= submit_tag "検索" %>
-    <% end %>
-      <table class='table table-hover table-inverse'>
-        <thead class='bg-light'>
-          <tr>
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>会員状況</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-          <tr>
-            <td><%= user.id %></td>
-            <td><%= link_to user.last_name + '' + user.first_name,admin_user_path(user) %></td>
-            <td><%= user.email %></td>
-            <% if user.is_deleted == true%>
-            <td>退会</td>
-            <% else %>
-            <td>有効</td>
-            <% end %>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class='container'>
+  <div class='row col-8 mx-auto mt-5'>
+  <%= form_tag(admin_searches_search_path,method: :get) do %>
+    <div class='text-center'>
+      <%= text_field(@search_content, :search_word) %>
+      <%= submit_tag '検索' %>
     </div>
-</main>
+  <% end %>
+    <table class='table table-hover table-inverse mt-5'>
+      <thead class='bg-light'>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>会員状況</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= link_to user.last_name + '' + user.first_name,admin_user_path(user) %></td>
+          <td><%= user.email %></td>
+          <% if user.is_deleted == true %>
+            <td>退会</td>
+          <% else %>
+            <td>有効</td>
+          <% end %>
+        </tr>
+      <% end %>
+      <%= paginate @users %>
+      </tbody>
+    </table>
+  </div>
+</div>

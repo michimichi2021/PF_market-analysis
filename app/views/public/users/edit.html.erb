@@ -7,51 +7,51 @@
   
   <%= form_with model:@user, local:true do |f| %>
 
-  <div class='form-inline'>
-  <%= f.label :名前, class:'offset-1 col-1 mt-3' %>
-  （姓）<%= f.text_field :last_name, class:'col-3', autofocus: true, placeholder:'山田' %>
-  （名）<%= f.text_field :first_name, class:'col-3', autofocus: true, placeholder:'太郎' %>
-  </div>
+    <div class='form-inline'>
+    <%= f.label :名前, class:'offset-1 col-1 mt-3' %>
+    （姓）<%= f.text_field :last_name, class:'col-3', autofocus: true, placeholder:'山田' %>
+    （名）<%= f.text_field :first_name, class:'col-3', autofocus: true, placeholder:'太郎' %>
+    </div>
+    
+    <div class='form-inline'>
+     <%= f.label :フリガナ, class:'offset-1 col-1 mt-3' %>
+    （セイ）<%= f.text_field :last_name_kana, class:'col-3', autofocus: true, placeholder:'ヤマダ' %>
+    （メイ）<%= f.text_field :first_name_kana, class:'col-3', autofocus: true, placeholder:'タロウ'%>
+    </div>
+    
+    <div class='row mt-3'>
+      <%= f.label :郵便番号, class:'offset-1 col-2' %>
+      <%= f.text_field :postal_code, class:'col-2', autofocus: true, placeholder:'0000000' %>
+    </div>
+    
+    <div class='row mt-3'>
+      <%= f.label :住所, class:'offset-1 col-2' %>
+      <%= f.text_field :address, class:'col-6', autofocus: true, placeholder:'東京都渋谷区代々木神園町0-0' %>
+    </div>
   
-  <div class='form-inline'>
-   <%= f.label :フリガナ, class:'offset-1 col-1 mt-3' %>
-  （セイ）<%= f.text_field :last_name_kana, class:'col-3', autofocus: true, placeholder:'ヤマダ' %>
-  （メイ）<%= f.text_field :first_name_kana, class:'col-3', autofocus: true, placeholder:'タロウ'%>
-  </div>
+    <div class='row mt-3'>
+      <%= f.label :電話番号, class:'offset-1 col-2' %>
+      <%= f.telephone_field :telephone_number, class:'col-2', autofocus: true, placeholder:'00000000000' %>
+    </div>
+    
+    <div class='row mt-3'>
+      <%= f.label :ニックネーム,class:'offset-1 col-2'%>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ニックネーム",class:'col-2' %>
+    </div>
+    
+    <div class='row mt-3'>
+      <%= f.label :紹介文,class:'offset-1 col-2' %>
+      <%= f.text_field :profile, autofocus: true,class:'col-2' %>
+    </div>
+    
+    <div class='row mt-3'>
+      <%= f.label :プロフィール画像,class:'offset-1 col-2' %>
+      <%= f.file_field :image ,class:'col-4'%>
+    </div>
   
-  <div class='row mt-3'>
-    <%= f.label :郵便番号, class:'offset-1 col-2' %>
-    <%= f.text_field :postal_code, class:'col-2', autofocus: true, placeholder:'0000000' %>
-  </div>
-  
-  <div class='row mt-3'>
-    <%= f.label :住所, class:'offset-1 col-2' %>
-    <%= f.text_field :address, class:'col-6', autofocus: true, placeholder:'東京都渋谷区代々木神園町0-0' %>
-  </div>
-
-  <div class='row mt-3'>
-    <%= f.label :電話番号, class:'offset-1 col-2' %>
-    <%= f.telephone_field :telephone_number, class:'col-2', autofocus: true, placeholder:'00000000000' %>
-  </div>
-  
-  <div class='row mt-3'>
-    <%= f.label :ニックネーム,class:'offset-1 col-2'%>
-    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ニックネーム",class:'col-2' %>
-  </div>
-  
-  <div class='row mt-3'>
-    <%= f.label :紹介文,class:'offset-1 col-2' %>
-    <%= f.text_field :profile, autofocus: true,class:'col-2' %>
-  </div>
-  
-  <div class='row mt-3'>
-    <%= f.label :プロフィール画像,class:'offset-1 col-2' %>
-    <%= f.file_field :image ,class:'col-4'%>
-  </div>
-
-  <div class='actions'>
-  <%= f.submit '会員情報を変更する',class: 'tn btn-primary offset-3 mt-4' %>
-  </div>
+    <div class='actions'>
+      <%= f.submit '会員情報を変更する',class: 'tn btn-primary offset-3 mt-4' %>
+    </div>
   
   <% end %>
   
