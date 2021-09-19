@@ -1,23 +1,27 @@
-<% @items.each do |item| %>
-  <h6 class="card-title">
+<div class='container mt-5'>
+  <div class='row'>
+  <h2 class='text-center'>商品名'<%= @word %>'検索結果一覧(全<%= @items.count %>件)</h2>  
+    <div class='item_search_wrap'>
+    <% @items.each do |item| %>
+      <div class='search_item_icon'>
       <%= link_to item_path(item) do %> 
         <% if item.purchase.blank? %>
-          <span>
           <% if item.image.attached? %>
-           <%= image_tag item.image,class: "item_icon" %>
+            <%= image_tag item.image,class: 'item_icon' %>
           <% else %>
-           <%= image_tag 'no_image.jpeg' ,class: "item_icon" %>
+            <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
           <% end %>
-          </span>
         <% else %>
-          <%= image_tag 'SELL (1).png' ,class: "item_icon soldout" %>
+            <%= image_tag 'SELL (1).png' ,class: 'item_icon soldout' %>
         <% end %>
       <% end %>
-      <p><%= item.name %></p><br/>
-    <p><%= item.genres.map(&:name).join(', ') %></p>
-    <%= item.price %>
-    <% if user_signed_in? %>
-    <p><%=link_to"詳しくはこちら",item_path(item),class: "btn btn-success" %></p>
+      <p class='search_item_price'>¥<%= item.price %></p>
+      <p><%= item.name %><br/>
+      <%= item.genres.map(&:name).join(', ') %></p>
+     
+      </div>
     <% end %>
-  </h6>
-<% end %>
+    <%= paginate @items %>
+    </div>
+  </div>
+</div>

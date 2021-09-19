@@ -8,7 +8,7 @@
             <th>注文日</th>
             <th>商品画像</th>
             <th>商品名</th>
-            <th>商品の金額</th>
+            <th>商品金額</th>
             <th></th>
           </tr>
         </thead>
@@ -23,7 +23,7 @@
                 <% end %></td>
             <td><%= purchase.item.name %></td>
             <td>¥<%= purchase.item.price %></td>
-            <td><%= link_to '商品詳細ページへ',item_path(purchase.item),class:'btn btn-success' %></td>
+            <td class='text-center'><%= link_to '商品詳細ページへ',item_path(purchase.item),class:'btn btn-success' %></td>
           </tr>  
           <% end %>
         </tbody>

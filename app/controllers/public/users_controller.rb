@@ -38,12 +38,17 @@ class Public::UsersController < ApplicationController
 
   def datas
     @items=current_user.items.purchased
+    @purchased_items=current_user.items.purchased.page(params[:page]).per(5)
     @sum=@items.sum(:price)
     
     @items_price_day = @items.group_by_day(:created_at).sum(:price)
+    @items_count_day= @items.group_by_day(:created_at).count
     @items_price_week = @items.group_by_week(:created_at, week_start: :monday).sum(:price)
+    @items_count_week= @items.group_by_week(:created_at,week_start: :monday).count
     @items_price_month = @items.group_by_month(:created_at).sum(:price)
+    @items_count_month= @items.group_by_month(:created_at).count
     @item_purchase_genre_count= current_user.items.joins(:genres).where(is_active: false).group('genres.name').size
+    
   end
   
   def follows

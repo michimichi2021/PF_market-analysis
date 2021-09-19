@@ -1,5 +1,69 @@
-<main>
-  <% @genre_list.each do |genre|%>
-      <%=link_to genre.name,searches_search_tag_path(genre_id: genre.id) %>
-   <%="(#{genre.items.count})" %><% end %>
-</main>
+<div class='container mt-5'>
+  <div class='row'>
+    <div class='col-3'></div>
+    <h2 class='text-center tag_title col-6'><span><i class='fas fa-crown'></i>タグの人気ランキング<i class='fas fa-crown'></i></span></h2>  
+    <h4 class='text-center'>人気項目10点</h4>
+    <div class='col-3'></div>
+    <div class='col-6 tag_rank_space'>
+      <div class='rank-tag-all mt-3'>
+      <!--last_likeを定義して0を代入-->
+      <% last_count = 0 %>
+      <!--jを定義して1を代入-->
+      <% j = 1 %>
+      <!--タグ付けした商品の多い順に並べたものを配列でまわす-->
+      <% @tag_ranks.each.with_index(1) do |genre, i| %>
+        <!--順位が1位のときlast_countに値は入っていないため、１位のカウント数を代入-->
+        <% if i == 1 %>
+          <% last_count = genre.items.count %>
+          <div class='row'>
+            <h4 class='rank-tag-num text-center'>第<%= i %>位(タグ付け件数&nbsp;<%= genre.items.count %>件)&nbsp;&nbsp;
+              <%=link_to searches_search_tag_path(genre_id: genre.id) do %>
+                <span class='tag_name'><%= genre.name%></span>
+              <% end %>
+            </h4>
+          </div>
+          <span>同率<%= j %>位&nbsp;&nbsp;</span>
+        <% end %>
+        <!--genre.items.countとlast_countを比べて条件分岐-->
+        <!--値が一致しないとき-->
+        <% if i != 1 %>
+          <% if genre.items.count != last_count %>
+            <!--値が一致しないということは次の順位を表示したいので-->
+            <!--jにiを代入して表示-->
+            <% j = i %>
+            <div class='row mt-4'>
+              <h5 class="rank-tag-num text-center">第<%= i %>位(タグ付け件数&nbsp;<%= genre.items.count %>件)&nbsp;&nbsp;
+                <%=link_to searches_search_tag_path(genre_id: genre.id) do %>
+                  <span class='tag_name'><%= genre.name%></span>
+                <% end %>
+              </h5>
+            </div>
+            <!--値が一致していなのでlast_countの値を更新-->
+            <% last_count = genre.items.count %>
+            <span>同率<%= j %>位&nbsp;&nbsp;</span>
+          <% else %>
+            <!--last_countといいねのカウント数が同じとき-->
+            <!--値は同じですが今後も使うので、代入しておく-->
+            <% last_count = genre.items.count %>
+            <!--jには前の順位と同じ値が入っているので、更新せずそのまま表示-->
+           <%=link_to searches_search_tag_path(genre_id: genre.id) do %><span class='tag_name'><%= genre.name%></span><% end %>
+          <% end %>
+        <% end %>
+          
+      <% end %>  
+      </div>
+    </div>
+    <div class='col-2'></div>
+  </div>
+  <div class='row'>
+    <h2 class='text-center mt-5'>タグ一覧</h2>
+    <div class='col-1'></div>
+    <div class='col-10 tag_rank_space'>
+      <% @genre_list.each do |genre| %>
+         <%=link_to searches_search_tag_path(genre_id: genre.id) do %><span class='tag_name'><%= genre.name%></span><% end %>
+      <% end %>
+      <%= paginate @genre_list %>
+    </div>
+    <div class='col-1'></div>
+  </div>
+</div>
