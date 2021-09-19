@@ -368,6 +368,120 @@ padding: 5px 10px;
  font-size:15em;
 }
 
+// 商品名,タグ検索一覧
+
+.search_item_price{
+ position: absolute;
+ bottom: 64px;/*画像の左上に配置*/
+ left: 0;
+ margin: 0; /*余計な隙間を除く*/
+ color: white;/*文字を白に*/
+ background: skyblue;/*背景色*/
+ font-size: 15px;
+ line-height: 1;/*行高は1に*/
+ padding: 5px 10px;/*文字周りの余白*/
+}
+
+.item_search_wrap{
+ display:flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+.search_item_icon{
+ position: relative;
+ padding-top:10px;
+ padding-right:10px;
+}
+
+// タグ一覧画面
+.tag_title {
+ position: relative;
+  margin: 10px;
+  text-align: center;
+}
+
+.tag_title:before,
+.tag_title:after {
+  position: absolute;
+  z-index: 0;
+  bottom: -10px;
+  display: block;
+  content: '';
+  border: 1em solid #d90606;
+}
+
+.tag_title:before {
+  left: -30px;
+  border-left-width: 15px;
+  border-left-color: transparent;
+}
+
+.tag_title:after {
+  right: -30px;
+  border-right-width: 15px;
+  border-right-color: transparent;
+}
+
+.tag_title span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 1rem 2rem;
+  color: #fff;
+  background: #fa4141;
+}
+
+.tag_title span:before,
+.tag_title span:after {
+  position: absolute;
+  bottom: -10px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  content: '';
+  border-style: solid;
+  border-color: #b70505 transparent transparent transparent;
+}
+
+.tag_title span:before {
+  left: 0;
+  border-width: 10px 0 0 10px;
+}
+
+.tag_title span:after {
+  right: 0;
+  border-width: 10px 10px 0 0;
+}
+
+.tag_name{
+	display: inline-block;
+	margin: 0 .1em .6em 0;
+	padding: .6em;
+	line-height: 1;
+	text-decoration: none;
+	color: #0000ee;
+	background-color: #fff;
+	border: 1px solid #0000ee;
+	border-left: 5px solid #0000ee;
+}
+
+.tag_rank_space{
+ border: 1px solid red;
+ padding:10px;
+}
+
+// 分析データ
+.data_photo{
+ width:100px;
+ height:100px;
+ border: 1px solid #000;  
+}
+
+.data_graph{
+ border: 1px #C0C0C0 solid;
+}
+
 // 
 
 #search-word{

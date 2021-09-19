@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @favorite_items.each do |item|%>
+      <% @favorite_items.each do |item|%>
         <tr>
           <td>
           <% if user_signed_in? && item.purchase.blank? %>
@@ -30,11 +30,11 @@
       　　<% end %>
           </td>
           <td><%= item.name %></td>
-          <td><%= item.price %></td>
+          <td>¥<%= item.price %></td>
           <td><i class="fas fa-heart unlike-btn"></i><%= item.favorites.count %></td>
           <td class='text-center'><%= link_to '商品詳細ページへ',item_path(item),class:'btn btn-success' %></td>
         </tr>  
-        <% end %>
+      <% end %>
       </tbody>
     </table>
   </div>
