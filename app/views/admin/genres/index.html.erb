@@ -1,8 +1,8 @@
-  <div class='container'>
+  <div class='container mb-5'>
     <div class='row col-8 mx-auto'>
       <%= form_with model:@genre,url: admin_genres_path,method: :post, local:true do |f| %>
       <div class="field mt-5">
-        <%= f.label :ジャンル名%>
+        <%= f.label :タグ名%>
         <%= f.text_field :name, autofocus: true %>
         <%= f.submit '新規登録',class: 'btn btn-secondary' %>
       </div>
@@ -10,7 +10,7 @@
       <table class='table table-hover table-inverse'>
         <thead class='bg-light'>
           <tr>
-            <th>ジャンル名</th>
+            <th>タグ名</th>
             <th></th>
             <th></th>
           </tr>

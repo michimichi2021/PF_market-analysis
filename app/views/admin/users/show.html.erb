@@ -1,53 +1,53 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6 mt-3 row">
-      <div class="col-12 mt-5">
+<div class='container mb-5'>
+  <div class='row'>
+    <div class='col-6 mt-3 row'>
+      <div class='col-12 mt-5'>
         <h2><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h2>
       </div>
   
       <table>
         <tbody>
-          <tr class="row lh-lg">
-           <td class="col-4 fs-5 text-center">会員ID</td>
-           <td class="col-8 fs-5"><%= @user.id %></td>
+          <tr class='row lh-lg'>
+           <td class='col-4 fs-5 text-center'>会員ID</td>
+           <td class='col-8 fs-5'><%= @user.id %></td>
           </tr>
-          <tr class="row lh-lg">
-            <td class="col-4 fs-5 text-center">氏名</td>
-            <td class="col-8 fs-5"><%= @user.last_name %><%= @user.first_name %></td>
+          <tr class='row lh-lg'>
+            <td class='col-4 fs-5 text-center'>氏名</td>
+            <td class='col-8 fs-5'><%= @user.last_name %><%= @user.first_name %></td>
           </tr>
-          <tr class="row lh-lg">
-            <td class="col-4 fs-5 text-center">フリガナ</td>
-            <td class="col-8 fs-5"><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+          <tr class='row lh-lg'>
+            <td class='col-4 fs-5 text-center'>フリガナ</td>
+            <td class='col-8 fs-5'><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
           </tr>
-          <tr class="row lh-lg">
-            <td class="col-4 fs-5 text-center">郵便番号</td>
-            <td class="col-8 fs-5"><%= @user.postal_code %></td>
+          <tr class='row lh-lg'>
+            <td class='col-4 fs-5 text-center'>郵便番号</td>
+            <td class='col-8 fs-5'><%= @user.postal_code %></td>
           </tr>
-          <tr class="row lh-lg">
-            <td class="col-4 fs-5 text-center">住所</td>
-            <td class="col-8 fs-5"><%= @user.address %></td>
+          <tr class='row lh-lg'>
+            <td class='col-4 fs-5 text-center'>住所</td>
+            <td class='col-8 fs-5'><%= @user.address %></td>
           </tr>
-          <tr class="row lh-lg">
-            <td class="col-4 fs-5 text-center">電話番号</td>
-            <td class="col-8 fs-5"><%= @user.telephone_number %></td>
+          <tr class='row lh-lg'>
+            <td class='col-4 fs-5 text-center'>電話番号</td>
+            <td class='col-8 fs-5'><%= @user.telephone_number %></td>
           </tr>
-          <tr class="row lh-lg">
-            <td class="col-4 fs-5 text-center">メールアドレス</td>
-            <td class="col-8 fs-5"><%= @user.email %></td>
+          <tr class='row lh-lg'>
+            <td class='col-4 fs-5 text-center'>メールアドレス</td>
+            <td class='col-8 fs-5'><%= @user.email %></td>
           </tr>
-          <tr class="row lh-lg">
-            <td class="col-4 fs-5 text-center">会員ステータス</td>
+          <tr class='row lh-lg'>
+            <td class='col-4 fs-5 text-center'>会員ステータス</td>
             <% if @user.is_deleted == true%>
-            <td class="col-8 fs-5 fw-bold" style="color: gray">退会</td>
+            <td class='col-8 fs-5 fw-bold' style='color: gray'>退会</td>
             <% else %>
-            <td class="col-8 fs-5 fw-bold" style="color: green">有効</td>
+            <td class='col-8 fs-5 fw-bold' style='color: green'>有効</td>
             <% end %>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="row mt-3">
+    <div class='row mt-3'>
       <%= link_to ' 会員情報を編集する ', edit_admin_user_path,class: 'btn btn-danger col-3' %>
     </div>
     

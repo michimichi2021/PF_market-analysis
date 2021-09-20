@@ -1,4 +1,4 @@
-<div class='container px-5 px-sm-0 user_show'>
+<div class='container mt-5 mb-5'>
   <div class='row'>
     <div class='col-md-3 text-center'>
       <h2>Profile</h2>
@@ -55,7 +55,7 @@
               <%= image_tag 'SELL (1).png' ,class: 'item_icon' %>
               <% end %>
             <% end %>
-            <!--<p class='user_item_price'>¥%= item.price %></p>-->
+            <p>¥<%= item.price %></p>
           </div>  
         <% end %>
         <%= paginate @items %>
