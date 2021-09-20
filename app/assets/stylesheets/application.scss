@@ -49,7 +49,13 @@ padding: 5px 10px;
  margin:10px;
 }
 
+li{
+ list-style:none;
+}
 
+.nav-item{
+ margin-right:20px; 
+}
 
 // 商品に関すること
 
@@ -76,14 +82,14 @@ padding: 5px 10px;
 }
 
 .slick-dots {
-  li {
-    font-size: 20px !important;
-    button:before {
-      content: "★" !important;
-      font-size: 14px !important;
-      color: rgb(60, 60, 60) !important;
-    }
+ li {
+  font-size: 20px !important;
+  button:before {
+  content: "★" !important;
+  font-size: 14px !important;
+  color: rgb(60, 60, 60) !important;
   }
+ }
 }
 
 .new_item{
@@ -91,11 +97,11 @@ padding: 5px 10px;
 }
 
 .new_item_photo{
-  height: 250px;
-  width : 250px;
-  background-size: contain;
-  border: 1px solid #000;
-  object-fit: cover;
+ height: 250px;
+ width : 250px;
+ background-size: contain;
+ border: 1px solid #000;
+ object-fit: cover;
 }
 
 .new_item_icon{
@@ -145,9 +151,6 @@ padding: 5px 10px;
 }
 
 // 会員の詳細ページ
-.user_show{
- margin-top:50px; 
-}
 
 .profile_icon{
  border-radius:300px;
@@ -171,7 +174,7 @@ padding: 5px 10px;
 
 .user_item_price{
   position: absolute;
-  bottom: 25px;/*画像の左上に配置*/
+  bottom: 0px;/*画像の左上に配置*/
   left: 0;
   margin: 0; /*余計な隙間を除く*/
   color: white;/*文字を白に*/
@@ -253,46 +256,46 @@ padding: 5px 10px;
 }
 
 .comment_icon {
-  width: 100%;
-  margin: 1.5em 0;
-  overflow: hidden;
+ width: 100%;
+ margin: 1.5em 0;
+ overflow: hidden;
 }
 
 .comment_icon .comment_img {
-  float: left;
-  margin-right: -90px;
-  width: 80px;
+ float: left;
+ margin-right: -90px;
+ width: 80px;
 }
 
 .comment_icon .comment_img comment_photo{
-  width: 100%;
-  height: auto;
-  border: solid 3px #d7ebfe;
-  border-radius: 50%;
+ width: 100%;
+ height: auto;
+ border: solid 3px #d7ebfe;
+ border-radius: 50%;
 }
 
 .comment_comment{
-  display: inline-block;
-  position: relative; 
-  margin: 5px 0 0 105px;
-  padding: 17px 13px;
-  border-radius: 12px;
-  background: #d7ebfe;
+ display: inline-block;
+ position: relative; 
+ margin: 5px 0 0 105px;
+ padding: 17px 13px;
+ border-radius: 12px;
+ background: #d7ebfe;
 }
 
 .comment_comment:after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 18px; 
-  left: -24px;
-  border: 12px solid transparent;
-  border-right: 12px solid #d7ebfe;
+ content: "";
+ display: inline-block;
+ position: absolute;
+ top: 18px; 
+ left: -24px;
+ border: 12px solid transparent;
+ border-right: 12px solid #d7ebfe;
 }
 
 .comment_comment p {
-  margin: 0;
-  padding: 0;
+ margin: 0;
+ padding: 0;
 }
 
 .comment_line{
@@ -353,13 +356,13 @@ padding: 5px 10px;
 }
 
 .purchase_item_name{
-  line-height: 150px;
-  font-size:20px;
+ line-height: 150px;
+ font-size:20px;
 }
 
 .purchase_item_price{
-  line-height: 150px;
-  font-size:20px;
+ line-height: 150px;
+ font-size:20px;
 }
 
 // 注文完了画面
@@ -397,61 +400,61 @@ padding: 5px 10px;
 // タグ一覧画面
 .tag_title {
  position: relative;
-  margin: 10px;
-  text-align: center;
+ margin: 10px;
+ text-align: center;
 }
 
 .tag_title:before,
 .tag_title:after {
-  position: absolute;
-  z-index: 0;
-  bottom: -10px;
-  display: block;
-  content: '';
-  border: 1em solid #d90606;
+ position: absolute;
+ z-index: 0;
+ bottom: -10px;
+ display: block;
+ content: '';
+ border: 1em solid #d90606;
 }
 
 .tag_title:before {
-  left: -30px;
-  border-left-width: 15px;
-  border-left-color: transparent;
+ left: -30px;
+ border-left-width: 15px;
+ border-left-color: transparent;
 }
 
 .tag_title:after {
-  right: -30px;
-  border-right-width: 15px;
-  border-right-color: transparent;
+ right: -30px;
+ border-right-width: 15px;
+ border-right-color: transparent;
 }
 
 .tag_title span {
-  position: relative;
-  z-index: 1;
-  display: block;
-  padding: 1rem 2rem;
-  color: #fff;
-  background: #fa4141;
+ position: relative;
+ z-index: 1;
+ display: block;
+ padding: 1rem 2rem;
+ color: #fff;
+ background: #fa4141;
 }
 
 .tag_title span:before,
 .tag_title span:after {
-  position: absolute;
-  bottom: -10px;
-  display: block;
-  width: 10px;
-  height: 10px;
-  content: '';
-  border-style: solid;
-  border-color: #b70505 transparent transparent transparent;
+ position: absolute;
+ bottom: -10px;
+ display: block;
+ width: 10px;
+ height: 10px;
+ content: '';
+ border-style: solid;
+ border-color: #b70505 transparent transparent transparent;
 }
 
 .tag_title span:before {
-  left: 0;
-  border-width: 10px 0 0 10px;
+ left: 0;
+ border-width: 10px 0 0 10px;
 }
 
 .tag_title span:after {
-  right: 0;
-  border-width: 10px 10px 0 0;
+ right: 0;
+ border-width: 10px 10px 0 0;
 }
 
 .tag_name{
@@ -471,7 +474,8 @@ padding: 5px 10px;
  padding:10px;
 }
 
-// 分析データ
+// 売り上げデータ
+
 .data_photo{
  width:100px;
  height:100px;
@@ -482,7 +486,6 @@ padding: 5px 10px;
  border: 1px #C0C0C0 solid;
 }
 
-// 
 
 #search-word{
  width:300px;
