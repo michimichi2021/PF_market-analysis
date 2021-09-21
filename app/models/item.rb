@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :price, numericality: { only_integer: true,greater_than_or_equal_to:300,less_than_or_equal_to:9_999_999}
   has_one_attached :image
-  
+  validates :image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg']}
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -37,23 +37,7 @@ class Item < ApplicationRecord
   def self.search(word)
    where("name LIKE?","%#{word}%")
   end
-  
-  
-  
+
   scope :purchased,-> { where(is_active: false) } 
-
-  has_one_attached :image
-
-  validate :image_type
-
-  private
-
-  def image_type
-    if !image.blob.content_type.in?(%('image/jpeg image/png'))
-      image.purge # Rails6では、この1行は必要ない
-      errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
-    end
-  end
-
 
 end
