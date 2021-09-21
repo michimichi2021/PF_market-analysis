@@ -1,4 +1,5 @@
 class Public::InquiriesController < ApplicationController
+  
   def index
     @inquiry = Inquiry.new
   end

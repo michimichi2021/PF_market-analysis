@@ -1,5 +1,6 @@
 class Public::PurchasesController < ApplicationController
-  
+ before_action :authenticate_user!
+
   def new
     @purchase=Purchase.new
     @item=Item.find(params[:purchase][:item_id])

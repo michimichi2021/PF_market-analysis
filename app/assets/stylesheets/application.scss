@@ -65,7 +65,11 @@ footer{
 footer footer_logo{
  width: 120px;
 }
- 
+
+.error_message{
+ font-size:20px;
+ color:red;
+}
 
 // 商品に関すること
 
@@ -223,6 +227,12 @@ footer footer_logo{
 }
 
 // 商品の詳細ページ
+
+.item_table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .item_show_icon {
  margin-top:10px;

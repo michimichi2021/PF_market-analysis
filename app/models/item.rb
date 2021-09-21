@@ -5,8 +5,14 @@ class Item < ApplicationRecord
   has_many :tags,dependent: :destroy
   has_many :genres,through: :tags
   has_many :comments, dependent: :destroy
-  has_one :purchase,dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  has_one :purchase,dependent: :destroy
+  
+  validates :name, presence: true
+  validates :price, numericality: { only_integer: true,greater_than_or_equal_to:300,less_than_or_equal_to:9_999_999}
+  has_one_attached :image
+  
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -32,10 +38,7 @@ class Item < ApplicationRecord
    where("name LIKE?","%#{word}%")
   end
   
-  scope :created_today, -> { where(created_at: Time.zone.now.all_day) } 
-  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) } 
-  scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) } 
-  scope :created_last_week, -> { where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day) } 
+  
   
   scope :purchased,-> { where(is_active: false) } 
 
