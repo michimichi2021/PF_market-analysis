@@ -34,19 +34,19 @@ $(function() {
      slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1200, // 768~1023px以下のサイズに適用
+        breakpoint: 1200, // 993~1200px以下のサイズに適用
         settings: {
           slidesToShow: 3,
         },
       },
       {
-        breakpoint: 992, // 480〜767px以下のサイズに適用
+        breakpoint: 992, // 769〜992px以下のサイズに適用
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 768, // 〜479px以下のサイズに適用
+        breakpoint: 768, // 〜768px以下のサイズに適用
         settings: {
           slidesToShow: 1,
         },
