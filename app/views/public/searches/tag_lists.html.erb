@@ -16,7 +16,7 @@
         <% if i == 1 %>
           <% last_count = genre.items.count %>
           <div class='row'>
-            <h4 class='rank-tag-num text-center'>第<%= i %>位(タグ付け件数&nbsp;<%= genre.items.count %>件)&nbsp;&nbsp;
+            <h4 class='rank-tag-num text-center'>第<%= i %>位<br/><div class='tag_count'>(タグ付け件数&nbsp;<%= genre.items.count %>件)</div>
               <%=link_to searches_search_tag_path(genre_id: genre.id) do %>
                 <span class='tag_name'><%= genre.name%></span>
               <% end %>
@@ -32,7 +32,7 @@
             <!--jにiを代入して表示-->
             <% j = i %>
             <div class='row mt-4'>
-              <h5 class="rank-tag-num text-center">第<%= i %>位(タグ付け件数&nbsp;<%= genre.items.count %>件)&nbsp;&nbsp;
+              <h5 class="rank-tag-num text-center">第<%= i %>位<br/><div class='tag_count'>(タグ付け件数&nbsp;<%= genre.items.count %>件)</div>
                 <%=link_to searches_search_tag_path(genre_id: genre.id) do %>
                   <span class='tag_name'><%= genre.name%></span>
                 <% end %>

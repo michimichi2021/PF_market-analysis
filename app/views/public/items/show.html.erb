@@ -1,17 +1,17 @@
 <div class='container mb-5'>
-  <h2 class='item_show text-center'>商品の詳細ページ</h2>
+  <h2 class='mt-5 text-center'>商品の詳細ページ</h2>
   <div class='row'>
-    <div class='col-3'></div>
-    <div class='col-3'>
+    <div class='col-lg-3'></div>
+    <div class='col-lg-3 col-xs-12 text-center'>
       <% if @item.purchase.blank? %>
         <% if @item.image.attached? %>
-          <%= image_tag @item.image,class: 'item_icon' %>
+          <%= image_tag @item.image,class: 'item_show_icon' %>
         <% else %>
-          <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
+          <%= image_tag 'no_image.jpeg' ,class: 'item_show_icon' %>
         <% end %>
       <% end %>
       <% if @item.purchase.present? %>
-        <%= image_tag 'SELL (1).png' ,class: 'item_icon soldout' %>
+        <%= image_tag 'SELL (1).png' ,class: 'item_show_icon' %>
       <% end %>
       <% if user_signed_in? %>
         <div id='favorites_buttons_<%= @item.id %>'>
@@ -19,7 +19,8 @@
         </div>
       <% end %>
     </div>
-    <div class='col-6 item_explain'>
+    
+    <div class='col-lg-6 col-xs-12 mt-2 item_show_table'>
       <table>
         <tbody>
           <tr>
@@ -80,6 +81,7 @@
         <% end %>
       </div>
     </div>
+    
   
     <div class='comment_area'>
       <% if user_signed_in? %>

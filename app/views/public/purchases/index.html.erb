@@ -2,28 +2,30 @@
   <div class='row'>
     <div class='purchase_index'>
     <h2 class='text-center'>購入履歴一覧</h2>
-      <table class='table table-hover table-inverse'>
+    <div><%= paginate @purchases %></div>
+      <table class='table table-hover table-inverse text-center'>
         <thead>
           <tr>
             <th>注文日</th>
             <th>商品画像</th>
             <th>商品名</th>
             <th>商品金額</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @purchases.each do |purchase| %>
           <tr>
             <td><%= purchase.created_at.strftime('%Y/%m/%d') %></td>
-            <td><% if purchase.item.image.attached? %>
-                  <%= image_tag purchase.item.image.variant(resize:'100x100') %>
-                <% else %>
-                  <%= image_tag 'no_image.jpg' %>
-                <% end %></td>
+            <td><%= link_to item_path(purchase.item) do %>
+                  <% if purchase.item.image.attached? %>
+                    <%= image_tag purchase.item.image.variant(resize:'63x63'),class: 'purchase_index_icon' %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg',class: 'purchase_index_icon' %>
+                  <% end %>
+                <% end %>
+            </td>
             <td><%= purchase.item.name %></td>
             <td>¥<%= purchase.item.price %></td>
-            <td class='text-center'><%= link_to '商品詳細ページへ',item_path(purchase.item),class:'btn btn-success' %></td>
           </tr>  
           <% end %>
         </tbody>

@@ -1,6 +1,7 @@
-<div class='container follow_user_page text-center mb-5'>
+<div class='container mt-5 text-center mb-5 col-12'>
   <div class='row'>
   <h2>Follow Users</h2>
+  <div><%= paginate @users %></div>
   <% if @users.exists? %>
   <table>
     <thead>
@@ -15,10 +16,10 @@
       <% @users.each do |user| %>
       <tr>
         <td>
-          <div class='follow_user_icon'>
+          <div class='pt-4'>
           <%= link_to user_path(user) do %>  
             <% if user.image.attached? %>
-              <%= image_tag user.image.variant(resize:'80x80') %>
+              <%= image_tag user.image.variant(resize:'63x63'),class: 'follow_icon' %>
             <% else %>
               <%= image_tag 'no_image.jpeg' %>
             <% end %>

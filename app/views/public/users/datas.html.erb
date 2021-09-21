@@ -7,7 +7,6 @@
         <th>商品画像</th>
         <th>商品名</th>
         <th>商品金額</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -34,7 +33,6 @@
           <% end %>
         </td>
         <td>¥<%= item.price %></td>
-        <td class='text-center'><%= link_to '商品詳細ページへ',item_path(item),class:'btn btn-success' %></td>
       </tr> 
     <% end %>
     <%= paginate @purchased_items %>
@@ -42,17 +40,17 @@
   </table>
   <div class='row mt-5'>
     <h2 class='text-center'>売り上げの総個数と総合計金額</h2>
-    <table class='table table-hover table-inverse'>
+    <table class='table table-hover table-inverse text-center'>
       <thead>
         <tr>
-          <th class='text-center'>売り上げた個数</th>
-          <th class='text-center'>売上合計金額</th>
+          <th>売り上げた個数</th>
+          <th>売上合計金額</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class='text-center'><%= @items.count %>個</td>
-          <td class='text-center'>¥<%= @sum %></td>
+          <td><%= @items.count %>個</td>
+          <td>¥<%= @sum %></td>
         </tr>
       </tbody>
     </table>
@@ -60,43 +58,38 @@
   <h2 class='text-center mt-5'>期間別売り上げ個数と合計金額のグラフ</h2>
   <div class='row data_graph'> 
     <div class='row'>
-      <div class='col-6 text-center'>
-        <label class='text-user'>日別の売り上げ合計金額</label>
-        <%= column_chart @items_price_day,width: '200px', height: '200px' ,colors: ['#FF4F02']  %>
+      <div class='col-lg-6 col-md-12 mt-5 text-center'>
+        <label>日別の売り上げ合計金額</label>
+        <%= column_chart @items_price_day,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
-      <div class='col-6 text-center'>
-        <label class='text-user text-center'>日別の売り上げ個数</label>
-        <%= line_chart @items_count_day,width: '200px', height: '200px' ,colors: ['#FF4F02'] %>
-      </div>
-    </div>
-    <div class='row mt-5'>
-      <div class='col-6 text-center'>
-        <label class='text-user text-center'>週別の売り上げ合計金額</label>
-        <%= column_chart @items_price_week,width: '200px', height: '200px' ,colors: ['#FF4F02'] %>
-      </div>
-      <div class='col-6 text-center'>
-        <label class='text-user text-center'>日別の売り上げ個数</label>
-        <%= line_chart @items_count_week,width: '200px', height: '200px' ,colors: ['#FF4F02'] %>
+      <div class='col-lg-6 col-md-12 text-center mt-5'>
+        <label>日別の売り上げ個数</label>
+        <%= line_chart @items_count_day,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
     </div>
     <div class='row mt-5'>
-      <div class='col-6 text-center'>
-        <label class='text-user'>月別の売り上げ合計金額</label>
-        <%= column_chart @items_price_month,width: '200px', height: '200px' ,colors: ['#FF4F02'] %>
+      <div class='col-lg-6 col-md-12 text-center'>
+        <label class='text-center'>週別の売り上げ合計金額</label>
+        <%= column_chart @items_price_week,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
-      <div class='col-6 text-center'>
-        <label class='text-user'>月別の売り上げ個数</label>
-        <%= line_chart @items_count_month,width: '200px', height: '200px' ,colors: ['#FF4F02'] %>
+      <div class='col-lg-6 col-md-12 text-center mt-5'>
+        <label class='text-center'>週別の売り上げ個数</label>
+        <%= line_chart @items_count_week,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+      </div>
+    </div>
+    <div class='row mt-5'>
+      <div class='col-lg-6 col-md-12 text-center'>
+        <label>月別の売り上げ合計金額</label>
+        <%= column_chart @items_price_month,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+      </div>
+      <div class='col-lg-6 col-md-12 text-center mt-25'>
+        <label>月別の売り上げ個数</label>
+        <%= line_chart @items_count_month,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
     </div>
   </div>
   <h2 class='text-center mt-5'>売れた商品のジャンル割合</h2>
   <div class='row data_graph'>
-    <div class='col-6'>
-      <%= pie_chart  @item_purchase_genre_count %>
-    </div>
-    <div class='col-6'>
-      <!---->ランキング描く 
-    </div>
+    <%= pie_chart  @item_purchase_genre_count %>
   </div>
 </div> 

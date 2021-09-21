@@ -1,14 +1,14 @@
-<div class='container favorite_index mb-5'>
+<div class='container favorite_index col-12 mb-5'>
   <div class='row'>
   <h2 class='text-center'>いいね一覧</h2>
-    <table class='table table-hover table-inverse'>
+    <div class='col-1'></div>
+    <table class='table table-hover table-inverse col-10'>
       <thead>
         <tr>
           <th>商品画像</th>
           <th>商品名</th>
           <th>金額</th>
           <th>いいね数</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -32,10 +32,10 @@
           <td><%= item.name %></td>
           <td>¥<%= item.price %></td>
           <td><i class="fas fa-heart unlike-btn"></i><%= item.favorites.count %></td>
-          <td class='text-center'><%= link_to '商品詳細ページへ',item_path(item),class:'btn btn-success' %></td>
         </tr>  
       <% end %>
       </tbody>
     </table>
+    <div class='col-1'></div>
   </div>
 </div>

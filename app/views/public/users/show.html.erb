@@ -1,10 +1,10 @@
 <div class='container mt-5 mb-5'>
-  <div class='row'>
-    <div class='col-md-3 text-center'>
+  <div class='row col-md-12'>
+    <div class='col-md-4 text-center'>
       <h2>Profile</h2>
       <div class='text-center'>
         <% if @user.image.attached? %>
-          <%= image_tag @user.image.variant(resize:'250x250'),class: 'profile_icon' %>
+          <%= image_tag @user.image.variant(resize:'200x200'),class: 'profile_icon' %>
         <% else %>
           <%= image_tag 'no_image.jpeg' %>
         <% end %>
@@ -27,40 +27,43 @@
       </div>
      
       
-      <div class='row'>
+      <div class='row text-center'>
         <% if @user.id == current_user.id %> 
           <%= link_to 'プロフィールを編集する', edit_user_path(@user),class: 'btn btn-outline-secondary btn-block fas fa-user-cog' %>
-          <%= link_to image_tag('SELL.png', size: '200x200'),new_item_path, class: 'text-center image mt-2' %>
+          <%= link_to image_tag('SELL.png', size: '200x200'),new_item_path, class: 'text-center' %>
         <% end %>
       </div>
     </div>
   
-    <div class='col-md-7 offset-md-1 text-center'>
-    <h2>出品した商品一覧</h2>
-      <div class='user_item_wrap'>
+    <div class='col-md-8 text-center'>
+    
+    <h2 class='text-center mt-4 user_item-title'>出品した商品一覧</h2>
+    
+      <div class='user_item_wrap d-flex flex-wrap justify-content-center'>
         <% @items.each do |item| %>
           <div class='user_item'>
             <% if item.purchase.blank? %>
               <% if item.image.attached? %>
                 <%= link_to item_path(item) do %>
-                <%= image_tag item.image,class: 'item_icon' %>
+                <%= image_tag item.image,class: 'user_item_icon' %>
                 <% end %>
               <% else %>
                 <%= link_to item_path(item) do %>
-                <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
+                <%= image_tag 'no_image.jpeg' ,class: 'user_item_icon' %>
                 <% end %>
               <% end %>
             <% else %>
               <%= link_to item_path(item) do %>
-              <%= image_tag 'SELL (1).png' ,class: 'item_icon' %>
+              <%= image_tag 'SELL (1).png' ,class: 'user_item_icon' %>
               <% end %>
             <% end %>
             <p>¥<%= item.price %></p>
           </div>  
         <% end %>
-        <%= paginate @items %>
       </div>
+      <div class='text-center'><%= paginate @items %></div>
     </div>
   </div>
 </div>
+<div class='footer_padding'></div>
 

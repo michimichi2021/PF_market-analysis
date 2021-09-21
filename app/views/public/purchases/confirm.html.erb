@@ -1,6 +1,6 @@
 <div class='container mb-5'>
-  <div class='row'> 
-  <h2 class='text-center mt-5'>注文情報確認画面</h2>
+  <div class='row text-center'> 
+  <h2 class='mt-5'>購入情報確認画面</h2>
   <table class='table table-hover table-inverse'>
     <thead>
       <tr>
@@ -24,7 +24,7 @@
     </tbody>
   </table>
   <p>お支払い方法:&nbsp;&nbsp;<%= @purchase.payment_method %></p>
-  <p>お届け先:</br>郵便番号&nbsp;&nbsp;〒<%= @shipping_postcode %></br>住所&nbsp;&nbsp;<%= @shipping_address %></br>宛名&nbsp;&nbsp;<%= @shipping_name %></p>
+  <p>お届け先:</br>〒<%= @shipping_postcode %>&nbsp;&nbsp;<%= @shipping_address %></br>&nbsp;&nbsp;<%= @shipping_name %></p>
   <%= form_with model: @purchase, url: purchases_path, method: :post, local: true do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :item_id, value: @item.id %>
@@ -39,7 +39,6 @@
     <% end %>
     <%= f.submit '注文を確定する', class: 'btn btn-outline-success' %>
   <% end %>
-  
   </div>
 </div>
 

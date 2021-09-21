@@ -26,6 +26,8 @@
 $(function() {
    $('.new_item').slick({
       dots: true, 
+      centerMode: true,
+      centerPadding: '60px',
       slidesToShow: 4,
       slidesToScroll: 1,
       autoplay: true,

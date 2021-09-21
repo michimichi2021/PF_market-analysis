@@ -56,6 +56,16 @@ li{
 .nav-item{
  margin-right:20px; 
 }
+ 
+footer{
+ padding: 20px 0;
+}
+ 
+ 
+footer footer_logo{
+ width: 120px;
+}
+ 
 
 // 商品に関すること
 
@@ -69,13 +79,21 @@ li{
 
 .item_icon {
  margin-top:10px;
+ width:195px;
+ height:195px;
+ object-fit:cover;
+ border: 1px solid #000;  
+}
+
+// トップページの新着商品
+.top_icon {
+ margin-top:10px;
  width:260px;
  height:260px;
  object-fit:cover;
  border: 1px solid #000;  
 }
 
-// トップページの新着商品
 
 .new_item_slide{
  margin-top:50px;
@@ -90,10 +108,6 @@ li{
   color: rgb(60, 60, 60) !important;
   }
  }
-}
-
-.new_item{
- display:flex;
 }
 
 .new_item_photo{
@@ -126,11 +140,6 @@ li{
  margin-top:50px;
 }
 
-.item_index_wrap{
- display:flex;
- flex-wrap: wrap;
- justify-content: center;
-}
 
 .index_item_icon{
   position: relative;
@@ -159,17 +168,12 @@ li{
  background-color:#fff;
 }
 
-.user_item_wrap{
-  display: flex;
-  flex-wrap: wrap;
-  width: 800px;               
-  height: 400px;               
-  padding-left:10px;
-}
+
 
 .user_item {
  position: relative;
- width:260px;
+ width:250px;
+ padding: 20px 0 10px 0;
 }
 
 .user_item_price{
@@ -186,6 +190,18 @@ li{
 
 .follow_btn{
  margin-right:40px;
+}
+
+.footer_padding{
+ height:80px;
+}
+
+.user_item_icon {
+ margin-top:10px;
+ width:180px;
+ height:180px;
+ object-fit:cover;
+ border: 1px solid #000;  
 }
 
 // いいね一覧
@@ -208,6 +224,14 @@ li{
 
 // 商品の詳細ページ
 
+.item_show_icon {
+ margin-top:10px;
+ width:195px;
+ height:195px;
+ object-fit:cover;
+ border: 1px solid #000;  
+}
+
 .like-btn {
  width: 25px;
  height: 30px;
@@ -223,14 +247,6 @@ li{
  color: #e54747;
  margin-left: 20px;
  }
-
-.item_show{
- margin-top:50px;
-}
-
-.item_explain{
- margin-top:8px;
-}
 
 .item_button{
  margin-top:10px;
@@ -311,41 +327,9 @@ li{
  height:150px;
 }
 
-// 退会確認画面
-
-.unsubscribe_title{
- margin-top:100px;
-}
-
-.unsubscribe_btn{
- margin-top:20px;
-}
-
-
-// フォローしているユーザーのページ
-
-.follow_user_page{
- margin-top:50px;
-}
-
-.follow_user_icon{
- padding-top:20px;
-}
-
-// フォロワーのページ
-
-.follower_page{
- margin-top:50px;
-}
-
-.follower_user_icon{
- padding-top:20px;
-}
-
-//注文入力画面
-
-.address{
- margin-top:20px;
+// フォロー、フォロワーのページのアイコン
+.follow_icon{
+ object-fit:cover;
 }
 
 // 注文情報確認画面
@@ -357,7 +341,6 @@ li{
 
 .purchase_item_name{
  line-height: 150px;
- font-size:20px;
 }
 
 .purchase_item_price{
@@ -411,7 +394,6 @@ li{
  bottom: -10px;
  display: block;
  content: '';
- border: 1em solid #d90606;
 }
 
 .tag_title:before {
@@ -487,8 +469,108 @@ li{
 }
 
 
-#search-word{
- width:300px;
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+ 
+ .top_icon {
+ margin-top:10px;
+ width: 100%;
+ height:260px;
+ object-fit:cover;
+ border: 1px solid #000;  
+}
+
+ .item_icon {
+ margin-top:10px;
+ width:100px;
+ height:100px;
+ object-fit:cover;
+ border: 1px solid #000;  
+}
+
+
+.index_item_price{
+  position: absolute;
+  bottom: 0;/*画像の左上に配置*/
+  left: 0;
+  margin: 0; /*余計な隙間を除く*/
+  color: white;/*文字を白に*/
+  background: skyblue;/*背景色*/
+  font-size: 10px;
+  line-height: 1;/*行高は1に*/
+  padding: 5px 10px;/*文字周りの余白*/
+}
+.user_item_title{
+ align-items:center;
+}
+
+.user_item_icon{
+ margin-top:10px;
+ width:250px;
+ height:250px;
+ object-fit:cover;
+ border: 1px solid #000;  
+}
+
+
+.data_graph{
+ border: 0px none;
+}
+
+.purchase_icon{
+ width:100px;
+ height:100px;
+ object-fit:cover;
+}
+
+.purchase_item_name{
+ font-size:15px;
+}
+
+.purchase_index_icon{
+ object-fit:cover;
+}
+
+.search_tag_title{
+ font-size:10px;
+}
+
+.tag_title{
+ font-size:10px;
+}
+
+.fa-crown{
+ display:none;
+}
+
+.tag_count{
+ font-size:15px;
+}
+
+.search_item_price{
+ position: absolute;
+ bottom: 64px;/*画像の左上に配置*/
+ left: 0;
+ margin: 0; /*余計な隙間を除く*/
+ color: white;/*文字を白に*/
+ background: skyblue;/*背景色*/
+ font-size: 10px;
+ line-height: 1;/*行高は1に*/
+ padding: 5px 10px;/*文字周りの余白*/
+}
+
+
+
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+ 
+.search_title{
+  font-size:20px;
+}
+
+ 
 }
 
 
