@@ -1,29 +1,29 @@
 <div class='container'>
-  <div class='row'>
+  <div class='row text-center'>
     
   <div class='mt-5'>
-    <span class='fs-3 offset-md-1'>ログイン</span>
+    <span class='fs-3'>ログイン</span>
   </div>  
 
 
   <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
-    <div class='row mt-3'>
-      <%= f.label :メールアドレス, class:'offset-1 col-2' %>
-      <%= f.email_field :email, class:'col-3', autofocus: true, placeholder:'sample.example.com', autocomplete: 'email' %>
+    <div class='mt-3'>
+      <%= f.label :メールアドレス, class:'col-6' %>
+      <%= f.email_field :email, class:'col-6', autofocus: true, placeholder:'sample.example.com', autocomplete: 'email' %>
     </div>
   
-    <div class='row mt-3'>
-    <%= f.label :パスワード（6文字以上）,class: 'offset-1 col-2' %>
-    <%= f.password_field :password, autocomplete: 'new-password',class:'col-2' %>
+    <div class='mt-3'>
+    <div>パスワード</br>（6文字以上)</div>
+    <%= f.password_field :password, autocomplete: 'new-password',class:'col-6' %>
     </div>
     
-    <div class='row mt-3'>
-      <%= f.label :パスワード（確認用）, class:'offset-1 col-2' %>
-      <%= f.password_field :password_confirmation, class:'col-2', autocomplete: 'new-password' %>
+    <div class='mt-3'>
+    <div>パスワード</br>（確認用)</div>
+    <%= f.password_field :password_confirmation, class:'col-6', autocomplete: 'new-password' %>
     </div>
     
     <div class='actions'>
-      <%= f.submit 'ログインする',class: 'tn btn-primary offset-3 mt-4' %>
+      <%= f.submit 'ログインする',class: 'tn btn-primary mt-4' %>
     </div>
   <% end %>
   

@@ -1,7 +1,7 @@
 class Public::SearchesController < ApplicationController
  def search_tag
     @genre=Genre.find(params[:genre_id])
-    @items=@genre.items.page(params[:page]).per(8)
+    @items=@genre.items.page(params[:page]).per(6)
  end
   
  def tag_lists
@@ -11,7 +11,7 @@ class Public::SearchesController < ApplicationController
 
  def search
     @word = params[:search_word]
-    @items = Item.search(@word).page(params[:page]).per(8)
+    @items = Item.search(@word).page(params[:page]).per(6)
  end
   
 end

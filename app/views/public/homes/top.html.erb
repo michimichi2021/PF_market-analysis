@@ -2,18 +2,18 @@
   <div class='row'>
     <div class='new_item_slide'>  
     <h2 class='text-center'>新着商品</h2>
-      <div class='new_item'>
+      <div class='new_item d-flex responsive'>
         <% @items_new.each do |item| %>
           <div class='new_item_icon'>
           <%= link_to item_path(item) do %>   
             <% if item.purchase.blank? %>
         	    <% if item.image.attached? %>
-                <%= image_tag item.image,class: 'item_icon'   %>
+                <%= image_tag item.image,class: 'top_icon'   %>
               <% else %>
-                <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
+                <%= image_tag 'no_image.jpeg' ,class: 'top_icon' %>
               <% end %>
             <% else %>
-            <%= image_tag 'SELL (1).png' ,class: 'item_icon' %>
+            <%= image_tag 'SELL (1).png' ,class: 'top_icon' %>
             <% end %>
           <% end %>
           <p class='new_item_price'>¥<%= item.price %></p>
@@ -25,7 +25,7 @@
     
     <div class='item_index'>
       <h2 class='text-center'>商品一覧</h2>  
-      <div class='item_index_wrap'>
+      <div class='item_index_wrap d-flex flex-wrap justify-content-center'>
         <% @items.each do |item| %>
           <%= link_to item_path(item) do %> 
           <div class='index_item_icon'>
@@ -43,6 +43,7 @@
           <% end %>
         <% end %>
       </div>
+      <div><%= paginate @items %></div>
     </div>
   </div>
 </div>

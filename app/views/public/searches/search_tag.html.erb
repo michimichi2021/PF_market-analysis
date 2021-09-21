@@ -18,10 +18,9 @@
       <p class='search_item_price'>¥<%= item.price %></p>
       <p><%= item.name %><br/>
       <%= item.genres.map(&:name).join(', ') %></p>
-      
       </div>
     <% end %>
-    <%= paginate @items %>
     </div>
+    <div><%= paginate @items %></div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class='container mt-5 mb-5'>
   <div class='row'>
-  <h2 class='text-center'>商品名'<%= @word %>'検索結果一覧(全<%= @items.count %>件)</h2>  
+  <h2 class='text-center search_title'>商品名'<%= @word %>'検索結果一覧(全<%= @items.count %>件)</h2>  
     <div class='item_search_wrap'>
     <% @items.each do |item| %>
       <div class='search_item_icon'>
@@ -18,10 +18,9 @@
       <p class='search_item_price'>¥<%= item.price %></p>
       <p><%= item.name %><br/>
       <%= item.genres.map(&:name).join(', ') %></p>
-     
       </div>
     <% end %>
-    <%= paginate @items %>
     </div>
+    <div class='row text-center'><%= paginate @items %></div>
   </div>
 </div>
