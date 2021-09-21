@@ -11,12 +11,12 @@
       </button>
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav text-center">
       <li class="nav-item active">
       <%= link_to 'お問い合わせ',inquiries_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
       </li>
     <% if user_signed_in? %>
-      <li class="nav-item active">
+      <li class="nav-item">
       <%= link_to 'タグ一覧',searches_tag_lists_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
       </li>
       <li class="nav-item">

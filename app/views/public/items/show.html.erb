@@ -1,8 +1,7 @@
 <div class='container mb-5'>
   <h2 class='mt-5 text-center'>商品の詳細ページ</h2>
-  <div class='row'>
-    <div class='col-lg-3'></div>
-    <div class='col-lg-3 col-xs-12 text-center'>
+  <div class='row text-center'>
+    <div>
       <% if @item.purchase.blank? %>
         <% if @item.image.attached? %>
           <%= image_tag @item.image,class: 'item_show_icon' %>
@@ -19,9 +18,8 @@
         </div>
       <% end %>
     </div>
-    
-    <div class='col-lg-6 col-xs-12 mt-2 item_show_table'>
-      <table>
+    <div>
+      <table class='item_table'>
         <tbody>
           <tr>
             <td style='background-color:#EEEEEE;'>商品名</td>
@@ -59,6 +57,7 @@
           </tr>
         </tbody>
       </table>
+      
       <div class='field'>
         <% if current_user != @item.user%>
          <p><%= link_to '出品者詳細ページ',user_path(@user) %></p>

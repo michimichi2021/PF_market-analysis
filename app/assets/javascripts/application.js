@@ -24,14 +24,34 @@
 
 
 $(function() {
-   $('.new_item').slick({
-      dots: true, 
-      centerMode: true,
-      centerPadding: '60px',
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-    });
+    $(".new_item").slick({
+    slidesToShow: 4,
+     autoplay: true,
+     autoplaySpeed: 3000,
+     dots: true, 
+     centerMode: true,
+     centerPadding: '60px',
+     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1200, // 768~1023px以下のサイズに適用
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 992, // 480〜767px以下のサイズに適用
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768, // 〜479px以下のサイズに適用
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  });
 });
 
