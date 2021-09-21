@@ -1,6 +1,14 @@
 <div class='container mb-5'>
+  <% if @purchase.errors.any? %>
+  <div class='error_message mt-5'>
+    <%= @purchase.errors.count %>件のエラーが発生しました<br/>
+      <% @purchase.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+  </div>
   <div class='row text-center'> 
-    <div class='mt-5'>
+    <div class='mt-4'>
       <span class='fs-3'>購入情報入力画面</span>
     </div>
     <div class='mt-4'>
@@ -38,7 +46,7 @@
             </div>
           </div>
           <%= f.hidden_field :item_id, value: @item.id %>
-          <%= f.submit '確認画面に進む', class: 'btn btn-sm btn-success mt-4' %>
+          <%= f.submit '確認画面に進む', class: 'btn btn-sm btn-success mt-4 mb-5' %>
         </div>
       <% end %>
     </div>

@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+before_action :authenticate_admin!  
   
   def index
     @genres=Genre.page(params[:page]).per(8).reverse_order
@@ -6,6 +7,7 @@ class Admin::GenresController < ApplicationController
   end
   
   def create
+    @genres=Genre.page(params[:page]).per(8).reverse_order
     @genre=Genre.new(genre_params)
     if @genre.save
       redirect_to  admin_genres_path

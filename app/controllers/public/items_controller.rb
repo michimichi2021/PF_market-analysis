@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_user!,except: [:show]
   
   def new
     @item=Item.new
@@ -7,7 +8,7 @@ class Public::ItemsController < ApplicationController
   def create
     @item = current_user.items.new(item_params)           
     genre_list = params[:item][:genre_ids].split(',')  
-    if @item.save                                         
+    if @item.save(item_params)                               
       @item.save_genre(genre_list) 
        redirect_to item_path(@item) 
     else

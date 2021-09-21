@@ -15,7 +15,18 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower
   has_many :following_user, through: :followers, source: :followed
   
-  
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
+  validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
+  validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}  
+  validates :address, presence: true 
+  validates :telephone_number, numericality: { only_integer: true}
+  validates :password,:password_confirmation,length:{minimum:6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/}
+  before_save { self.email = email.downcase }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, {presence: true,format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
+
   def follow(user_id)
    followers.create(followed_id: user_id)
   end

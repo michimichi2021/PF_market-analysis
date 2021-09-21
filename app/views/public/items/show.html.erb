@@ -1,7 +1,7 @@
 <div class='container mb-5'>
   <h2 class='mt-5 text-center'>商品の詳細ページ</h2>
   <div class='row text-center'>
-    <div>
+    <div class='mb-2 mt-3'>
       <% if @item.purchase.blank? %>
         <% if @item.image.attached? %>
           <%= image_tag @item.image,class: 'item_show_icon' %>

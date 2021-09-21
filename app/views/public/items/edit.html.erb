@@ -1,6 +1,13 @@
 <div class='container mb-5'>
+  <% if @item.errors.any? %>
+  <div class='error_message mt-5 text-center'>
+    <%= @item.errors.count %>件のエラーが発生しました<br/>
+      <% @item.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    <% end %>
+  </div>
   <div class='row text-center'> 
-  
   <div class='mt-5'>
     <span class='fs-3'>商品情報編集画面</span>
   </div>
