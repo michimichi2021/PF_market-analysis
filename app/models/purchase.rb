@@ -7,7 +7,7 @@ class Purchase < ApplicationRecord
   belongs_to :user
   belongs_to :item
   
-  validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/} 
+  validates :postal_code, format: {with: /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}$|^\d{5}$|^\d{7}\z/}  
   validates :address, presence: true 
   validates :name, presence: true
 end
