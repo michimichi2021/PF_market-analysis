@@ -18,32 +18,31 @@
           <% end %>
           <p class='new_item_price'>¥<%= item.price %></p>
           </div>
-        <% item.created_at.since(7.day) %>    
         <% end %>
       </div>
     </div>
     
-    <div class='item_index'>
-      <h2 class='text-center'>商品一覧</h2>  
+    <div class='mt-5 text-center'>
+      <h2>商品一覧</h2>  
+      <div><%= paginate @items %></div>
       <div class='item_index_wrap d-flex flex-wrap justify-content-center'>
         <% @items.each do |item| %>
           <%= link_to item_path(item) do %> 
           <div class='index_item_icon'>
             <% if item.purchase.blank? %>
           	    <% if item.image.attached? %>
-                  <%= image_tag item.image,class: 'item_icon'   %>
+                  <%= image_tag item.image,class: 'item_icon mt-1'   %>
                 <% else %>
-                  <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
+                  <%= image_tag 'no_image.jpeg' ,class: 'item_icon mt-1' %>
                 <% end %>
             <% else %>
-            <%= image_tag 'SELL (1).png' ,class: 'item_icon' %>
+            <%= image_tag 'SELL (1).png' ,class: 'item_icon mt-1' %>
             <% end %>
             <p class='index_item_price'>¥<%= item.price %></p>
           </div>
           <% end %>
         <% end %>
       </div>
-      <div><%= paginate @items %></div>
     </div>
   </div>
 </div>

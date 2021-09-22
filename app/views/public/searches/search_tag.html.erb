@@ -1,7 +1,7 @@
 <div class='container mt-5 mb-5'>
   <div class='row'>
   <h2 class='text-center'>タグが<%=@genre.name%>の投稿一覧</h2>  
-    <div class='item_search_wrap'>
+    <div class='d-flex flex-wrap justify-content-center'>
     <% @items.each do |item| %>
       <div class='search_item_icon'>
       <%= link_to item_path(item) do %> 
@@ -16,8 +16,7 @@
         <% end %>
       <% end %>
       <p class='search_item_price'>¥<%= item.price %></p>
-      <p><%= item.name %><br/>
-      <%= item.genres.map(&:name).join(', ') %></p>
+     
       </div>
     <% end %>
     </div>
