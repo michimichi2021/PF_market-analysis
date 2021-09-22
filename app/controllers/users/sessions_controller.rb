@@ -2,7 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-    before_action :reject_user, only: [:create]
+  before_action :reject_user, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -22,14 +22,14 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def reject_user
-    @user=User.find_by(email: params[:user][:email].downcase)
+    @user = User.find_by(email: params[:user][:email].downcase)
     if @user
       if @user.valid_password?(params[:user][:password]) && @user.is_deleted == true
-        flash[:alert]="このアカウントは退会しました"
+        flash[:alert] = "このアカウントは退会しました"
         redirect_to new_user_session_path
       end
     else
-      flash[:alert]="必要事項をご入力ください"
+      flash[:alert] = "必要事項をご入力ください"
     end
   end
 
