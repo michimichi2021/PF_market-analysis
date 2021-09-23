@@ -28,6 +28,7 @@ class User < ApplicationRecord
   validates :email, { presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } }
   has_one_attached :image
   validates :image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
+  
 
   def follow(user_id)
     followers.create(followed_id: user_id)
