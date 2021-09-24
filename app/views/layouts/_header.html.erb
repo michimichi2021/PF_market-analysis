@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-xl navbar-light bg-white shadow-sm">
+    <%= link_to image_tag("パンプキン (1).png", size: "80x80"), root_path, class: "navbar-brand col-2" %>
+      <%= form_tag(searches_search_path,method: :get) do %>
+        <%= text_field(@search_content, :search_word) %>
+        <input type="submit" value="&#xf002" class="fas header-search btn btn-sm btn-danger">
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav text-center">
+      <li class="nav-item active">
+      <%= link_to 'お問い合わせ',inquiries_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+    <% if user_signed_in? %>
+      <li class="nav-item">
+      <%= link_to 'タグ一覧',searches_tag_lists_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+      <%=link_to"お気に入り品",favorites_user_path(id: current_user),class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+      <%= link_to '売り上げデータ',datas_user_path(id: current_user),class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+      <%= link_to '購入履歴',purchases_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+      <%= link_to 'マイページ',user_path(id: current_user),class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'ログアウト',destroy_user_session_path,method: :delete,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+    <% elsif admin_signed_in? %>
+      <li class="nav-item">
+        <%= link_to '会員一覧',admin_users_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'タグ一覧',admin_genres_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to 'タグ一覧',searches_tag_lists_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+    　</li>
+      <li class="nav-item">
+        <%= link_to '新規登録',new_user_registration_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'ログイン',new_user_session_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</nav>

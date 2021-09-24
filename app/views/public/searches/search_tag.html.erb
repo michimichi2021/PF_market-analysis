@@ -1,0 +1,25 @@
+<div class='container mt-5 mb-5'>
+  <div class='row'>
+  <h2 class='text-center'>タグが<%=@genre.name%>の投稿一覧</h2>  
+    <div class='d-flex flex-wrap justify-content-center'>
+    <% @items.each do |item| %>
+      <div class='search_item_icon'>
+      <%= link_to item_path(item) do %> 
+        <% if item.purchase.blank? %>
+        	<% if item.image.attached? %>
+          <%= image_tag item.image,class: 'item_icon' %>
+          <% else %>
+          <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'SELL (1).png' ,class: 'item_icon soldout' %>
+        <% end %>
+      <% end %>
+      <p class='search_item_price'>¥<%= item.price %></p>
+     
+      </div>
+    <% end %>
+    </div>
+    <div><%= paginate @items %></div>
+  </div>
+</div>

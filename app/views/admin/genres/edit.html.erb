@@ -1,0 +1,22 @@
+<div class='container px-5 px-sm-0 mb-5'>
+  <div class='row mt-5 text-center'>
+    <h2>タグ編集編集画面</h2>
+    <%= form_with model:@genre,url: admin_genre_path(@genre),method: :patch,local:true do |f| %>
+    <% if @genre.errors.any? %>
+    <div class='error_message mt-5'>
+      <%= @genre.errors.count %>件のエラーが発生しました<br/>
+        <% @genre.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class='form-group mt-4 text-center'>
+      <%= f.label :タグ名 %>
+      <%= f.text_field :name %>
+    </div> 
+    <div class='form-group mt-5 text-center' >
+      <%= f.submit 'タグを編集する', class: 'btn btn-success' %>
+    </div>
+    <% end %>
+  </div>
+</div>

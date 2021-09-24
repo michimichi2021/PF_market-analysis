@@ -1,0 +1,54 @@
+<div class='container mb-5'>
+  <div class='row'>
+    <div class='col-lg-6 col-md-12 mt-3 row'>
+      <div class='col-12 mt-5'>
+        <h2><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h2>
+      </div>
+  
+      <table>
+        <tbody>
+          <tr class='row lh-lg text-center'>
+           <td class='col-4'>会員ID</td>
+           <td class='col-8'><%= @user.id %></td>
+          </tr>
+          <tr class='row lh-lg text-center'>
+            <td class='col-4'>氏名</td>
+            <td class='col-8'><%= @user.last_name %><%= @user.first_name %></td>
+          </tr>
+          <tr class='row lh-lg text-center'>
+            <td class='col-4'>フリガナ</td>
+            <td class='col-8'><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+          </tr>
+          <tr class='row lh-lg text-center'>
+            <td class='col-4'>郵便番号</td>
+            <td class='col-8'><%= @user.postal_code %></td>
+          </tr>
+          <tr class='row lh-lg text-center'>
+            <td class='col-4'>住所</td>
+            <td class='col-8'><%= @user.address %></td>
+          </tr>
+          <tr class='row lh-lg text-center'>
+            <td class='col-4'>電話番号</td>
+            <td class='col-8'><%= @user.telephone_number %></td>
+          </tr>
+          <tr class='row lh-lg text-center'>
+            <td class='col-4'>メールアドレス</td>
+            <td class='col-8'><%= @user.email %></td>
+          </tr>
+          <tr class='row lh-lg text-center'>
+            <td class='col-4'>会員ステータス</td>
+            <% if @user.is_deleted == true%>
+            <td class='col-8 fw-bold' style='color: gray'>退会</td>
+            <% else %>
+            <td class='col-8 fw-bold' style='color: green'>有効</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div class='row mt-3 col-12'>
+        <%= link_to ' 会員情報を編集する ', edit_admin_user_path,class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+</div>
+

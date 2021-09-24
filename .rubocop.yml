@@ -1,0 +1,21 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+  
+LineLength:
+  Max: 205
+  
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+#ここにはrubocopでコード解析したくないファイルやフォルダを指定します
+AllCops:
+  Exclude:
+  - 'db/**/*'
+  - 'bin/*'
+  - 'config/environments/*'
+  - 'config/application.rb'
+  - 'config/initializers/*'
+  - 'config/spring.rb'
+  - 'lib/tasks/*'
+  - 'vendor/**/*'
+  - 'path/ruby'

@@ -1,0 +1,29 @@
+<div class='container mt-3 mb-5'>
+  <div class='row text-center'>
+    <div class='mt-5'>
+      <span class='fs-3'>お問い合わせ</span>
+    </div>
+    <%= form_with model:@inquiry,url:inquiries_thanks_path,method: :post,local: true do |f| %>
+    <div class='mt-4'>
+      <div>名前</div>
+      <%= f.hidden_field :name %>
+      <%= @inquiry.name %>  
+    </div>
+    <div class='mt-5'>
+      <div>メールアドレス</div>
+      <%= f.hidden_field :email %>
+      <%= @inquiry.email %>
+    </div>    
+    <div class='mt-5'>
+      <div>お問い合わせ内容</div>
+      <%= f.hidden_field :message %>
+      <%= simple_format(@inquiry.message) %>
+    </div>     
+    <div class='text-center'>
+    <%= f.submit '送信', class:'btn btn-primary mt-3' %>
+    </div>
+    <% end %>
+    </div>
+    <div class-'col-2'></div>
+  </div>
+</div>

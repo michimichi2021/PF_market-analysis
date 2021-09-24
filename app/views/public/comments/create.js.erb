@@ -1,0 +1,4 @@
+$('#count_<%= @item.id %>').html('<%= j(render partial: 'public/comments/comment.count', locals: {item: @item}) %>');
+$('#comment_create').html('<%= j(render partial: 'public/comments/comment.index', locals: { comments: @comments}) %>');
+$('#comment_form').html('<%= j(render partial: 'public/comments/comment.form', locals: { comment: @comment, item: @item }) %>');
+$('textarea').val('');
