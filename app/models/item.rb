@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_one :purchase, dependent: :destroy
 
   validates :name, presence: true
-  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 1_000_000 }
   has_one_attached :image
   validates :image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
 

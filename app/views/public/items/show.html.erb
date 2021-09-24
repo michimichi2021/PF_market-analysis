@@ -88,7 +88,7 @@
         <div id='count_<%= @item.id %>' >
           <%= render 'public/comments/comment.count', item: @item %>
         </div>
-        <div class='comment_line'>
+        <div class='comment_line mb-4'>
           <div id='comment_create'>
             <%= render partial: 'public/comments/comment.index', locals: { comments: @comments } %>
           </div>

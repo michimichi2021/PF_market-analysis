@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :items, dependent: :destroy
 
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -28,7 +27,6 @@ class User < ApplicationRecord
   validates :email, { presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } }
   has_one_attached :image
   validates :image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
-  
 
   def follow(user_id)
     followers.create(followed_id: user_id)
