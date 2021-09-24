@@ -12,27 +12,27 @@ RSpec.describe 'purchaseモデルのテスト', type: :model do
     it "nameが空欄でないこと" do
       @purchase.name = ''
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include "Name can't be blank"
+      expect(@purchase.errors.full_messages).to include "宛名を入力してください"
     end
     it "addressが空欄でないこと" do
       @purchase.address = ''
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include "Address can't be blank"
+      expect(@purchase.errors.full_messages).to include "住所を入力してください"
     end
     it "postal_codeが空欄でないこと" do
       @purchase.postal_code = ''
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include "Postal code is invalid"
+      expect(@purchase.errors.full_messages).to include "郵便番号は不正な値です"
     end
     it "postal_codeが7文字未満であれば無効な状態であること" do
       @purchase.postal_code = "a" * 6
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include "Postal code is invalid"
+      expect(@purchase.errors.full_messages).to include "郵便番号は不正な値です"
     end
     it "postal_codeが7文字を超えると無効な状態であること" do
       @purchase.postal_code = "a" * 8
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include "Postal code is invalid"
+      expect(@purchase.errors.full_messages).to include "郵便番号は不正な値です"
     end
   end
 

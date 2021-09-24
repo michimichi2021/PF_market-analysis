@@ -4,6 +4,10 @@
   <div class='mt-5'>
     <span class='fs-3'>ログイン</span>
   </div>
+  <div class='login-flash-message'>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+  </div>
 
   　<%= form_with model: @user, url: user_session_path, local: true do |f| %>
     <div class='mt-3'>

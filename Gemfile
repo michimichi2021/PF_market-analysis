@@ -88,3 +88,5 @@ group :production do
 end
 
 gem 'activestorage-validator'
+
+gem 'rails-i18n'
