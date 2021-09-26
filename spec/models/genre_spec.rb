@@ -12,7 +12,7 @@ RSpec.describe 'genreモデルのテスト', type: :model do
     it "nameが空欄でないこと" do
       @genre.name = ''
       @genre.valid?
-      expect(@genre.errors.full_messages).to include "Name can't be blank"
+      expect(@genre.errors.full_messages).to include "タグ名を入力してください"
     end
     it "nameが一意である" do
       Genre.create(

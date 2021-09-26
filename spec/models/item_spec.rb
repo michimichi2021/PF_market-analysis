@@ -13,17 +13,17 @@ RSpec.describe 'itemモデルのテスト', type: :model do
     it "nameが空欄でないこと" do
       @item.name = ''
       @item.valid?
-      expect(@item.errors.full_messages).to include "Name can't be blank"
+      expect(@item.errors.full_messages).to include "商品名を入力してください"
     end
     it "priceが空欄でないこと" do
       @item.price = ''
       @item.valid?
-      expect(@item.errors.full_messages).to include "Price is not a number"
+      expect(@item.errors.full_messages).to include "商品金額は数値で入力してください"
     end
     it "priceが299円以下であったら商品を出品できない" do
       @item.price = '299'
       @item.valid?
-      expect(@item.errors.full_messages).to include "Price must be greater than or equal to 300"
+      expect(@item.errors.full_messages).to include "商品金額は300以上の値にしてください"
     end
     it "priceが300円ちょうどで商品を出品できる" do
       @item.price = '300'
@@ -38,7 +38,7 @@ RSpec.describe 'itemモデルのテスト', type: :model do
     it "priceが1000000円より高ければ商品を出品できない" do
       @item.price = '1000001'
       @item.valid?
-      expect(@item.errors.full_messages).to include "Price must be less than or equal to 1000000"
+      expect(@item.errors.full_messages).to include "商品金額は1000000以下の値にしてください"
     end
   end
 

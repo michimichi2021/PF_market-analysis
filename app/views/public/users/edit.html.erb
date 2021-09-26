@@ -1,12 +1,12 @@
 <div class='container mb-5 text-center'>
  <% if @user.errors.any? %>
-<div class='error_message mt-5'>
+ <div class='error_message mt-5'>
   <%= @user.errors.count %>件のエラーが発生しました<br/>
     <% @user.errors.full_messages.each do |message| %>
       <div><%= message %></div>
     <% end %>
   <% end %>
-</div>
+ </div>
   <div class='row text-center'> 
   
   <div class='mt-5'>
@@ -48,14 +48,15 @@
     </div>
     
     <div class='mt-3'>
-      <div>自己紹介文</div>
-      <%= f.text_field :profile,rows:'10',placeholder:'自己紹介文', autofocus: true,class:'col-md-6 col-lg-4' %>
-    </div>
-    
-    <div class='mt-3'>
       <div>プロフィール画像</div>
       <%= f.file_field :image ,class:' text-center'%>
     </div>
+    
+    <div class='mt-3'>
+      <div>プロフィール</div>
+      <%= f.text_area :profile,rows:'5',placeholder:'プロフィール', autofocus: true,class:'col-md-6 col-lg-4' %>
+    </div>
+    
   
     <div class='actions'>
       <%= f.submit '会員情報を変更する',class: 'tn btn-primary mt-4' %>

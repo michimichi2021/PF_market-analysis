@@ -12,12 +12,12 @@ RSpec.describe 'inquiryモデルのテスト', type: :model do
     it "nameが空欄でないこと" do
       @inquiry.name = ''
       @inquiry.valid?
-      expect(@inquiry.errors.full_messages).to include "Name 名前を入力してください"
+      expect(@inquiry.errors.full_messages).to include "Name名前を入力してください"
     end
     it "emailが空欄でないこと" do
       @inquiry.email = ''
       @inquiry.valid?
-      expect(@inquiry.errors.full_messages).to include "Email メールアドレスを入力してください"
+      expect(@inquiry.errors.full_messages).to include "Emailメールアドレスを入力してください"
     end
   end
 end

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-white shadow-sm">
-    <%= link_to image_tag("パンプキン (1).png", size: "80x80"), root_path, class: "navbar-brand col-2" %>
+    <%= link_to image_tag("ロゴ.png", size: "80x80"), root_path, class: "navbar-brand col-2 logo" %>
       <%= form_tag(searches_search_path,method: :get) do %>
         <%= text_field(@search_content, :search_word) %>
         <input type="submit" value="&#xf002" class="fas header-search btn btn-sm btn-danger">
@@ -10,7 +10,7 @@
       </button>
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav text-center">
+    <ul class="navbar-nav">
       <li class="nav-item active">
       <%= link_to 'お問い合わせ',inquiries_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
       </li>
