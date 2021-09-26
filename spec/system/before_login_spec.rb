@@ -93,6 +93,10 @@ describe '会員ログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/'
       end
+      it 'ロゴリンクを押したらトップページに戻る' do
+        page.first(".logo").click
+        expect(current_path).to eq '/'
+      end
       it 'お問い合わせボタンのリンクが表示される' do
         expect(page).to have_link 'お問い合わせ', href: '/inquiries'
       end
@@ -243,6 +247,10 @@ describe '会員ログイン前のテスト' do
       click_button 'ログインする'
     end
     context '表示内容のリンク先が正しいか' do
+      it 'ロゴリンクを押したらトップページに戻る' do
+        page.first(".logo").click
+        expect(current_path).to eq '/'
+      end
       it 'お問い合わせボタンのリンクが表示される' do
         expect(page).to have_link 'お問い合わせ', href: '/inquiries'
       end
