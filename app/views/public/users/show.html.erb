@@ -1,18 +1,19 @@
 <div class='container mt-5 mb-5'>
   <div class='row col-md-12'>
-    <div class='col-md-4 text-center'>
-      <h2>Profile</h2>
+    <div class='col-md-4 text-center mt-5'>
       <div class='text-center'>
+       
         <% if @user.image.attached? %>
-          <%= image_tag @user.image.variant(resize:'200x200'),class: 'profile_icon' %>
+          <%= image_tag @user.image.variant(resize:'200x200'),class: 'profile_icon text-center' %>
         <% else %>
-          <%= image_tag 'no_image.jpeg' %>
+          <%= image_tag 'no_image.jpeg',class: 'profile_icon' %>
         <% end %>
-        <p>name:&nbsp;&nbsp;<%= @user.name %></p>
+        <p>名前:&nbsp;&nbsp;<%= @user.name %></p>
+      
       </div>
    
       <div class='follow_link'>
-      <div>フォロー中:<%= link_to follows_user_path(@user) do %><%= @user.following_user.count %><% end %>&nbsp;&nbsp;フォロワー:<%= link_to followers_user_path(@user) do %><%= @user.follower_user.count %> <% end %></div>
+      <div>フォロー:<%= link_to follows_user_path(@user) do %><%= @user.following_user.count %><% end %>&nbsp;&nbsp;フォロワー:<%= link_to followers_user_path(@user) do %><%= @user.follower_user.count %> <% end %></div>
         <div class='follow_btn'>
         <% if current_user != @user %>
         　<% if current_user.following?(@user) %>
@@ -25,22 +26,27 @@
       </div>
       
       <div class='row text-center'>
+        <div class='col-1'></div>
+        <div class='col-10'>
         <% if @user.id == current_user.id %> 
           <%= link_to 'プロフィールを編集する', edit_user_path(@user),class: 'btn btn-outline-secondary btn-block fas fa-user-cog' %>
-          <span class ='mt-2'>プロフィール</span>
+          <div class ='mt-2'>プロフィール</div>
           <div class='profile mb-2'>
             <p class='profile_text'><%= @user.profile %></p>
           </div>
-          <%= link_to image_tag('SELL.png', size: '200x200'),new_item_path, class: 'text-center' %>
+          <%= link_to image_tag('SELL.png', size: '170x170'),new_item_path %>
         <% end %>
+        </div>
+        <div class='col-1'></div>
       </div>
     </div>
-  
+    
+    
     <div class='col-md-8 text-center'>
     
-    <h2 class='text-center mt-2 user_item-title'>出品した商品一覧</h2>
-    
-      <div class='user_item_wrap d-flex flex-wrap justify-content-center'>
+    <h2 class='text-center mt-2 user_item-title'>出品した商品一覧(全<%= @items.count %>件)</h2>
+    <div class='user_item_index'>
+      <div class='user_item_wrap d-flex flex-wrap justify-content-center m-2'>
         <% @items.each do |item| %>
           <div class='user_item'>
             <% if item.purchase.blank? %>
@@ -62,7 +68,7 @@
           </div>  
         <% end %>
       </div>
-      <div class='text-center'><%= paginate @items %></div>
+      </div>
     </div>
   </div>
 </div>

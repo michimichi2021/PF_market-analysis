@@ -1,7 +1,7 @@
 <div class='container mt-5 mb-5'>
   <div class='row'>
-  <h2 class='text-center'>売り上げ商品一覧</h2>
-  <table class='table table-hover table-inverse'>
+  <h2 class='text-center data_graph_title'>売り上げ商品一覧</h2>
+  <table class='table table-hover table-inverse data_table'>
     <thead>
       <tr>
         <th>商品画像</th>
@@ -14,9 +14,9 @@
       <tr>
         <td>
           <% if user_signed_in? && item.purchase.blank? %>
-            <%= link_to item_path(item) do %>   
+            <%= link_to item_path(item) do %>
               <% if item.image.attached? %>
-               <%= image_tag @item.image,class: 'data_photo' %>
+               <%= image_tag item.image,class: 'data_photo' %>
               <% else %>
                <%= image_tag 'no_image.jpeg' ,class: 'data_photo' %>
               <% end %>
@@ -33,14 +33,14 @@
           <% end %>
         </td>
         <td>¥<%= item.price %></td>
-      </tr> 
+      </tr>
     <% end %>
     <%= paginate @purchased_items %>
     </tbody>
   </table>
   <div class='row mt-5'>
-    <h2 class='text-center'>売り上げの総個数と総合計金額</h2>
-    <table class='table table-hover table-inverse text-center'>
+    <h2 class='text-center data_graph_title'>売り上げの総個数と総合計金額</h2>
+    <table class='table table-hover table-inverse text-center data_table'>
       <thead>
         <tr>
           <th>売り上げた個数</th>
@@ -55,36 +55,32 @@
       </tbody>
     </table>
   </div>
-  <h2 class='text-center mt-5'>期間別売り上げ個数と合計金額のグラフ</h2>
-  <div class='row data_graph'> 
-    <div class='row'>
-      <div class='col-lg-6 col-md-12 mt-5 text-center'>
+  <h2 class='text-center mt-5 data_graph_title'>期間別売り上げ個数と合計金額のグラフ</h2>
+  <div class='data_graph'>
+    <div class="chart_table">
+      <div class='text-center graph'>
         <label>日別の売り上げ合計金額</label>
-        <%= column_chart @items_price_day,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+        <%= column_chart @items_price_day,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
-      <div class='col-lg-6 col-md-12 text-center mt-5'>
+      <div class='text-center graph'>
         <label>日別の売り上げ個数</label>
-        <%= line_chart @items_count_day,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+        <%= line_chart @items_count_day,width: '300px', height: '300px' ,colors: ['#FF4F02']  %>
       </div>
-    </div>
-    <div class='row mt-5'>
-      <div class='col-lg-6 col-md-12 text-center'>
-        <label class='text-center'>週別の売り上げ合計金額</label>
-        <%= column_chart @items_price_week,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+      <div class='text-center graph'>
+        <label>週別の売り上げ合計金額</label>
+        <%= column_chart @items_price_week,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
-      <div class='col-lg-6 col-md-12 text-center mt-5'>
-        <label class='text-center'>週別の売り上げ個数</label>
-        <%= line_chart @items_count_week,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+      <div class='text-center graph'>
+        <label>週別の売り上げ個数</label>
+        <%= line_chart @items_count_week,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
-    </div>
-    <div class='row mt-5'>
-      <div class='col-lg-6 col-md-12 text-center'>
+      <div class='text-center graph'>
         <label>月別の売り上げ合計金額</label>
-        <%= column_chart @items_price_month,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+        <%= column_chart @items_price_month,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
-      <div class='col-lg-6 col-md-12 text-center mt-25'>
+      <div class='text-center graph'>
         <label>月別の売り上げ個数</label>
-        <%= line_chart @items_count_month,width: '390px', height: '300px' ,colors: ['#FF4F02'] %>
+        <%= line_chart @items_count_month,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
       </div>
     </div>
   </div>
@@ -92,4 +88,17 @@
   <div class='row data_graph'>
     <%= pie_chart  @item_purchase_genre_count %>
   </div>
-</div> 
+</div>
+
+
+<!--ul>(li>a+img)*8 tab key-->
+<!--<ul>-->
+<!--  <li><a></a><img></img></li>-->
+<!--  <li><a></a><img></img></li>-->
+<!--  <li><a></a><img></img></li>-->
+<!--  <li><a></a><img></img></li>-->
+<!--  <li><a></a><img></img></li>-->
+<!--  <li><a></a><img></img></li>-->
+<!--  <li><a></a><img></img></li>-->
+<!--  <li><a></a><img></img></li>-->
+<!--</ul>-->
