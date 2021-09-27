@@ -5,7 +5,7 @@ class Public::SearchesController < ApplicationController
   end
 
   def tag_lists
-    @genre_list = Genre.page(params[:page]).per(20)
+    @genre_list = Genre.all
     @tag_ranks = Genre.find(Tag.group(:genre_id).order('count(genre_id)desc').limit(10).pluck(:genre_id))
   end
 

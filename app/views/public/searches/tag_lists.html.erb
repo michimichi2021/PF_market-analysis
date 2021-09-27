@@ -1,8 +1,7 @@
 <div class='container mt-5 mb-5'>
   <div class='row'>
     <div class='col-3'></div>
-    <h2 class='text-center tag_title col-6'><span><i class='fas fa-crown'></i>タグの人気ランキング<i class='fas fa-crown'></i></span></h2>  
-    <h4 class='text-center'>人気項目10点</h4>
+    <h2 class='text-center tag_title col-6'><span><i class='fas fa-crown'></i>人気使用タグ10選<i class='fas fa-crown'></i></span></h2>  
     <div class='col-3'></div>
     <div class='col-6 tag_rank_space'>
       <div class='rank-tag-all mt-3'>
@@ -55,15 +54,15 @@
     </div>
     <div class='col-2'></div>
   </div>
-  <div class='row'>
-    <h2 class='text-center mt-5'>タグ一覧</h2>
-    <div class='col-1'></div>
-    <div class='col-10 tag_rank_space'>
+  <div class='row text-center'>
+    <h2 class='text-center mt-5'>タグ一覧(<%= @genre_list.count %>件)</h2>
+    <p>~スクロールして見れるよ！~</p>
+    <div class='col-3'></div>
+    <div class='col-6 tag_rank_space tag_index'>
       <% @genre_list.each do |genre| %>
          <%=link_to searches_search_tag_path(genre_id: genre.id) do %><span class='tag_name'><%= genre.name%></span><% end %>
       <% end %>
-      <%= paginate @genre_list %>
     </div>
-    <div class='col-1'></div>
+    <div class='col-3'></div>
   </div>
 </div>

@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = @user.items.page(params[:page]).per(6).reverse_order
+    @items = @user.items.order('id DESC')
   end
 
   def edit
@@ -38,15 +38,15 @@ class Public::UsersController < ApplicationController
 
   def datas
     @items = current_user.items.purchased
-    @purchased_items = current_user.items.purchased.page(params[:page]).per(5)
+    @purchased_items = current_user.items.purchased.page(params[:page]).per(5).reverse_order
     @sum = @items.sum(:price)
 
-    @items_price_day = @items.group_by_day(:created_at).sum(:price)
-    @items_count_day = @items.group_by_day(:created_at).count
-    @items_price_week = @items.group_by_week(:created_at, week_start: :monday).sum(:price)
-    @items_count_week = @items.group_by_week(:created_at, week_start: :monday).count
-    @items_price_month = @items.group_by_month(:created_at).sum(:price)
-    @items_count_month = @items.group_by_month(:created_at).count
+    @items_price_day = @items.where(updated_at: Time.zone.today.beginning_of_day.ago(6.days)..Time.zone.today.end_of_day).group_by_day(:updated_at).sum(:price)
+    @items_count_day = @items.where(updated_at: Time.zone.today.beginning_of_day.ago(6.days)..Time.zone.today.end_of_day).group_by_day(:updated_at).count
+    @items_price_week = @items.where(updated_at: Time.zone.today.beginning_of_day.ago(4.week)..Time.zone.today.end_of_day).group_by_week(:updated_at, week_start: :monday).sum(:price)
+    @items_count_week = @items.where(updated_at: Time.zone.today.beginning_of_day.ago(4.week)..Time.zone.today.end_of_day).group_by_week(:updated_at, week_start: :monday).count
+    @items_price_month = @items.where(updated_at: Time.zone.today.beginning_of_day.ago(1.month)..Time.zone.today.end_of_day).group_by_month(:updated_at).sum(:price)
+    @items_count_month = @items.where(updated_at: Time.zone.today.beginning_of_day.ago(1.month)..Time.zone.today.end_of_day).group_by_month(:updated_at).count
     @item_purchase_genre_count = current_user.items.joins(:genres).where(is_active: false).group('genres.name').size
   end
 

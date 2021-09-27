@@ -37,7 +37,7 @@ class Public::PurchasesController < ApplicationController
   end
 
   def index
-    @purchases = current_user.purchases.page(params[:page]).per(5)
+    @purchases = current_user.purchases.page(params[:page]).per(5).reverse_order
   end
 
   private
