@@ -1,0 +1,33 @@
+  <div class='row data_graph'> 
+    <div class='row'>
+      <div class='col-md-6 text-center'>
+        <label>日別の売り上げ合計金額</label>
+
+        <%= column_chart @items_price_day,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
+      </div>
+      <div class='col-md-6 text-center'>
+        <label>日別の売り上げ個数</label>
+        <%= line_chart @items_count_day,width: '300px', height: '300px' ,colors: ['#FF4F02']  %>
+      </div>
+    </div>
+    <div class='row mt-5'>
+      <div class='col-md-6 text-center'>
+        <label class='text-center'>週別の売り上げ合計金額</label>
+        <%= column_chart @items_price_week,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
+      </div>
+      <div class='col-md-6 text-center'>
+        <label class='text-center'>週別の売り上げ個数</label>
+        <%= line_chart @items_count_week,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
+      </div>
+    </div>
+    <div class='row mt-5'>
+      <div class='col-md-6 text-center'>
+        <label>月別の売り上げ合計金額</label>
+        <%= column_chart @items_price_month,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
+      </div>
+      <div class='col-md-6 text-center'>
+        <label>月別の売り上げ個数</label>
+        <%= line_chart @items_count_month,width: '300px', height: '300px' ,colors: ['#FF4F02'] %>
+      </div>
+    </div>
+  </div>
