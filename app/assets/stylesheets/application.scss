@@ -477,16 +477,18 @@ footer footer_logo{
 }
 
 .data_graph{
+ width:800px;
+ margin:auto;
  border: 1px #C0C0C0 solid;
 }
 
 .chart_table {
 display: grid;
-grid-template-columns: 300px 300px;
+grid-template-columns: 350px 350px;
 grid-template-rows: 360px 360px 360px;
-gap: 100px;
-width: 820px;
-margin: 100px auto;
+gap: 30px;
+width: 730px;
+margin: 58px auto;
 }
 
 
@@ -534,10 +536,18 @@ margin: 100px auto;
  border: 1px solid #000;
 }
 
+.chart_table{
+display: grid;
+grid-template-columns: 300px;
+grid-template-rows: 360px 360px 360px 360px 360px 360px;
+width: 300px;
+margin: 30px auto;
+}
 
 .data_graph{
- border: 0px none;
+ border: none;
 }
+
 
 
 .purchase_icon{
@@ -581,6 +591,12 @@ margin: 100px auto;
   font-size:8px;
 }
 
+}
+
+@media screen and (max-width:482px) {
+ .data_graph_title{
+  font-size:18px;
+ }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
