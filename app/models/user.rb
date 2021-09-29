@@ -41,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def self.search(word)
-    @users = User.where("last_name LIKE?", "%#{word}%")
+    where("last_name LIKE?", "#{word}")
   end
 
   def active_for_authentication?
