@@ -338,6 +338,13 @@ footer footer_logo{
  height:150px;
 }
 
+.table_introduction{
+ width:220px;
+ height:50px;
+ overflow:hidden;
+ overflow-y:scroll;
+}
+
 // フォロー、フォロワーのページのアイコン
 .follow_icon{
  object-fit:cover;
