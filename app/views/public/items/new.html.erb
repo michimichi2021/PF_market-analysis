@@ -1,13 +1,6 @@
 <div class='container mb-5'>
   
-  <% if @item.errors.any? %>
-  <div class='error_message mt-5 text-center'>
-    <%= @item.errors.count %>件のエラーが発生しました<br/>
-      <% @item.errors.full_messages.each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render 'layouts/item.error',item:@item %>
   
   <div class='row text-center'> 
   <div class='mt-3'>
@@ -61,7 +54,7 @@
   </div>
 
   <div class='actions mb-4'>
-    <%= f.submit '商品情報を変更する',class: 'tn btn-primary mt-4' %>
+    <%= f.submit '商品情報を変更する',class: 'btn btn-danger mt-4' %>
   </div>
   
   <% end %>
