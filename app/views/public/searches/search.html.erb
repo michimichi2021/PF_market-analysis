@@ -3,7 +3,7 @@
   <% if @items.count == 0 %>
     <h2 class='text-center mt-5'>検索結果はありませんでした</h2>
   <% else %>
-    <h2 class='text-center search_title'>商品名が'<%= @word %>'の出品一覧</h2>  
+    <h2 class='text-center search_title'>商品名が'<%= @word %>'の出品一覧(全<%= @items.count %>件)</h2>  
     <%= render 'layouts/search.item',items:@items %>
   <% end %>
   </div>

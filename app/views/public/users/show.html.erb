@@ -52,17 +52,20 @@
                 <%= link_to item_path(item) do %>
                 <%= image_tag item.image,class: 'user_item_icon' %>
                 <% end %>
+                <p>¥<%= item.price %></p>
               <% else %>
                 <%= link_to item_path(item) do %>
                 <%= image_tag 'no_image.jpeg' ,class: 'user_item_icon' %>
                 <% end %>
+                <p>¥<%= item.price %></p>
               <% end %>
             <% else %>
               <%= link_to item_path(item) do %>
               <%= image_tag 'SELL (1).png' ,class: 'user_item_icon' %>
               <% end %>
+              <p>¥<%= item.price %></p>
             <% end %>
-            <p>¥<%= item.price %></p>
+           
           </div>  
         <% end %>
       </div>

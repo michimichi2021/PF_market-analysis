@@ -309,8 +309,8 @@ footer footer_logo{
  width: 80px;
 }
 
+
 .comment_icon .comment_img comment_photo{
- width: 100%;
  height: auto;
  border: solid 3px #d7ebfe;
  border-radius: 50%;
@@ -320,7 +320,7 @@ footer footer_logo{
  display: inline-block;
  position: relative;
  margin: 5px 0 0 105px;
- padding: 17px 13px;
+ padding: 17px;
  border-radius: 12px;
  background: #d7ebfe;
 }
@@ -349,12 +349,18 @@ footer footer_logo{
  height:150px;
 }
 
+.fa-trash-alt{
+ color:#000000;
+}
+
 .table_introduction{
  width:220px;
  height:50px;
  overflow:hidden;
  overflow-y:scroll;
 }
+
+
 
 // フォロー、フォロワーのページのアイコン
 .follow_icon{
