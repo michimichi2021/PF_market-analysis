@@ -50,6 +50,9 @@
     <div class='mt-3'>
       <div>プロフィール画像</div>
       <%= f.file_field :image ,class:' text-center'%>
+      <div class='mt-3'>
+      <%= image_tag @user.image,class: 'user_icon_edit' %>
+      </div>
     </div>
     
     <div class='mt-3'>

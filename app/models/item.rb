@@ -33,7 +33,7 @@ class Item < ApplicationRecord
   end
 
   def self.search(word)
-    where("name LIKE?", "%#{word}%")
+    where("name LIKE?", "#{word}")
   end
 
   scope :purchased, -> { where(is_active: false) }

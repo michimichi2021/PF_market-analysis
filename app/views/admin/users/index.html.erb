@@ -1,36 +1,3 @@
 <div class='container mb-5'>
-  <div class='row mx-auto mt-5 col-12 col-lg-8'>
-  <div class='text-center'>名字検索</div>
-  <%= form_tag(admin_searches_search_path,method: :get) do %>
-    <div class='text-center'>
-      <%= text_field(@search_content, :search_word) %>
-      <input type="submit" value="&#xf002" class="fas header-search btn btn-sm btn-danger">
-    </div>
-  <% end %>
-    <table class='table table-hover table-inverse mt-5'>
-      <thead class='bg-light'>
-        <tr>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>会員状況</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.last_name + '' + user.first_name,admin_user_path(user) %></td>
-          <td><%= user.email %></td>
-          <% if user.is_deleted == true %>
-            <td>退会</td>
-          <% else %>
-            <td>有効</td>
-          <% end %>
-        </tr>
-      <% end %>
-      <%= paginate @users %>
-      </tbody>
-    </table>
-  </div>
+  <%= render 'layouts/user.search',search_content:@search_content,users:@users %>
 </div>

@@ -219,6 +219,17 @@ footer footer_logo{
  border: 1px solid #000;
 }
 
+// 会員情報編集ページ
+
+.user_icon_edit{
+ margin-top:10px;
+ width:180px;
+ height:180px;
+ object-fit:cover;
+ border: 1px solid #000;
+}
+
+
 // いいね一覧
 
 .favorite_index{
@@ -605,6 +616,14 @@ margin: 30px auto;
   font-size:18px;
  }
 }
+
+
+@media screen and (max-width:451px) {
+ .purchase_table{
+  font-size:10px;
+ }
+}
+
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
 
