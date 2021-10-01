@@ -1,5 +1,7 @@
 # 分析特化型フリマアプリ「market&analysisマケアナ」
 
+<img width="1440" alt="スクリーンショット 2021-10-01 23 48 51" src="https://user-images.githubusercontent.com/84381486/135647254-69f9db14-c66c-4b7d-8217-13e88b1e357e.png">
+
 ## サイト概要
 売り手側、買い手側双方が利用しやすいフリマアプリです。
 <br>・売り手側各々で売り切れ商品のジャンル割合や日別、週別、月別に売れた商品の合計金額データを把握できる
@@ -26,7 +28,12 @@
 売り手側が売り切れデータの管理をしたい時。
 <br>買い手側が買いたい商品を検索し、購入する時。
 
+## サイトURL
+http://35.74.222.228/
 
+### 管理者テストログイン情報
+メールアドレス:admin@co.jp
+パスワード:11111111
 
 ## 設計書
 ER図は<a href="https://drive.google.com/file/d/1VGwONfvTX67OHMCXwzgn7P04MffKQSsT/view?usp=sharing">こちら</a>から。
