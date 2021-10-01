@@ -1,6 +1,6 @@
 # 分析特化型フリマアプリ「market&analysisマケアナ」
 
-<%= image_tag 'マケアナ.png' %>
+<img width="1440" alt="スクリーンショット 2021-10-01 23 48 51" src="https://user-images.githubusercontent.com/84381486/135647254-69f9db14-c66c-4b7d-8217-13e88b1e357e.png">
 
 ## サイト概要
 売り手側、買い手側双方が利用しやすいフリマアプリです。
