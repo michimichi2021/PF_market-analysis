@@ -1,0 +1,21 @@
+<div class='d-flex flex-wrap justify-content-center'>
+  <% items.each do |item| %>
+    <div class='search_item_icon'>
+    <%= link_to item_path(item) do %> 
+      <% if item.purchase.blank? %>
+        <% if item.image.attached? %>
+          <%= image_tag item.image,class: 'item_icon' %>
+          <p class='search_item_price'>¥<%= item.price %></p>
+        <% else %>
+          <%= image_tag 'no_image.jpeg' ,class: 'item_icon' %>
+          <p class='search_item_price'>¥<%= item.price %></p>
+        <% end %>
+      <% else %>
+          <%= image_tag 'SELL (1).png' ,class: 'item_icon soldout' %>
+          <p class='search_item_price'>¥<%= item.price %></p>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
+<div class='row text-center'><%= paginate items %></div>

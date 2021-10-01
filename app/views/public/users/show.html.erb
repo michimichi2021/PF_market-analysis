@@ -2,14 +2,12 @@
   <div class='row col-md-12'>
     <div class='col-md-4 text-center mt-5'>
       <div class='text-center'>
-       
         <% if @user.image.attached? %>
           <%= image_tag @user.image.variant(resize:'200x200'),class: 'profile_icon text-center' %>
         <% else %>
           <%= image_tag 'no_image.jpeg',class: 'profile_icon' %>
         <% end %>
         <p>名前:&nbsp;&nbsp;<%= @user.name %></p>
-      
       </div>
    
       <div class='follow_link'>
@@ -54,17 +52,20 @@
                 <%= link_to item_path(item) do %>
                 <%= image_tag item.image,class: 'user_item_icon' %>
                 <% end %>
+                <p>¥<%= item.price %></p>
               <% else %>
                 <%= link_to item_path(item) do %>
                 <%= image_tag 'no_image.jpeg' ,class: 'user_item_icon' %>
                 <% end %>
+                <p>¥<%= item.price %></p>
               <% end %>
             <% else %>
               <%= link_to item_path(item) do %>
               <%= image_tag 'SELL (1).png' ,class: 'user_item_icon' %>
               <% end %>
+              <p>¥<%= item.price %></p>
             <% end %>
-            <p>¥<%= item.price %></p>
+           
           </div>  
         <% end %>
       </div>

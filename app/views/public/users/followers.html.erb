@@ -1,41 +1,6 @@
 <div class='container mt-5 text-center mb-5'>
   <div class='row'>
   <h2>フォロワー</h2>
-  <div><%= paginate @users %></div>
-  <% if @users.exists? %>
-  <table>
-    <thead>
-      <tr>
-        <th>ユーザー</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td>
-            <div class='pt-4'>
-            <%= link_to user_path(user) do %>  
-              <% if user.image.attached? %>
-                <%= image_tag user.image.variant(resize:'63x63'),class: 'follow_icon' %>
-              <% else %>
-                <%= image_tag 'no_image.jpeg' %>
-              <% end %>
-            <% end %>
-            <p><%= user.name %></p>
-            </div>
-          </td>
-          <td>フォロー数:<%= link_to follows_user_path(user) do %><%= user.following_user.count %><% end %></td>
-          <td>フォロワー数:<%= link_to followers_user_path(user) do %><%= user.follower_user.count %><% end %></td>
-          <td><%= link_to "出品者詳細ページへ",user_path(user),class:'btn btn-primary' %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <% else %>
-    <p>ユーザーはいません</p>
-  <% end %>
+  <%= render 'layouts/follow',users:@users %>
   </div>
 </div>
