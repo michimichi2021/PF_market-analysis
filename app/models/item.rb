@@ -33,13 +33,12 @@ class Item < ApplicationRecord
   end
 
   def self.search(word)
-    where("name LIKE?", "%#{word}%")
+    where("name LIKE?", "#{word}")
   end
 
   scope :purchased, -> { where(is_active: false) }
-  
+
   scope :days_ago, -> { where(updated_at: Time.zone.today.beginning_of_day.ago(6.days)..Time.zone.today.end_of_day) }
   scope :weeks_ago, -> { where(updated_at: Time.zone.today.beginning_of_day.ago(4.week)..Time.zone.today.end_of_day) }
   scope :months_ago, -> { where(updated_at: Time.zone.today.beginning_of_day.ago(6.month)..Time.zone.today.end_of_day) }
-  
 end

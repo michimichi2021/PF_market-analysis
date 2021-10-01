@@ -66,12 +66,12 @@
       <div class='mt-2'>
         <% if user_signed_in? && @item.purchase.blank? %>
           <% if current_user == @item.user%>
-            <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-success mt-1' %>
+            <%=link_to'商品情報を編集する',edit_item_path(@item),class: 'btn btn-danger mt-1' %>
             <%=link_to '商品を削除する',item_path(@item),method: :delete,data: { confirm: '本当に消しますか？' },class: 'btn btn-danger mt-1' %>
           <% else %>
             <%= form_with model: @purchase,url: new_purchase_path,method: :get,local:true do |f| %>
                <%= f.hidden_field :item_id, value: @item.id %>
-               <%= f.submit '商品を注文する' , class: 'btn btn-success btn-sm'%>
+               <%= f.submit '商品を注文する' , class: 'btn btn-danger btn-sm'%>
             <% end %>
           <% end %>
         <% end %>

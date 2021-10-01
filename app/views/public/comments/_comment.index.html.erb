@@ -12,13 +12,11 @@
     <div class='comment_comment'>
     <p><%= comment.created_at.strftime('%Y/%m/%d') %> <%= comment.comment %></p>
     </div>
-    <div>
-      <% if comment.user == current_user %>
-      <div>
-        <%= link_to '削除', item_comment_path(comment.item, comment),method: :delete, remote: true %>
-      </div>
+    <% if comment.user == current_user %>
+      <%= link_to item_comment_path(comment.item, comment),method: :delete, remote: true do %>
+        <i class="fas fa-trash-alt"></i>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 <% end %>
