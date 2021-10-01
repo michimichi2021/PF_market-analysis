@@ -28,7 +28,12 @@
 売り手側が売り切れデータの管理をしたい時。
 <br>買い手側が買いたい商品を検索し、購入する時。
 
+## サイトURL
+http://35.74.222.228/
 
+### 管理者テストログイン情報
+メールアドレス:admin@co.jp
+パスワード:11111111
 
 ## 設計書
 ER図は<a href="https://drive.google.com/file/d/1VGwONfvTX67OHMCXwzgn7P04MffKQSsT/view?usp=sharing">こちら</a>から。
