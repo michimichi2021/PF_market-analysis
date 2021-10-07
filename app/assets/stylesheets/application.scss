@@ -68,6 +68,11 @@ footer footer_logo{
  color:red;
 }
 
+// ページネーション
+.page-link{
+ color:black;
+ font-weight:bold;
+}
 // 商品に関すること
 
 .item_name{
@@ -636,7 +641,13 @@ margin: 30px auto;
 .search_title{
   font-size:20px;
 }
+}
 
+@media screen and (max-width:382px) {
+ .pagination{
+  font-size: 5px;
+  justify-content: center;
+ }
 
 }
 

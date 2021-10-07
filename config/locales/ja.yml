@@ -20,4 +20,10 @@ ja:
         name: 商品名
         price: 商品金額
         image: 商品画像
-    
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: « 前
+      next: 次 »
+      
