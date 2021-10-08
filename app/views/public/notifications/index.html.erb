@@ -1,0 +1,24 @@
+<h3 class="text-center">通知</h3>
+    <%= link_to destroy_all_notifications_path, method: :delete do %>
+      <i class="fas fa-trash" style="color: black;"></i>
+      <h7 style="color: black;">全削除</h7>
+    <% end %>
+    <hr>
+  <% if @notifications.exists? %>
+    <% @notifications.each do |notification| %>
+    <div class="users-index">
+      <% if notification.visiter != current_user %>
+        <% visiter = notification.visiter %>
+        <div class="user-view clearfix ">
+        <%= link_to user_path(notification.visiter) do %>
+          <%= image_tag visiter.image.variant(resize:'200x200'),class: 'profile_icon text-center' %>
+        <% end %>
+        <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+      <% end %>
+      <br>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>

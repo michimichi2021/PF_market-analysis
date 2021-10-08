@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :follower_user, through: :followed, source: :follower
   has_many :following_user, through: :followers, source: :followed
+  
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id",dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id",dependent: :destroy
 
   validates :last_name, presence: true
   validates :first_name, presence: true
@@ -47,4 +50,16 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+  
 end
