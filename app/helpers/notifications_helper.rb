@@ -18,8 +18,4 @@ module NotificationsHelper
       tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの商品', href: item_path(notification.item_id), style: "font-weight: bold;") + "を購入しました"
     end
   end
-
-  def unchecked_notifications
-    @notifications = current_user.passive_notifications.where(checked: false)
-  end
 end

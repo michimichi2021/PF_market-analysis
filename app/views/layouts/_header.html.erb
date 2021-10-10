@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
     <% if user_signed_in? %>
-      <% if unchecked_notifications.any? %>
+      <% if current_user.passive_notifications.where(checked: false).any? %>
       <i class="fa fa-circle" style="color: gold;"></i>
       <% end %>  
       <li class="nav-item">

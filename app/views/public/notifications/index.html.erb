@@ -16,18 +16,18 @@
       <div class="users-index">
       <% if notification.visiter != current_user %>
         <% visiter = notification.visiter %>
-          <hr>
-          <div class ='d-flex align-items-center'>
-            <div>
-            <%= link_to user_path(notification.visiter) do %>
-              <%= image_tag visiter.image.variant(resize:'100x100'),class: 'notification_profile_icon text-center' %>
-            <% end %>
-            </div>
-            <div>
-            <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
-            <br>
-            </div>
+        <hr>
+        <div class ='d-flex align-items-center'>
+          <div>
+          <%= link_to user_path(notification.visiter) do %>
+            <%= image_tag visiter.image.variant(resize:'100x100'),class: 'notification_profile_icon text-center' %>
+          <% end %>
           </div>
+          <div>
+          <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+          <br>
+          </div>
+        </div>
       <% end %>
       </div>
     <% end %>
