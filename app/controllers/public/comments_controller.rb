@@ -5,7 +5,9 @@ class Public::CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.item_id = @item.id
     @comments = @item.comments
+    @comment_item = @comment.item
     @comment.save
+    @comment_item.create_notification_comment!(current_user, @comment.id)
     respond_to do |format|
       format.js
     end

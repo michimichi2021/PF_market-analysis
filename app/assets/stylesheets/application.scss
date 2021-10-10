@@ -68,6 +68,15 @@ footer footer_logo{
  color:red;
 }
 
+.bell-size{
+ color:black;
+}
+
+// ページネーション
+.page-link{
+ color:black;
+ font-weight:bold;
+}
 // 商品に関すること
 
 .item_name{
@@ -515,7 +524,20 @@ width: 730px;
 margin: 58px auto;
 }
 
+// 通知一覧
 
+.notification_text{
+ font-size:15px;
+}
+
+.notification_table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notification_profile_icon{
+ background-color:#fff;
+}
 
 
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
@@ -610,6 +632,13 @@ margin: 30px auto;
 
 }
 
+@media screen and (max-width:499px) {
+ .notification_text{
+  font-size:10px;
+}
+
+}
+
 @media screen and (max-width:496px) {
  .favorite_index_table{
   font-size:8px;
@@ -636,7 +665,13 @@ margin: 30px auto;
 .search_title{
   font-size:20px;
 }
+}
 
+@media screen and (max-width:382px) {
+ .pagination{
+  font-size: 5px;
+  justify-content: center;
+ }
 
 }
 

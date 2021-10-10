@@ -3,6 +3,7 @@ class Public::FavoritesController < ApplicationController
     @item = Item.find(params[:item_id])
     favorite = current_user.favorites.new(item_id: @item.id)
     favorite.save
+    @item.create_notification_by(current_user)
     respond_to do |format|
       format.js
     end

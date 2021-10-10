@@ -42,6 +42,12 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
+    resources :notifications, only: :index do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+
     resources :purchases, only: [:create, :index, :new]
 
     post 'purchases/confirm' => 'purchases#confirm'

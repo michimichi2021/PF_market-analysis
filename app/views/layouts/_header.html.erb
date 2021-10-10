@@ -11,10 +11,15 @@
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-      <%= link_to 'お問い合わせ',inquiries_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
-      </li>
     <% if user_signed_in? %>
+      <% if current_user.passive_notifications.where(checked: false).any? %>
+      <i class="fa fa-circle" style="color: gold;"></i>
+      <% end %>  
+      <li class="nav-item">
+        <%= link_to notifications_path do %>
+        <i class="fas fa-bell fa-7x bell-size"></i>
+        <% end %>
+      </li>
       <li class="nav-item">
       <%= link_to 'タグ一覧',searches_tag_lists_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
       </li>
@@ -54,6 +59,9 @@
         <%= link_to 'ログイン',new_user_session_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
       </li>
     <% end %>
+    <li class="nav-item active">
+      <%= link_to 'お問い合わせ',inquiries_path,class: "btn btn-sm btn-danger mt-1 mb-1" %>
+    </li>
     </ul>
   </div>
 </nav>
