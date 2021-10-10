@@ -1,24 +1,43 @@
-<h3 class="text-center">通知</h3>
+<div class ='container mb-5'>
+    <div class ='row justify-content-center'>
+    <h3 class="text-center mt-5">通知</h3>
+    <% if @notifications.exists? %>
+    <div class ='mt-2 mb-2 text-center'>
     <%= link_to destroy_all_notifications_path, method: :delete do %>
       <i class="fas fa-trash" style="color: black;"></i>
       <h7 style="color: black;">全削除</h7>
     <% end %>
-    <hr>
-  <% if @notifications.exists? %>
+    </div>
+    </div>
+    <div class='row'>
+    <div class ='col-sm-2'></div>
+    <div class ='col-sm-8'>
     <% @notifications.each do |notification| %>
-    <div class="users-index">
+      <div class="users-index">
       <% if notification.visiter != current_user %>
         <% visiter = notification.visiter %>
-        <div class="user-view clearfix ">
-        <%= link_to user_path(notification.visiter) do %>
-          <%= image_tag visiter.image.variant(resize:'200x200'),class: 'profile_icon text-center' %>
-        <% end %>
-        <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+          <hr>
+          <div class ='d-flex align-items-center'>
+            <div>
+            <%= link_to user_path(notification.visiter) do %>
+              <%= image_tag visiter.image.variant(resize:'100x100'),class: 'notification_profile_icon text-center' %>
+            <% end %>
+            </div>
+            <div>
+            <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+            <br>
+            </div>
+          </div>
       <% end %>
-      <br>
       </div>
-    </div>
     <% end %>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
+    <% else %>
+      <h5 class ='text-center mt-5'>通知はありません</h5>
+    <% end %>
+    <div class ='mt-4 mb-2'>
+    <%= paginate @notifications %>
+    </div>
+    </div>
+    <div class ='col-sm-2'></div>
+    </div>
+</div>

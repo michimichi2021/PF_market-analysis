@@ -30,6 +30,7 @@ class Public::PurchasesController < ApplicationController
     @item = Item.find(@purchase.item_id)
     if @purchase.save
       @item.update(is_active: false)
+      @item.create_notification_purchase_by(current_user)
       redirect_to purchases_path
     else
       render 'new'
