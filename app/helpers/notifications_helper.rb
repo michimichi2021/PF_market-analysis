@@ -2,10 +2,9 @@ module NotificationsHelper
   def notification_form(notification)
     visiter = notification.visiter
     visited = notification.visited
-
     case notification.action
     when "follow" then
-      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "があなたをフォローしました"
+      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "があなたのことをフォローしました"
     when "like" then
       tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの商品', href: item_path(notification.item_id), style: "font-weight: bold;") + "にいいねしました"
     when "comment" then
@@ -15,7 +14,7 @@ module NotificationsHelper
         tag.a(visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの返信', href: item_path(notification.item_id), style: "font-weight: bold;") + "にコメントしました"
       end
     when "purchase" then
-      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの商品', href: item_path(notification.item_id), style: "font-weight: bold;") + "を購入しました"
+      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの商品', href: item_path(notification.item_id), style: "font-weight: bold;") + "を購入しました！"
     end
   end
 end

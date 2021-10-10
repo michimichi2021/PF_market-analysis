@@ -17,7 +17,7 @@
       <% if notification.visiter != current_user %>
         <% visiter = notification.visiter %>
         <hr>
-        <div class ='d-flex align-items-center'>
+        <div class ='d-flex align-items-center justify-content-center'>
           <div>
           <%= link_to user_path(notification.visiter) do %>
             <%= image_tag visiter.image.variant(resize:'100x100'),class: 'notification_profile_icon text-center' %>
