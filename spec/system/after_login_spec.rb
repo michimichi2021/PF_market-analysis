@@ -4,7 +4,6 @@ describe '会員ログイン後のテスト' do
     let(:user) { create(:user) }
     before do
       @item = FactoryBot.build(:item)
-      @item.image = fixture_file_upload('app/assets/images/no_image.jpeg')
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
@@ -226,8 +225,7 @@ describe '会員ログイン後のテスト' do
     
     describe '商品を出品できるか' do
         before do
-            click_link(".item_new")
-            visit items_new_path
+            visit new_item_path
         end
         context '表示内容の確認' do
         it 'URLが正しい' do
@@ -248,8 +246,43 @@ describe '会員ログイン後のテスト' do
           it 'タグのフォームが表示される' do
             expect(page).to have_field 'item[genre_ids]'
           end
+          it '配送料の負担のプルダウンメニューが表示される' do
+            expect(page).to have_field 'item[shipping_fee]'
+          end
+          it '配送方法のプルダウンメニューが表示される' do
+            expect(page).to have_field 'item[shipping_method]'
+          end
+          it '発送元の地域のプルダウンメニューが表示される' do
+            expect(page).to have_field 'item[shipping_area]'
+          end
+          it '発送までの日数のプルダウンメニューが表示される' do
+            expect(page).to have_field 'item[preparation_day]'
+          end
           it '新規登録ボタンが表示される' do
-            expect(page).to have_link '商品を出品する'
+            expect(page).to have_button '商品を出品する'
+          end
+        end
+        
+        context '商品の出品成功のテスト' do
+          before do
+            @genre_list = @item.genres
+            attach_file 'item[image]', "#{Rails.root}/spec/factories/images/no_image.jpeg"
+            fill_in 'item[name]', with: @item.name
+            fill_in 'item[price]', with: @item.price
+            fill_in 'item[introduction]', with: @item.introduction
+            fill_in 'item[genre_ids]', with: @genre_list
+            select "出品者", from: "item_shipping_fee"
+            select "らくらくマケアナ便", from: "item_shipping_method"
+            select "北海道", from: "item_shipping_area"
+            select "1", from: "item_preparation_day"
+          end
+    
+          it '商品が正しく保存される' do
+            expect { click_button '商品を出品する' }.to change(Item.all, :count).by(1)
+          end
+          it 'リダイレクト先が、保存できた投稿の詳細画面になっている' do
+            click_button '商品を出品する'
+            expect(current_path).to eq '/items/' + Item.last.id.to_s
           end
         end
     end

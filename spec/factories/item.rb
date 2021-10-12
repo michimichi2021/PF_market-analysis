@@ -8,6 +8,10 @@ FactoryBot.define do
     preparation_day { Faker::Number }
     price { 1000 }
     association :user
+    after(:build) do |item|
+      item.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'no_image.jpeg')), filename: 'no_image.jpeg', content_type: 'image/jpeg')
+    end
+
     after(:create) do |item|
       create_list(:tag, 1, item: item, genre: create(:genre))
     end
