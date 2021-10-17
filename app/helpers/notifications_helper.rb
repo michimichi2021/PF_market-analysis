@@ -14,7 +14,7 @@ module NotificationsHelper
         tag.a(visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの返信', href: item_path(notification.item_id), style: "font-weight: bold;") + "にコメントしました"
       end
     when "purchase" then
-      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの商品', href: item_path(notification.item_id), style: "font-weight: bold;") + "を購入しました！"
+      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの商品', href: item_path(notification.item_id), style: "font-weight: bold;") + "を購入しました!"
     end
   end
 end
