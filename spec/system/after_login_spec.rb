@@ -45,21 +45,6 @@ describe '会員ログイン後のテスト' do
         end
     end
     
-    describe 'トップ画面のテスト' do
-        before do
-            visit root_path
-        end
-        
-        context '表示内容の確認' do
-            it 'URLが正しい' do
-                expect(current_path).to eq '/'
-            end
-            it '商品画像のリンク先が正しい' do
-            expect(page).to have_selector("img[src$='no_image.jpeg']"),href: '/items/' + @item.id.to_s
-            end
-        end
-    end
-    
     describe '会員の詳細画面' do
         before do
             click_link 'マイページ'
