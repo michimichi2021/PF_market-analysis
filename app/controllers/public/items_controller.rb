@@ -27,6 +27,11 @@ class Public::ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @genre_list = @item.genres.pluck(:name).join(",")
+    if @item.user == current_user
+      render :edit
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update

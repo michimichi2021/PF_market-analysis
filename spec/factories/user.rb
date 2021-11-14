@@ -12,6 +12,8 @@ FactoryBot.define do
     telephone_number { "090654321" }
     password { "password" }
     postal_code { "1234567" }
+    name { Faker::Lorem.characters(number: 5) }
+    profile { Faker::Lorem.characters(number: 5) }
     after(:build) do |user|
       user.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'no_image.jpeg')), filename: 'no_image.jpeg', content_type: 'image/jpeg')
     end

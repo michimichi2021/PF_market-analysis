@@ -249,46 +249,6 @@ describe '会員ログイン前のテスト' do
     end
   end
 
-  describe 'ログインしている場合のヘッダーのテスト' do
-    # 要user create
-    let(:user) { create(:user) }
-
-    before do
-      visit new_user_session_path
-      fill_in 'user[email]', with: user.email
-      fill_in 'user[password]', with: user.password
-      click_button 'ログインする'
-    end
-
-    context '表示内容のリンク先が正しいか' do
-      it 'ロゴリンクを押したらトップページに戻る' do
-        page.first(".logo").click
-        expect(current_path).to eq '/'
-      end
-      it 'お問い合わせボタンのリンクが表示される' do
-        expect(page).to have_link 'お問い合わせ', href: '/inquiries'
-      end
-      it 'タグ一覧ボタンのリンクが表示される' do
-        expect(page).to have_link 'タグ一覧', href: '/searches/tag_lists'
-      end
-      it 'お気に入り品ボタンが表示される' do
-        expect(page).to have_link 'お気に入り品', href: '/users/' + user.id.to_s + '/favorites'
-      end
-      it '売り上げデータボタンが表示される' do
-        expect(page).to have_link '売り上げデータ', href: '/users/' + user.id.to_s + '/datas'
-      end
-      it '購入履歴ボタンのリンクが表示される' do
-        expect(page).to have_link '購入履歴', href: '/purchases'
-      end
-      it 'マイページボタンのリンクが表示される' do
-        expect(page).to have_link 'マイページ', href: '/users/' + user.id.to_s
-      end
-      it 'ログアウトボタンのリンクが表示される' do
-        expect(page).to have_link 'ログアウト', href: '/users/sign_out'
-      end
-    end
-  end
-
   describe 'ユーザログアウトのテスト' do
     let(:user) { create(:user) }
 
